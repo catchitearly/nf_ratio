@@ -73,3 +73,10 @@ Traceback (most recent call last):
               ^
 IndentationError: unindent does not match any outer indentation level
 
+2026-05-21 09:46:14,127 [INFO] main: ▶ main.py started
+2026-05-21 09:46:15,098 [INFO] strategy: ============================================================
+2026-05-21 09:46:15,098 [INFO] strategy: Strategy run at 2026-05-21 15:16:15 IST
+2026-05-21 09:46:15,114 [ERROR] fyers_data: get_spot_price error: name 'client_id' is not defined
+2026-05-21 09:46:15,115 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:46:15,115 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:46:15,115 [INFO] main: ✓ main.py finished

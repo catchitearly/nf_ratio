@@ -13,7 +13,7 @@
   "trade_log": [],
   "delta_alerts_sent": [],
   "straddle_vwap_history": [],
-  "last_run": "2026-05-21T09:36:17.265770",
+  "last_run": "2026-05-21T09:46:15.115494",
   "errors": [
     {
       "time": "2026-05-21T09:08:28.990110",
@@ -41,6 +41,10 @@
     },
     {
       "time": "2026-05-21T09:36:17.265327",
+      "msg": "Could not fetch spot price \u2013 aborting this run."
+    },
+    {
+      "time": "2026-05-21T09:46:15.115051",
       "msg": "Could not fetch spot price \u2013 aborting this run."
     }
   ]
