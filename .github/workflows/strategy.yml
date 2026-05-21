@@ -2,8 +2,8 @@ name: Nifty Options Strategy
 
 on:
   workflow_dispatch:
-  #schedule:
-    #- cron: "*/30 3-10 * * 1-5"   # UTC 3:00-10:00 = IST 8:30-15:30, Mon-Fri
+  schedule:
+    - cron: "*/30 3-10 * * 1-5"   # UTC 3:00-10:00 = IST 8:30-15:30, Mon-Fri
 
 jobs:
   run-strategy:
@@ -25,14 +25,15 @@ jobs:
           python-version: "3.11"
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install requests pytz
 
       - name: Restore state from artifact
+        id: restore-state
         uses: actions/download-artifact@v4
         with:
           name: strategy-state
-          path: .
-        continue-on-error: true
+          path: ${{ github.workspace }}
+        continue-on-error: true     # first run has no artifact – silently skip
 
       - name: Run strategy
         env:
@@ -46,15 +47,16 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: strategy-state
-          path: state.json
+          path: ${{ github.workspace }}/state.json
           retention-days: 1
+          if-no-files-found: warn   # don't fail if state.json missing
         if: always()
 
       - name: Commit and push dashboard
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add docs/index.html state.json logs/ || true
+          git add docs/index.html state.json logs/ 2>/dev/null || true
           git diff --staged --quiet || git commit -m "dashboard update $(date -u '+%H:%M UTC')"
           git push
         if: always()
