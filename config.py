@@ -10,9 +10,9 @@ TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 # ── Instrument ─────────────────────────────────────────────────────────────
-INDEX_SYMBOL   = "NSE:NIFTY50-INDEX"
+INDEX_SYMBOL   = "NSE:NIFTY-INDEX"
 EXPIRY_DATE    = "26-05-2026"          # current weekly expiry
-EXPIRY_STR     = "26MAY25"            # used in Fyers option symbol
+EXPIRY_STR     = "26MAY"            # used in Fyers option symbol
 STRIKE_STEP    = 100
 STRADDLE_RANGE = 4                     # ATM ± 400  → 4 steps each side
 
