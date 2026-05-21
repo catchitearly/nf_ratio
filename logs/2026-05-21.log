@@ -54,3 +54,10 @@ Traceback (most recent call last):
     from fyers_apiv3 import fyersModel
 ModuleNotFoundError: No module named 'fyers_apiv3'
 
+2026-05-21 09:36:16,164 [INFO] main: ▶ main.py started
+2026-05-21 09:36:16,466 [INFO] strategy: ============================================================
+2026-05-21 09:36:16,466 [INFO] strategy: Strategy run at 2026-05-21 15:06:16 IST
+2026-05-21 09:36:17,264 [ERROR] fyers_data: get_spot_price HTTP 500: {"s": "error", "code": 500, "message": "Invalid Request, please provide valid method"}
+2026-05-21 09:36:17,265 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:36:17,265 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:36:17,266 [INFO] main: ✓ main.py finished
