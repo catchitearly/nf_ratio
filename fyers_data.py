@@ -72,16 +72,30 @@ def get_915_candle_close() -> float | None:
 
 
 def get_spot_price() -> float | None:
-    """Fetch latest Nifty spot price."""
+    """Fetch latest Nifty spot price using market-status endpoint."""
     try:
-        fyers = fyersModel.FyersModel(client_id=FYERS_CLIENT_ID,  token=FYERS_ACCESS_TOKEN)
-
-        # Get quotes
-        data = {"symbols": "NSE:NIFTY50-INDEX"}
-        response = fyers.quotes(data=data)
+        url = f"{BASE_URL}/market-status/"
+        r = requests.get(url, headers={**HEADERS, **_auth_header()}, timeout=10)
         
-        if response["s"] == "ok":
-            ltp = response["d"][0]["v"]["lp"]
+        if not r.ok:
+            log.error(f"Market status HTTP {r.status_code}: {r.text[:300]}")
+            return None
+            
+        data = r.json()
+        if data.get("s") != "ok":
+            log.error(f"Market status API error: {data}")
+            return None
+            
+        # Find Nifty 50 in market status data
+        for market in data.get("market_status", []):
+            if market.get("symbol") == "NIFTY 50" or "NIFTY" in market.get("symbol", ""):
+                ltp = market.get("ltp")
+                if ltp:
+                    return float(ltp)
+        
+        log.error("Nifty 50 not found in market status response")
+        return None
+        
     except Exception as e:
         log.error(f"get_spot_price error: {e}")
         return None
