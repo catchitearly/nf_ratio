@@ -29,3 +29,10 @@
 2026-05-21 09:16:59,516 [ERROR] strategy: Could not fetch spot price – aborting this run.
 2026-05-21 09:16:59,516 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-21 09:16:59,517 [INFO] main: ✓ main.py finished
+2026-05-21 09:21:04,562 [INFO] main: ▶ main.py started
+2026-05-21 09:21:05,268 [INFO] strategy: ============================================================
+2026-05-21 09:21:05,268 [INFO] strategy: Strategy run at 2026-05-21 14:51:05 IST
+2026-05-21 09:21:06,019 [ERROR] fyers_data: get_spot_price HTTP 500: {"s": "error", "code": 500, "message": "Invalid Request, please provide valid method"}
+2026-05-21 09:21:06,020 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:21:06,021 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:21:06,021 [INFO] main: ✓ main.py finished
