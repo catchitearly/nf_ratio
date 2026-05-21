@@ -1,0 +1,23 @@
+{
+  "date": "2026-05-21",
+  "atm": null,
+  "entry_done": false,
+  "entry_view": null,
+  "current_view": null,
+  "prev_view": null,
+  "pending_view": null,
+  "pending_view_count": 0,
+  "add_1135_done": false,
+  "closed": false,
+  "positions": [],
+  "trade_log": [],
+  "delta_alerts_sent": [],
+  "straddle_vwap_history": [],
+  "last_run": "2026-05-21T09:08:28.990461",
+  "errors": [
+    {
+      "time": "2026-05-21T09:08:28.990110",
+      "msg": "Could not fetch spot price \u2013 aborting this run."
+    }
+  ]
+}
