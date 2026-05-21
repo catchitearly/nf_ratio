@@ -93,3 +93,10 @@ IndentationError: unindent does not match any outer indentation level
 2026-05-21 09:54:21,072 [ERROR] strategy: Could not fetch spot price – aborting this run.
 2026-05-21 09:54:21,073 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-21 09:54:21,073 [INFO] main: ✓ main.py finished
+2026-05-21 09:57:57,061 [INFO] main: ▶ main.py started
+2026-05-21 09:57:57,439 [INFO] strategy: ============================================================
+2026-05-21 09:57:57,439 [INFO] strategy: Strategy run at 2026-05-21 15:27:57 IST
+2026-05-21 09:57:58,201 [ERROR] fyers_data: Spot price HTTP 500: {"s": "error", "code": 500, "message": "Invalid Request, please provide valid method"}
+2026-05-21 09:57:58,202 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:57:58,203 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:57:58,203 [INFO] main: ✓ main.py finished
