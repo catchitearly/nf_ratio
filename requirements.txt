@@ -1,2 +1,10 @@
 requests>=2.31.0
 pytz>=2024.1
+fyers-apiv3>=3.0.0
+pandas>=2.2.0
+numpy>=1.26.0
+fyers-apiv3
+pandas
+numpy
+py_vollib
+pytz
