@@ -72,29 +72,39 @@ def get_915_candle_close() -> float | None:
 
 
 def get_spot_price() -> float | None:
-    """Fetch latest Nifty spot price using market-status endpoint."""
+    """Fetch latest Nifty spot price using history endpoint (last candle)."""
     try:
-        url = f"{BASE_URL}/market-status/"
-        r = requests.get(url, headers={**HEADERS, **_auth_header()}, timeout=10)
+        today = date.today()
+        date_str = today.strftime("%Y-%m-%d")
+        
+        url = f"{BASE_URL}/history/"
+        payload = {
+            "symbol": INDEX_SYMBOL,
+            "resolution": "1",  # 1-minute candles for latest price
+            "date_format": "1",
+            "range_from": date_str,
+            "range_to": date_str,
+            "cont_flag": "1"
+        }
+        
+        r = requests.get(url, headers={**HEADERS, **_auth_header()},
+                         params=payload, timeout=10)
         
         if not r.ok:
-            log.error(f"Market status HTTP {r.status_code}: {r.text[:300]}")
+            log.error(f"Spot price HTTP {r.status_code}: {r.text[:300]}")
             return None
             
         data = r.json()
-        if data.get("s") != "ok":
-            log.error(f"Market status API error: {data}")
-            return None
-            
-        # Find Nifty 50 in market status data
-        for market in data.get("market_status", []):
-            if market.get("symbol") == "NIFTY 50" or "NIFTY" in market.get("symbol", ""):
-                ltp = market.get("ltp")
-                if ltp:
-                    return float(ltp)
         
-        log.error("Nifty 50 not found in market status response")
-        return None
+        if data.get("s") != "ok" or not data.get("candles"):
+            log.error(f"Spot price API error: {data.get('s', 'unknown')}")
+            return None
+        
+        # Last candle's close price is latest spot
+        last_candle = data["candles"][-1]
+        spot_price = float(last_candle[4])  # close price
+        log.info(f"Spot price fetched: {spot_price}")
+        return spot_price
         
     except Exception as e:
         log.error(f"get_spot_price error: {e}")
