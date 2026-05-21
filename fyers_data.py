@@ -9,6 +9,8 @@ import math
 import time as time_mod
 from datetime import datetime, date, timedelta
 import requests
+from fyers_apiv3 import fyersModel
+
 
 from config import (
     FYERS_CLIENT_ID, FYERS_ACCESS_TOKEN,
