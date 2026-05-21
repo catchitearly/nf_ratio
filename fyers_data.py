@@ -74,7 +74,7 @@ def get_915_candle_close() -> float | None:
 def get_spot_price() -> float | None:
     """Fetch latest Nifty spot price."""
     try:
-        fyers = fyersModel.FyersModel(client_id=client_id, token=access_token)
+        fyers = fyersModel.FyersModel(client_id=FYERS_CLIENT_ID,  token=FYERS_ACCESS_TOKEN)
 
         # Get quotes
         data = {"symbols": "NSE:NIFTY50-INDEX"}
