@@ -39,7 +39,7 @@ QTY_ADD_1135     = None                # filled dynamically from entry ratio
 ENTRY_TIME          = time(10, 30)
 VIEW_CHANGE_CONFIRM = 2                # consecutive 5-min bars
 ADD_QTY_DEADLINE    = time(11, 35)     # one-time add if view unchanged
-CLOSE_TIME          = time(15, 0)
+CLOSE_TIME          = time(15, 30)
 MARKET_OPEN         = time(9, 15)
 
 # ── Candle interval ────────────────────────────────────────────────────────
