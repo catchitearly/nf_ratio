@@ -1,0 +1,416 @@
+"""
+dashboard_gen.py
+Generates a static index.html dashboard from current state.
+Written to docs/index.html for GitHub Pages hosting.
+"""
+
+import json
+import logging
+import os
+from datetime import datetime
+from config import DASHBOARD_FILE
+from position_manager import total_pnl
+
+log = logging.getLogger(__name__)
+
+VIEW_COLOR = {
+    "bullish": "#00c896",
+    "bearish": "#ff4e6a",
+    "neutral": "#f0b429",
+    None:      "#888"
+}
+
+
+def _pnl_color(val: float) -> str:
+    return "#00c896" if val >= 0 else "#ff4e6a"
+
+
+def _fmt_time(iso: str | None) -> str:
+    if not iso:
+        return "—"
+    try:
+        return datetime.fromisoformat(iso).strftime("%H:%M:%S")
+    except Exception:
+        return iso
+
+
+def _straddle_rows(snapshot: dict, atm: int) -> str:
+    if not snapshot:
+        return "<tr><td colspan='4'>No straddle data yet</td></tr>"
+    rows = ""
+    for strike in sorted(snapshot.keys(), key=int, reverse=True):
+        s = snapshot[str(strike)] if isinstance(list(snapshot.keys())[0], str) else snapshot[strike]
+        label = f"{strike}"
+        if int(strike) == atm:
+            label = f"<b>{strike} ★ATM</b>"
+        price = s.get("current_price", "—")
+        vwap  = s.get("vwap", "—")
+        rel   = ("↓ Below" if s.get("below_vwap") else
+                 "↑ Above" if s.get("above_vwap") else "—")
+        rel_color = "#00c896" if s.get("below_vwap") else "#ff4e6a" if s.get("above_vwap") else "#888"
+        rows += (
+            f"<tr>"
+            f"<td>{label}</td>"
+            f"<td>{price if price != '—' else '—'}</td>"
+            f"<td>{vwap if vwap != '—' else '—'}</td>"
+            f"<td style='color:{rel_color}'>{rel}</td>"
+            f"</tr>"
+        )
+    return rows
+
+
+def _position_rows(positions: list[dict]) -> str:
+    if not positions:
+        return "<tr><td colspan='7'>No positions yet</td></tr>"
+    rows = ""
+    for p in positions:
+        pnl   = p.get("pnl", 0)
+        color = _pnl_color(pnl)
+        closed = "✓" if p.get("closed") else "●"
+        rows += (
+            f"<tr>"
+            f"<td>{closed}</td>"
+            f"<td>{p.get('opt_type','')}</td>"
+            f"<td>{p.get('strike','')}</td>"
+            f"<td>{p.get('action','')}</td>"
+            f"<td>{p.get('lots','')}</td>"
+            f"<td>₹{p.get('entry_price',0):.1f}</td>"
+            f"<td style='color:{color}'>₹{pnl:,.0f}</td>"
+            f"</tr>"
+        )
+    return rows
+
+
+def _error_rows(errors: list[dict]) -> str:
+    if not errors:
+        return "<tr><td colspan='2'>No errors</td></tr>"
+    rows = ""
+    for e in errors[-5:]:
+        rows += (
+            f"<tr>"
+            f"<td>{_fmt_time(e.get('time'))}</td>"
+            f"<td style='color:#ff4e6a'>{e.get('msg','')[:120]}</td>"
+            f"</tr>"
+        )
+    return rows
+
+
+def generate_dashboard(state: dict):
+    """Write full HTML dashboard to DASHBOARD_FILE."""
+    try:
+        os.makedirs(os.path.dirname(DASHBOARD_FILE), exist_ok=True)
+
+        atm          = state.get("atm") or 0
+        view         = state.get("current_view") or "—"
+        pending      = state.get("pending_view") or "—"
+        entry_view   = state.get("entry_view") or "—"
+        last_run     = _fmt_time(state.get("last_run"))
+        positions    = state.get("positions", [])
+        errors       = state.get("errors", [])
+        entry_done   = state.get("entry_done", False)
+        closed       = state.get("closed", False)
+        add_done     = state.get("add_1135_done", False)
+        snapshot     = state.get("straddle_snapshot", {})
+        pnl          = total_pnl(positions)
+
+        view_col     = VIEW_COLOR.get(view if view != "—" else None, "#888")
+        pnl_col      = _pnl_color(pnl)
+
+        straddle_rows = _straddle_rows(snapshot, atm)
+        pos_rows      = _position_rows(positions)
+        err_rows      = _error_rows(errors)
+
+        status_flags = ""
+        if entry_done:  status_flags += "<span class='badge green'>ENTRY DONE</span> "
+        if add_done:    status_flags += "<span class='badge blue'>1135 ADD DONE</span> "
+        if closed:      status_flags += "<span class='badge red'>CLOSED</span> "
+
+        html = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="refresh" content="300"/>
+<title>Nifty Options | Paper Trade Dashboard</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap');
+
+  :root {{
+    --bg:       #0b0e14;
+    --surface:  #12161f;
+    --border:   #1e2433;
+    --text:     #c9d1e0;
+    --muted:    #5a6480;
+    --green:    #00c896;
+    --red:      #ff4e6a;
+    --yellow:   #f0b429;
+    --blue:     #4ea8ff;
+    --accent:   #7c5cff;
+  }}
+
+  * {{ box-sizing: border-box; margin: 0; padding: 0; }}
+
+  body {{
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+    padding: 24px 16px;
+  }}
+
+  header {{
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 28px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 16px;
+  }}
+
+  header h1 {{
+    font-family: 'Syne', sans-serif;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #fff;
+  }}
+
+  header span {{
+    font-size: 11px;
+    color: var(--muted);
+  }}
+
+  .grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+  }}
+
+  .card {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+  }}
+
+  .card .label {{
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }}
+
+  .card .value {{
+    font-family: 'Syne', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }}
+
+  .card .sub {{
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 4px;
+  }}
+
+  .section {{
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 16px;
+    overflow: hidden;
+  }}
+
+  .section-header {{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    background: #0f1219;
+  }}
+
+  .section-header h2 {{
+    font-family: 'Syne', sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #fff;
+  }}
+
+  table {{
+    width: 100%;
+    border-collapse: collapse;
+  }}
+
+  th {{
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--muted);
+    border-bottom: 1px solid var(--border);
+    background: #0f1219;
+  }}
+
+  td {{
+    padding: 8px 12px;
+    border-bottom: 1px solid #161b26;
+    vertical-align: middle;
+  }}
+
+  tr:last-child td {{ border-bottom: none; }}
+  tr:hover td {{ background: #161b26; }}
+
+  .badge {{
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-right: 4px;
+  }}
+
+  .badge.green {{ background: #00c89620; color: var(--green); border: 1px solid #00c89640; }}
+  .badge.red   {{ background: #ff4e6a20; color: var(--red);   border: 1px solid #ff4e6a40; }}
+  .badge.blue  {{ background: #4ea8ff20; color: var(--blue);  border: 1px solid #4ea8ff40; }}
+  .badge.yellow{{ background: #f0b42920; color: var(--yellow);border: 1px solid #f0b42940; }}
+
+  .view-pill {{
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: {view_col}20;
+    color: {view_col};
+    border: 1px solid {view_col}60;
+  }}
+
+  .pulse {{
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    animation: pulse 2s infinite;
+    margin-right: 6px;
+  }}
+
+  @keyframes pulse {{
+    0%,100% {{ opacity: 1; }}
+    50%  {{ opacity: 0.3; }}
+  }}
+
+  footer {{
+    margin-top: 24px;
+    text-align: center;
+    font-size: 10px;
+    color: var(--muted);
+  }}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Nifty Options</h1>
+  <span>PAPER TRADE · Auto-refresh 5min · Last run: {last_run}</span>
+</header>
+
+<!-- KPI Cards -->
+<div class="grid">
+  <div class="card">
+    <div class="label">ATM Strike</div>
+    <div class="value">{atm or '—'}</div>
+    <div class="sub">9:15 fixed</div>
+  </div>
+  <div class="card">
+    <div class="label">Current View</div>
+    <div class="value"><span class="view-pill">{view}</span></div>
+    <div class="sub">Pending: {pending}</div>
+  </div>
+  <div class="card">
+    <div class="label">Entry View</div>
+    <div class="value" style="font-size:16px">{entry_view.upper()}</div>
+    <div class="sub">at 10:30</div>
+  </div>
+  <div class="card">
+    <div class="label">Total P&L</div>
+    <div class="value" style="color:{pnl_col}">₹{pnl:,.0f}</div>
+    <div class="sub">{len(positions)} legs open</div>
+  </div>
+  <div class="card">
+    <div class="label">Status</div>
+    <div class="value" style="font-size:13px;padding-top:4px">{status_flags if status_flags else '<span class="badge yellow">WAITING</span>'}</div>
+    <div class="sub">Paper Trade Mode</div>
+  </div>
+</div>
+
+<!-- Straddle VWAP Table -->
+<div class="section">
+  <div class="section-header">
+    <h2>📊 Straddle VWAP Status</h2>
+    <span style="color:var(--muted);font-size:10px">ATM ±400 | 5-min candles</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>Strike</th><th>Straddle Price</th><th>VWAP</th><th>vs VWAP</th>
+      </tr>
+    </thead>
+    <tbody>{straddle_rows}</tbody>
+  </table>
+</div>
+
+<!-- Positions Table -->
+<div class="section">
+  <div class="section-header">
+    <h2>📋 Positions</h2>
+    <span style="color:var(--muted);font-size:10px">Paper Trade</span>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>St</th><th>Type</th><th>Strike</th><th>Action</th>
+        <th>Lots</th><th>Entry</th><th>P&L</th>
+      </tr>
+    </thead>
+    <tbody>{pos_rows}</tbody>
+  </table>
+</div>
+
+<!-- Error Log -->
+<div class="section">
+  <div class="section-header">
+    <h2>🔴 Error Log</h2>
+    <span style="color:var(--muted);font-size:10px">Last 5</span>
+  </div>
+  <table>
+    <thead><tr><th>Time</th><th>Message</th></tr></thead>
+    <tbody>{err_rows}</tbody>
+  </table>
+</div>
+
+<footer>
+  <span class="pulse"></span>
+  Nifty Options Paper Trader · Expiry {state.get('date','—')} · 
+  GitHub Actions + cron-job.org · &copy; {datetime.now().year}
+</footer>
+
+</body>
+</html>"""
+
+        with open(DASHBOARD_FILE, "w", encoding="utf-8") as f:
+            f.write(html)
+        log.info(f"Dashboard written to {DASHBOARD_FILE}")
+
+    except Exception as e:
+        log.error(f"generate_dashboard error: {e}")
