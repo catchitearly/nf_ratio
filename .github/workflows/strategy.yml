@@ -1,0 +1,63 @@
+name: Nifty Options Strategy
+
+on:
+  # cron-job.org will hit the workflow_dispatch webhook every 5 min
+  workflow_dispatch:
+  # Fallback GitHub cron (minimum 5-min, runs at :00 and :30 of each hour)
+  schedule:
+    - cron: "*/30 3-10 * * 1-5"   # UTC 3:00–10:00 = IST 8:30–15:30, Mon–Fri
+
+jobs:
+  run-strategy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4             # hard kill before next 5-min window
+
+    permissions:
+      contents: write              # needed to push dashboard to docs/
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Restore state from artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: strategy-state
+          path: .
+        continue-on-error: true    # first run has no artifact yet
+
+      - name: Run strategy
+        env:
+          FYERS_CLIENT_ID:    ${{ secrets.FYERS_CLIENT_ID }}
+          FYERS_ACCESS_TOKEN: ${{ secrets.FYERS_ACCESS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python main.py
+
+      - name: Upload state artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: strategy-state
+          path: state.json
+          retention-days: 1
+        if: always()               # always save state even on failure
+
+      - name: Commit & push dashboard
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html state.json logs/ || true
+          git diff --staged --quiet || git commit -m "dashboard update $(date -u '+%H:%M UTC')"
+          git push
+        if: always()
