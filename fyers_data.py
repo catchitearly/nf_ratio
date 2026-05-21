@@ -90,7 +90,27 @@ def get_spot_price() -> float | None:
     except Exception as e:
         log.error(f"get_spot_price error: {e}")
         return None
-
+ '''       
+def get_spot_price() -> float | None:
+    """Fetch latest Nifty spot price."""
+    try:
+        url = f"{BASE_URL}/quotes/"
+        params = {"symbols": INDEX_SYMBOL}
+        r = requests.get(url, headers={**HEADERS, **_auth_header()},
+                         params=params, timeout=10)
+        if not r.ok:
+            log.error(f"get_spot_price HTTP {r.status_code}: {r.text[:300]}")
+            return None
+        data = r.json()
+        if data.get("s") != "ok":
+            log.error(f"get_spot_price API error: {data}")
+            return None
+        ltp = data["d"][0]["v"]["lp"]
+        return float(ltp)
+    except Exception as e:
+        log.error(f"get_spot_price error: {e}")
+        return None
+'''
 
 def get_candles(symbol: str, days_back: int = 1) -> list[dict] | None:
     """
