@@ -80,3 +80,9 @@ IndentationError: unindent does not match any outer indentation level
 2026-05-21 09:46:15,115 [ERROR] strategy: Could not fetch spot price – aborting this run.
 2026-05-21 09:46:15,115 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-21 09:46:15,115 [INFO] main: ✓ main.py finished
+2026-05-21 09:48:05,657 [INFO] main: ▶ main.py started
+2026-05-21 09:48:06,040 [INFO] strategy: ============================================================
+2026-05-21 09:48:06,040 [INFO] strategy: Strategy run at 2026-05-21 15:18:06 IST
+2026-05-21 09:48:06,423 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:48:06,424 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:48:06,424 [INFO] main: ✓ main.py finished
