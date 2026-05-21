@@ -2,8 +2,7 @@ name: Nifty Options Strategy
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "*/30 3-10 * * 1-5"   # UTC 3:00-10:00 = IST 8:30-15:30, Mon-Fri
+  
 
 jobs:
   run-strategy:
