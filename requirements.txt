@@ -2,3 +2,5 @@ pandas
 numpy
 fyers-apiv3
 python-dateutil
+requests>=2.31.0
+pytz>=2024.1
