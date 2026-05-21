@@ -61,3 +61,15 @@ ModuleNotFoundError: No module named 'fyers_apiv3'
 2026-05-21 09:36:17,265 [ERROR] strategy: Could not fetch spot price – aborting this run.
 2026-05-21 09:36:17,265 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-21 09:36:17,266 [INFO] main: ✓ main.py finished
+2026-05-21 09:44:26,001 [INFO] main: ▶ main.py started
+2026-05-21 09:44:26,011 [CRITICAL] main: FATAL: unindent does not match any outer indentation level (fyers_data.py, line 88)
+Traceback (most recent call last):
+  File "/home/runner/work/nf_ratio/nf_ratio/main.py", line 31, in main
+    from strategy import run
+  File "/home/runner/work/nf_ratio/nf_ratio/strategy.py", line 18, in <module>
+    from fyers_data import get_spot_price, get_915_candle_close
+  File "/home/runner/work/nf_ratio/nf_ratio/fyers_data.py", line 88
+    '''       
+              ^
+IndentationError: unindent does not match any outer indentation level
+
