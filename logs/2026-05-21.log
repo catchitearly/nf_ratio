@@ -8,3 +8,10 @@
 2026-05-21 09:08:28,989 [ERROR] strategy: Could not fetch spot price – aborting this run.
 2026-05-21 09:08:28,990 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-21 09:08:28,990 [INFO] main: ✓ main.py finished
+2026-05-21 09:10:22,325 [INFO] main: ▶ main.py started
+2026-05-21 09:10:23,250 [INFO] strategy: ============================================================
+2026-05-21 09:10:23,250 [INFO] strategy: Strategy run at 2026-05-21 14:40:23 IST
+2026-05-21 09:10:24,020 [ERROR] fyers_data: get_spot_price error: 500 Server Error: ERROR for url: https://api.fyers.in/data-rest/v2/quotes/?symbols=NSE%3ANIFTY50-INDEX
+2026-05-21 09:10:24,021 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-21 09:10:24,021 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-21 09:10:24,022 [INFO] main: ✓ main.py finished
