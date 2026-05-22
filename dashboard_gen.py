@@ -103,14 +103,18 @@ def _view_log_rows(view_log: list[dict]) -> str:
         change_mark = "<span style='color:#f0b429;margin-left:6px'>⟳ CHANGED</span>" if changed else ""
         confirmed = entry.get("confirmed", "")
         pending   = entry.get("pending", "")
+        confirmed_html = _view_badge(confirmed) if confirmed else "<span style='color:var(--muted)'>&mdash;</span>"
+        pending_html   = _view_badge(pending)   if pending   else "&mdash;"
+        spot_val       = entry.get('spot', '&mdash;')
+        time_val       = entry.get('time', '&mdash;')
         rows += (
-            f"<tr style='{row_bg}'>"
-            f"<td style='color:var(--muted);white-space:nowrap'>{entry.get('time','—')}</td>"
-            f"<td>{_view_badge(v)}{change_mark}</td>"
-            f"<td>{_view_badge(confirmed) if confirmed else '<span style=\"color:var(--muted)\">—</span>'}</td>"
-            f"<td style='color:var(--muted)'>{_view_badge(pending) if pending else '—'}</td>"
-            f"<td style='font-family:monospace'>₹{entry.get('spot','—')}</td>"
-            f"</tr>"
+            "<tr style='" + row_bg + "'>"
+            "<td style='color:var(--muted);white-space:nowrap'>" + time_val + "</td>"
+            "<td>" + _view_badge(v) + change_mark + "</td>"
+            "<td>" + confirmed_html + "</td>"
+            "<td style='color:var(--muted)'>" + pending_html + "</td>"
+            "<td style='font-family:monospace'>&#8377;" + str(spot_val) + "</td>"
+            "</tr>"
         )
         prev_view = v
     return rows
