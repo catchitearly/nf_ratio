@@ -3,3 +3,12 @@
 2026-05-22 03:36:03,625 [INFO] strategy: Strategy run at 2026-05-22 09:06:03 IST
 2026-05-22 03:36:03,625 [INFO] strategy: Outside market hours – skipping run.
 2026-05-22 03:36:03,625 [INFO] main: ✓ main.py finished
+2026-05-22 03:50:46,028 [INFO] main: ▶ main.py started
+2026-05-22 03:50:46,755 [INFO] strategy: ============================================================
+2026-05-22 03:50:46,756 [INFO] strategy: Strategy run at 2026-05-22 09:20:46 IST
+2026-05-22 03:50:46,768 [INFO] state_manager: Resetting state for new day: 2026-05-22
+2026-05-22 03:50:46,768 [INFO] strategy: New trading day: 2026-05-22
+2026-05-22 03:50:47,429 [ERROR] fyers_data: Fyers auth failed: {'s': 'error', 'code': -8, 'message': 'Your token has expired. Please generate a token'}
+2026-05-22 03:50:47,429 [ERROR] strategy: Could not fetch spot price – aborting this run.
+2026-05-22 03:50:47,430 [INFO] dashboard_gen: Dashboard written to docs/index.html
+2026-05-22 03:50:47,430 [INFO] main: ✓ main.py finished
