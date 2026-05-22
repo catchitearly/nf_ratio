@@ -28,6 +28,8 @@ DEFAULT_STATE = {
     "trade_log": [],               # all executed (paper) trades
     "delta_alerts_sent": [],       # symbols already alerted for delta breach
     "straddle_vwap_history": [],   # last N straddle snapshots for dashboard
+    "view_log": [],                # [{time, view, pending, spot}] every 5-min tick
+    "equity_curve": [],            # [{time, pnl}] every 5-min tick after entry
     "last_run": None,              # ISO timestamp of last successful run
     "errors": []                   # last 10 errors for dashboard display
 }
