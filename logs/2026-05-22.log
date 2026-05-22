@@ -37,3 +37,15 @@
 2026-05-22 03:55:51,652 [INFO] dashboard_gen: Dashboard written to docs/index.html
 2026-05-22 03:55:51,653 [INFO] strategy: Run complete.
 2026-05-22 03:55:51,653 [INFO] main: ✓ main.py finished
+2026-05-22 04:11:16,997 [INFO] main: ▶ main.py started
+2026-05-22 04:11:17,918 [CRITICAL] main: FATAL: f-string expression part cannot include a backslash (dashboard_gen.py, line 114)
+Traceback (most recent call last):
+  File "/home/runner/work/nf_ratio/nf_ratio/main.py", line 31, in main
+    from strategy import run
+  File "/home/runner/work/nf_ratio/nf_ratio/strategy.py", line 29, in <module>
+    from dashboard_gen import generate_dashboard
+  File "/home/runner/work/nf_ratio/nf_ratio/dashboard_gen.py", line 114
+    )
+    ^
+SyntaxError: f-string expression part cannot include a backslash
+
