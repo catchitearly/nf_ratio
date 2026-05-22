@@ -1216,3 +1216,29 @@ UnboundLocalError: cannot access local variable 'confirmed_view' where it is not
 2026-05-22 09:01:06,365 [INFO] dashboard_gen: Dashboard written -> docs/index.html
 2026-05-22 09:01:06,367 [INFO] strategy: Run complete.
 2026-05-22 09:01:06,367 [INFO] main: ✓ main.py finished
+2026-05-22 09:05:29,125 [INFO] main: ▶ main.py started
+2026-05-22 09:05:29,981 [INFO] strategy: ============================================================
+2026-05-22 09:05:29,981 [INFO] strategy: Strategy run at 2026-05-22 14:35:29 IST
+2026-05-22 09:05:30,331 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-22 09:05:30,544 [INFO] fyers_data: Spot: 23743.5
+2026-05-22 09:05:30,544 [INFO] strategy: Spot price: 23743.50
+2026-05-22 09:05:30,989 [INFO] fyers_data: Straddle 23300: 65 bars
+2026-05-22 09:05:31,527 [INFO] fyers_data: Straddle 23400: 65 bars
+2026-05-22 09:05:32,032 [INFO] fyers_data: Straddle 23500: 65 bars
+2026-05-22 09:05:32,501 [INFO] fyers_data: Straddle 23600: 65 bars
+2026-05-22 09:05:32,951 [INFO] fyers_data: Straddle 23700: 65 bars
+2026-05-22 09:05:33,444 [INFO] fyers_data: Straddle 23800: 65 bars
+2026-05-22 09:05:33,940 [INFO] fyers_data: Straddle 23900: 65 bars
+2026-05-22 09:05:34,458 [INFO] fyers_data: Straddle 24000: 65 bars
+2026-05-22 09:05:34,954 [INFO] fyers_data: Straddle 24100: 65 bars
+2026-05-22 09:05:34,954 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=1 upper_above=3 | lower_above=0 lower_below=4
+2026-05-22 09:05:34,954 [INFO] view_engine: Computed view: bearish
+2026-05-22 09:05:34,954 [INFO] strategy: Raw view this tick: bearish
+2026-05-22 09:05:34,955 [INFO] view_engine: View confirmed changed: neutral → bearish
+2026-05-22 09:05:35,215 [INFO] strategy: MTM P&L: ₹-1,781
+2026-05-22 09:05:35,436 [INFO] strategy: View changed neutral→bearish – adding legs.
+2026-05-22 09:05:35,647 [INFO] position_manager: Selected CE sell strike 24200 delta=0.123
+2026-05-22 09:05:35,867 [INFO] position_manager: Adjustment | neutral→bearish | 2 legs
+2026-05-22 09:05:36,356 [INFO] dashboard_gen: Dashboard written -> docs/index.html
+2026-05-22 09:05:36,357 [INFO] strategy: Run complete.
+2026-05-22 09:05:36,357 [INFO] main: ✓ main.py finished
