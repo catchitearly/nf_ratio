@@ -1,0 +1,5 @@
+2026-05-22 03:36:02,779 [INFO] main: ▶ main.py started
+2026-05-22 03:36:03,624 [INFO] strategy: ============================================================
+2026-05-22 03:36:03,625 [INFO] strategy: Strategy run at 2026-05-22 09:06:03 IST
+2026-05-22 03:36:03,625 [INFO] strategy: Outside market hours – skipping run.
+2026-05-22 03:36:03,625 [INFO] main: ✓ main.py finished
