@@ -626,3 +626,30 @@ UnboundLocalError: cannot access local variable 'confirmed_view' where it is not
 2026-05-22 06:55:35,196 [INFO] dashboard_gen: Dashboard written → docs/index.html
 2026-05-22 06:55:35,196 [INFO] strategy: Run complete.
 2026-05-22 06:55:35,196 [INFO] main: ✓ main.py finished
+2026-05-22 07:00:55,006 [INFO] main: ▶ main.py started
+2026-05-22 07:00:55,327 [INFO] strategy: ============================================================
+2026-05-22 07:00:55,327 [INFO] strategy: Strategy run at 2026-05-22 12:30:55 IST
+2026-05-22 07:00:55,754 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-22 07:00:56,027 [INFO] fyers_data: Spot: 23768.15
+2026-05-22 07:00:56,028 [INFO] strategy: Spot price: 23768.15
+2026-05-22 07:00:56,583 [INFO] fyers_data: Straddle 23300: 40 bars
+2026-05-22 07:00:57,675 [INFO] fyers_data: Straddle 23400: 40 bars
+2026-05-22 07:00:58,229 [INFO] fyers_data: Straddle 23500: 40 bars
+2026-05-22 07:00:58,792 [INFO] fyers_data: Straddle 23600: 40 bars
+2026-05-22 07:00:59,352 [INFO] fyers_data: Straddle 23700: 40 bars
+2026-05-22 07:00:59,911 [INFO] fyers_data: Straddle 23800: 40 bars
+2026-05-22 07:01:00,490 [INFO] fyers_data: Straddle 23900: 40 bars
+2026-05-22 07:01:01,046 [INFO] fyers_data: Straddle 24000: 40 bars
+2026-05-22 07:01:01,953 [INFO] fyers_data: Straddle 24100: 40 bars
+2026-05-22 07:01:01,953 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=3 upper_above=1 | lower_above=0 lower_below=4
+2026-05-22 07:01:01,953 [INFO] view_engine: Computed view: neutral
+2026-05-22 07:01:01,953 [INFO] strategy: Raw view this tick: neutral
+2026-05-22 07:01:01,954 [INFO] view_engine: View confirmed changed: bullish → neutral
+2026-05-22 07:01:02,227 [INFO] strategy: MTM P&L: ₹-960
+2026-05-22 07:01:02,516 [INFO] strategy: View changed bullish→neutral – adding legs.
+2026-05-22 07:01:02,789 [INFO] position_manager: Selected CE sell strike 24200 delta=0.137
+2026-05-22 07:01:03,059 [INFO] position_manager: Selected PE sell strike 23400 delta=0.147
+2026-05-22 07:01:03,595 [INFO] position_manager: Adjustment | bullish→neutral | 4 legs
+2026-05-22 07:01:04,279 [INFO] dashboard_gen: Dashboard written → docs/index.html
+2026-05-22 07:01:04,280 [INFO] strategy: Run complete.
+2026-05-22 07:01:04,280 [INFO] main: ✓ main.py finished
