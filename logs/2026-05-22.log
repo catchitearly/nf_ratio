@@ -653,3 +653,25 @@ UnboundLocalError: cannot access local variable 'confirmed_view' where it is not
 2026-05-22 07:01:04,279 [INFO] dashboard_gen: Dashboard written → docs/index.html
 2026-05-22 07:01:04,280 [INFO] strategy: Run complete.
 2026-05-22 07:01:04,280 [INFO] main: ✓ main.py finished
+2026-05-22 07:05:30,514 [INFO] main: ▶ main.py started
+2026-05-22 07:05:31,479 [INFO] strategy: ============================================================
+2026-05-22 07:05:31,479 [INFO] strategy: Strategy run at 2026-05-22 12:35:31 IST
+2026-05-22 07:05:31,810 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-22 07:05:32,058 [INFO] fyers_data: Spot: 23775.25
+2026-05-22 07:05:32,058 [INFO] strategy: Spot price: 23775.25
+2026-05-22 07:05:32,551 [INFO] fyers_data: Straddle 23300: 41 bars
+2026-05-22 07:05:33,054 [INFO] fyers_data: Straddle 23400: 41 bars
+2026-05-22 07:05:33,556 [INFO] fyers_data: Straddle 23500: 41 bars
+2026-05-22 07:05:34,053 [INFO] fyers_data: Straddle 23600: 41 bars
+2026-05-22 07:05:34,541 [INFO] fyers_data: Straddle 23700: 41 bars
+2026-05-22 07:05:35,046 [INFO] fyers_data: Straddle 23800: 41 bars
+2026-05-22 07:05:35,544 [INFO] fyers_data: Straddle 23900: 41 bars
+2026-05-22 07:05:36,042 [INFO] fyers_data: Straddle 24000: 41 bars
+2026-05-22 07:05:36,546 [INFO] fyers_data: Straddle 24100: 41 bars
+2026-05-22 07:05:36,546 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=0 lower_below=4
+2026-05-22 07:05:36,546 [INFO] view_engine: Computed view: neutral
+2026-05-22 07:05:36,546 [INFO] strategy: Raw view this tick: neutral
+2026-05-22 07:05:36,797 [INFO] strategy: MTM P&L: ₹-548
+2026-05-22 07:05:37,035 [INFO] dashboard_gen: Dashboard written → docs/index.html
+2026-05-22 07:05:37,036 [INFO] strategy: Run complete.
+2026-05-22 07:05:37,036 [INFO] main: ✓ main.py finished
