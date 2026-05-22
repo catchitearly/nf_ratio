@@ -1034,3 +1034,30 @@ UnboundLocalError: cannot access local variable 'confirmed_view' where it is not
 2026-05-22 08:25:36,141 [INFO] dashboard_gen: Dashboard written → docs/index.html
 2026-05-22 08:25:36,143 [INFO] strategy: Run complete.
 2026-05-22 08:25:36,143 [INFO] main: ✓ main.py finished
+2026-05-22 08:30:42,695 [INFO] main: ▶ main.py started
+2026-05-22 08:30:42,994 [INFO] strategy: ============================================================
+2026-05-22 08:30:42,994 [INFO] strategy: Strategy run at 2026-05-22 14:00:42 IST
+2026-05-22 08:30:43,364 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-22 08:30:43,578 [INFO] fyers_data: Spot: 23791.6
+2026-05-22 08:30:43,578 [INFO] strategy: Spot price: 23791.60
+2026-05-22 08:30:44,062 [INFO] fyers_data: Straddle 23300: 58 bars
+2026-05-22 08:30:44,767 [INFO] fyers_data: Straddle 23400: 58 bars
+2026-05-22 08:30:45,255 [INFO] fyers_data: Straddle 23500: 58 bars
+2026-05-22 08:30:45,724 [INFO] fyers_data: Straddle 23600: 58 bars
+2026-05-22 08:30:46,189 [INFO] fyers_data: Straddle 23700: 58 bars
+2026-05-22 08:30:46,645 [INFO] fyers_data: Straddle 23800: 58 bars
+2026-05-22 08:30:47,099 [INFO] fyers_data: Straddle 23900: 58 bars
+2026-05-22 08:30:47,573 [INFO] fyers_data: Straddle 24000: 58 bars
+2026-05-22 08:30:48,054 [INFO] fyers_data: Straddle 24100: 58 bars
+2026-05-22 08:30:48,054 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=1 lower_below=3
+2026-05-22 08:30:48,055 [INFO] view_engine: Computed view: neutral
+2026-05-22 08:30:48,055 [INFO] strategy: Raw view this tick: neutral
+2026-05-22 08:30:48,055 [INFO] view_engine: View confirmed changed: bullish → neutral
+2026-05-22 08:30:48,285 [INFO] strategy: MTM P&L: ₹1,151
+2026-05-22 08:30:48,524 [INFO] strategy: View changed bullish→neutral – adding legs.
+2026-05-22 08:30:48,524 [WARNING] position_manager: BS scan: no CE candidate in delta range near 23791.6
+2026-05-22 08:30:48,749 [INFO] position_manager: Selected PE sell strike 23400 delta=0.133
+2026-05-22 08:30:48,976 [INFO] position_manager: Adjustment | bullish→neutral | 2 legs
+2026-05-22 08:30:49,937 [INFO] dashboard_gen: Dashboard written → docs/index.html
+2026-05-22 08:30:49,938 [INFO] strategy: Run complete.
+2026-05-22 08:30:49,938 [INFO] main: ✓ main.py finished
