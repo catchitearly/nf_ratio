@@ -1,16 +1,15 @@
 """
 fyers_data.py
-Fetches OHLC candle data and option greeks from Fyers REST API.
-All calls are wrapped in try/except; returns None on failure.
+Fetches OHLC candle data and option quotes from Fyers API.
+Uses fyers_apiv3 SDK (fyersModel) — same approach as confirmed working code.
+All calls wrapped in try/except; returns None on failure.
 """
 
 import logging
 import math
-import time as time_mod
 from datetime import datetime, date, timedelta
-import requests
-from fyers_apiv3 import fyersModel
 
+from fyers_apiv3 import fyersModel
 
 from config import (
     FYERS_CLIENT_ID, FYERS_ACCESS_TOKEN,
@@ -19,133 +18,128 @@ from config import (
 
 log = logging.getLogger(__name__)
 
-BASE_URL   = "https://api.fyers.in/data-rest/v2"
-HEADERS    = {"Content-Type": "application/json"}
+# ── Singleton fyers client ─────────────────────────────────────────────────
+_fyers: fyersModel.FyersModel | None = None
 
-# ── Helpers ────────────────────────────────────────────────────────────────
-
-def _auth_header() -> dict:
-    return {"Authorization": f"{FYERS_CLIENT_ID}:{FYERS_ACCESS_TOKEN}"}
-
-
-def _option_symbol(strike: int, opt_type: str) -> str:
-    """Build Fyers option symbol e.g. NSE:NIFTY2552623700CE"""
-    # Format: NSE:NIFTY{YY}{MMM}{STRIKE}{CE/PE}
-    return f"NSE:NIFTY{EXPIRY_STR}{strike}{opt_type}"
-
-
-def get_915_candle_close() -> float | None:
-    """
-    Fetch the 9:15 AM candle close price for Nifty index today.
-    Used to fix ATM correctly even when script starts after 9:15.
-    Returns None if candle not available yet or on error.
-    """
+def get_fyers() -> fyersModel.FyersModel | None:
+    """Return authenticated FyersModel instance, initialised once per run."""
+    global _fyers
+    if _fyers is not None:
+        return _fyers
     try:
-        today     = date.today()
-        date_str  = today.strftime("%Y-%m-%d")
-        url       = f"{BASE_URL}/history/"
-        payload   = {
-            "symbol":      INDEX_SYMBOL,
-            "resolution":  "5",
-            "date_format": "1",
-            "range_from":  date_str,
-            "range_to":    date_str,
-            "cont_flag":   "1"
-        }
-        r = requests.get(url, headers={**HEADERS, **_auth_header()},
-                         params=payload, timeout=10)
-        r.raise_for_status()
-        data = r.json()
-
-        if data.get("s") != "ok" or not data.get("candles"):
-            log.warning("get_915_candle_close: no candles returned")
+        if not FYERS_CLIENT_ID or not FYERS_ACCESS_TOKEN:
+            log.error("FYERS_CLIENT_ID or FYERS_ACCESS_TOKEN not set.")
             return None
-
-        # First candle of the day = 9:15 candle; close is index 4
-        first_candle = data["candles"][0]
-        close_price  = float(first_candle[4])
-        log.info(f"9:15 candle close fetched: {close_price}")
-        return close_price
+        client = fyersModel.FyersModel(
+            client_id=FYERS_CLIENT_ID,
+            token=FYERS_ACCESS_TOKEN,
+            log_path=""          # suppress SDK file logs
+        )
+        # Quick auth check
+        profile = client.get_profile()
+        if profile.get("s") != "ok":
+            log.error(f"Fyers auth failed: {profile}")
+            return None
+        log.info("Fyers authenticated successfully.")
+        _fyers = client
+        return _fyers
     except Exception as e:
-        log.error(f"get_915_candle_close error: {e}")
+        log.error(f"get_fyers error: {e}")
         return None
 
 
-def get_spot_price() -> float | None:
-    """Fetch latest Nifty spot price using history endpoint (last candle)."""
+# ── Helpers ────────────────────────────────────────────────────────────────
+
+def _option_symbol(strike: int, opt_type: str) -> str:
+    """Build Fyers option symbol e.g. NSE:NIFTY26MAY2623700CE"""
+    return f"NSE:NIFTY{EXPIRY_STR}{strike}{opt_type}"
+
+
+def _fetch_candles_raw(symbol: str) -> list | None:
+    """
+    Core candle fetcher using fyers SDK .history() — same as working code.
+    Returns raw list of [epoch, open, high, low, close, volume] or None.
+    """
     try:
-        today = date.today()
-        date_str = today.strftime("%Y-%m-%d")
-        
-        url = f"{BASE_URL}/history/"
-        payload = {
-            "symbol": INDEX_SYMBOL,
-            "resolution": "1",  # 1-minute candles for latest price
-            "date_format": "1",
-            "range_from": date_str,
-            "range_to": date_str,
-            "cont_flag": "1"
+        fyers = get_fyers()
+        if fyers is None:
+            return None
+
+        today    = date.today().strftime("%Y-%m-%d")
+        payload  = {
+            "symbol":      symbol,
+            "resolution":  INTERVAL,
+            "date_format": "1",        # epoch timestamps
+            "range_from":  today,
+            "range_to":    today,
+            "cont_flag":   "1"
         }
-        
-        r = requests.get(url, headers={**HEADERS, **_auth_header()},
-                         params=payload, timeout=10)
-        
-        if not r.ok:
-            log.error(f"Spot price HTTP {r.status_code}: {r.text[:300]}")
+        resp = fyers.history(data=payload)
+
+        if resp.get("s") != "ok" or not resp.get("candles"):
+            log.warning(f"No candles for {symbol}: {resp.get('message','')}")
             return None
-            
-        data = r.json()
-        
-        if data.get("s") != "ok" or not data.get("candles"):
-            log.error(f"Spot price API error: {data.get('s', 'unknown')}")
+
+        return resp["candles"]
+    except Exception as e:
+        log.error(f"_fetch_candles_raw error ({symbol}): {e}")
+        return None
+
+
+# ── Public API ─────────────────────────────────────────────────────────────
+
+def get_spot_price() -> float | None:
+    """Fetch latest Nifty spot LTP via quotes."""
+    try:
+        fyers = get_fyers()
+        if fyers is None:
             return None
-        
-        # Last candle's close price is latest spot
-        last_candle = data["candles"][-1]
-        spot_price = float(last_candle[4])  # close price
-        log.info(f"Spot price fetched: {spot_price}")
-        return spot_price
-        
+
+        resp = fyers.quotes(data={"symbols": INDEX_SYMBOL})
+
+        if resp.get("s") != "ok":
+            log.error(f"get_spot_price error: {resp}")
+            return None
+
+        ltp = resp["d"][0]["v"]["lp"]
+        log.info(f"Spot price: {ltp}")
+        return float(ltp)
     except Exception as e:
         log.error(f"get_spot_price error: {e}")
         return None
 
 
-def get_candles(symbol: str, days_back: int = 1) -> list[dict] | None:
+def get_915_candle_close() -> float | None:
     """
-    Fetch 5-min OHLC candles for `symbol` from today's open.
-    Returns list of {ts, open, high, low, close, volume} dicts.
+    Return 9:15 candle close for Nifty index (first candle of the day).
+    Used to fix ATM when script starts after 9:15.
     """
     try:
-        today = date.today()
-        date_from = (today - timedelta(days=days_back)).strftime("%Y-%m-%d")
-        date_to   = today.strftime("%Y-%m-%d")
-
-        url = f"{BASE_URL}/history/"
-        payload = {
-            "symbol":      symbol,
-            "resolution":  INTERVAL,
-            "date_format": "1",          # epoch timestamps
-            "range_from":  date_from,
-            "range_to":    date_to,
-            "cont_flag":   "1"
-        }
-        r = requests.get(url, headers={**HEADERS, **_auth_header()},
-                         params=payload, timeout=15)
-        r.raise_for_status()
-        data = r.json()
-
-        if data.get("s") != "ok":
-            log.warning(f"Fyers candles bad response for {symbol}: {data.get('s')}")
+        candles = _fetch_candles_raw(INDEX_SYMBOL)
+        if not candles:
             return None
+        close = float(candles[0][4])   # first candle, close = index 4
+        log.info(f"9:15 candle close: {close}")
+        return close
+    except Exception as e:
+        log.error(f"get_915_candle_close error: {e}")
+        return None
 
-        candles = []
-        for c in data["candles"]:
-            candles.append({
-                "ts": c[0], "open": c[1], "high": c[2],
-                "low": c[3], "close": c[4], "volume": c[5]
-            })
-        return candles
+
+def get_candles(symbol: str) -> list[dict] | None:
+    """
+    Fetch today's 5-min OHLC candles for any symbol.
+    Returns list of {ts, open, high, low, close, volume} or None.
+    """
+    try:
+        raw = _fetch_candles_raw(symbol)
+        if not raw:
+            return None
+        return [
+            {"ts": c[0], "open": c[1], "high": c[2],
+             "low": c[3], "close": c[4], "volume": c[5]}
+            for c in raw
+        ]
     except Exception as e:
         log.error(f"get_candles error ({symbol}): {e}")
         return None
@@ -154,39 +148,38 @@ def get_candles(symbol: str, days_back: int = 1) -> list[dict] | None:
 def get_option_quote(strike: int, opt_type: str) -> dict | None:
     """
     Fetch latest quote for one option leg.
-    Returns dict with ltp, greeks (delta etc.) if available.
+    Returns dict with ltp, delta (if available) or None.
     """
     try:
-        symbol = _option_symbol(strike, opt_type)
-        url = f"{BASE_URL}/quotes/"
-        params = {"symbols": symbol}
-        r = requests.get(url, headers={**HEADERS, **_auth_header()},
-                         params=params, timeout=10)
-        r.raise_for_status()
-        data = r.json()
-
-        if not data.get("d"):
+        fyers  = get_fyers()
+        if fyers is None:
             return None
 
-        v = data["d"][0]["v"]
+        symbol = _option_symbol(strike, opt_type)
+        resp   = fyers.quotes(data={"symbols": symbol})
+
+        if resp.get("s") != "ok" or not resp.get("d"):
+            log.warning(f"get_option_quote no data ({symbol}): {resp.get('message','')}")
+            return None
+
+        v = resp["d"][0]["v"]
         result = {
-            "symbol":  symbol,
-            "strike":  strike,
+            "symbol":   symbol,
+            "strike":   strike,
             "opt_type": opt_type,
-            "ltp":     float(v.get("lp", 0)),
-            "bid":     float(v.get("bid_price", 0)),
-            "ask":     float(v.get("ask_price", 0)),
-            "volume":  int(v.get("volume", 0)),
+            "ltp":      float(v.get("lp", 0)),
+            "bid":      float(v.get("bid_price", 0)),
+            "ask":      float(v.get("ask_price", 0)),
+            "volume":   int(v.get("volume", 0)),
         }
 
-        # Fyers sometimes returns greeks in the quote
         greeks = v.get("greeks", {})
         if greeks and greeks.get("delta") is not None:
-            result["delta"] = abs(float(greeks["delta"]))
+            result["delta"]         = abs(float(greeks["delta"]))
             result["greeks_source"] = "fyers"
         else:
-            result["delta"] = None
-            result["greeks_source"] = "bs"   # will be computed later
+            result["delta"]         = None
+            result["greeks_source"] = "bs"
 
         return result
     except Exception as e:
@@ -194,63 +187,67 @@ def get_option_quote(strike: int, opt_type: str) -> dict | None:
         return None
 
 
-# ── Black-Scholes delta fallback ───────────────────────────────────────────
-
-def _norm_cdf(x: float) -> float:
-    """Approximation of standard normal CDF."""
-    return 0.5 * (1.0 + math.erf(x / math.sqrt(2)))
-
-
-def bs_delta(spot: float, strike: float, opt_type: str,
-             days_to_expiry: float, iv: float = 0.15, r: float = 0.065) -> float:
-    """
-    Black-Scholes delta.
-    days_to_expiry: calendar days remaining.
-    iv: implied vol (default 15% if unknown).
-    """
-    try:
-        T = max(days_to_expiry / 365, 1e-6)
-        d1 = (math.log(spot / strike) + (r + 0.5 * iv ** 2) * T) / (iv * math.sqrt(T))
-        if opt_type == "CE":
-            return _norm_cdf(d1)
-        else:
-            return _norm_cdf(d1) - 1   # negative for PE; caller takes abs()
-    except Exception as e:
-        log.error(f"bs_delta error: {e}")
-        return 0.0
-
-
 def get_straddle_candles(strike: int) -> list[dict] | None:
     """
-    Fetch 5-min candles for CE and PE of a strike and return
-    combined straddle price candles (CE+PE) with cumulative volume.
+    Fetch CE+PE 5-min candles for a strike and return combined straddle candles.
+    Aligns by timestamp (same logic as working code's pd.merge on 'time').
+    Returns list of {ts, open, high, low, close, volume} or None.
     """
     try:
         ce_sym = _option_symbol(strike, "CE")
         pe_sym = _option_symbol(strike, "PE")
 
-        ce_candles = get_candles(ce_sym)
-        pe_candles = get_candles(pe_sym)
+        ce_raw = _fetch_candles_raw(ce_sym)
+        pe_raw = _fetch_candles_raw(pe_sym)
 
-        if not ce_candles or not pe_candles:
+        if not ce_raw or not pe_raw:
+            log.warning(f"get_straddle_candles: missing data for strike {strike}")
             return None
 
-        # Align by timestamp
-        pe_map = {c["ts"]: c for c in pe_candles}
+        # Build PE lookup by epoch timestamp
+        pe_map = {c[0]: c for c in pe_raw}
+
         combined = []
-        for c in ce_candles:
-            ts = c["ts"]
+        for c in ce_raw:
+            ts = c[0]
             if ts in pe_map:
                 pe = pe_map[ts]
                 combined.append({
                     "ts":     ts,
-                    "open":   c["open"]  + pe["open"],
-                    "high":   c["high"]  + pe["high"],
-                    "low":    c["low"]   + pe["low"],
-                    "close":  c["close"] + pe["close"],
-                    "volume": c["volume"] + pe["volume"]
+                    "open":   c[1] + pe[1],
+                    "high":   c[2] + pe[2],
+                    "low":    c[3] + pe[3],
+                    "close":  c[4] + pe[4],
+                    "volume": c[5] + pe[5]
                 })
-        return combined if combined else None
+
+        if not combined:
+            log.warning(f"get_straddle_candles: no aligned candles for strike {strike}")
+            return None
+
+        log.info(f"Straddle candles fetched for {strike}: {len(combined)} bars")
+        return combined
     except Exception as e:
         log.error(f"get_straddle_candles error (strike={strike}): {e}")
         return None
+
+
+# ── Black-Scholes delta fallback ───────────────────────────────────────────
+
+def _norm_cdf(x: float) -> float:
+    return 0.5 * (1.0 + math.erf(x / math.sqrt(2)))
+
+
+def bs_delta(spot: float, strike: float, opt_type: str,
+             days_to_expiry: float, iv: float = 0.15, r: float = 0.065) -> float:
+    """Black-Scholes delta. Returns abs value for PE."""
+    try:
+        T  = max(days_to_expiry / 365, 1e-6)
+        d1 = (math.log(spot / strike) + (r + 0.5 * iv**2) * T) / (iv * math.sqrt(T))
+        if opt_type == "CE":
+            return _norm_cdf(d1)
+        else:
+            return abs(_norm_cdf(d1) - 1)
+    except Exception as e:
+        log.error(f"bs_delta error: {e}")
+        return 0.0
