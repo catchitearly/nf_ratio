@@ -152,19 +152,19 @@ def run():
         state["straddle_snapshot"] = {str(k): v for k, v in snapshot.items()}
         log.info(f"Raw view this tick: {raw_view}")
 
-        # ── Log view snapshot for View Log tab ────────────────────────────
-        view_entry = {
-            "time":    _now_ist().strftime("%H:%M:%S"),
-            "view":    raw_view,
-            "confirmed": confirmed_view or "",
-            "pending": state.get("pending_view") or "",
-            "spot":    round(spot, 2)
-        }
-        state.setdefault("view_log", []).append(view_entry)
-        state["view_log"] = state["view_log"][-100:]  # keep last 100 entries
-
         # View confirmation logic
         confirmed_view, view_changed = update_view_state(state, raw_view)
+
+        # ── Log view snapshot for View Log tab (after confirmation so confirmed_view is set) ──
+        view_entry = {
+            "time":      _now_ist().strftime("%H:%M:%S"),
+            "view":      raw_view,
+            "confirmed": confirmed_view or "",
+            "pending":   state.get("pending_view") or "",
+            "spot":      round(spot, 2)
+        }
+        state.setdefault("view_log", []).append(view_entry)
+        state["view_log"] = state["view_log"][-100:]
 
         # ── 10:30 ENTRY ────────────────────────────────────────────────────
         just_entered = False
