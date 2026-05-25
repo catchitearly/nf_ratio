@@ -12,7 +12,7 @@ from config import DASHBOARD_FILE
 from position_manager import total_pnl
 
 log = logging.getLogger(__name__)
-VIEW_COLOR = {"bullish": "#00c896", "bearish": "#ff4e6a", "neutral": "#f0b429", None: "#888"}
+VIEW_COLOR = {"very_bullish": "#00e5a0", "bullish": "#00c896", "neutral": "#f0b429", "bearish": "#ff4e6a", "very_bearish": "#cc2244", None: "#888"}
 
 def _pnl_color(v): return "#00c896" if v >= 0 else "#ff4e6a"
 
@@ -149,7 +149,7 @@ def generate_dashboard(state: dict):
         if not status_flags: status_flags = "<span class='badge yellow'>WAITING</span>"
 
         view_changes = sum(1 for i in range(1, len(view_log))
-                           if view_log[i]["view"] != view_log[i-1]["view"])
+                           if view_log[i].get("label", view_log[i].get("view","")) != view_log[i-1].get("label", view_log[i-1].get("view","")))
 
         eq_times_json = json.dumps([e["time"] for e in equity_curve])
         eq_pnls_json  = json.dumps([e["pnl"]  for e in equity_curve])
