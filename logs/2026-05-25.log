@@ -150,3 +150,24 @@
 2026-05-25 04:55:32,027 [ERROR] dashboard_gen: generate_dashboard error: 'view'
 2026-05-25 04:55:32,027 [INFO] strategy: Run complete.
 2026-05-25 04:55:32,027 [INFO] main: ✓ main.py finished
+2026-05-25 05:00:53,929 [INFO] main: ▶ main.py started
+2026-05-25 05:00:54,722 [INFO] strategy: ============================================================
+2026-05-25 05:00:54,722 [INFO] strategy: Run at 2026-05-25 10:30:54 IST
+2026-05-25 05:00:55,131 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-25 05:00:55,412 [INFO] fyers_data: Spot: 23966.45
+2026-05-25 05:00:55,979 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-05-25 05:00:56,546 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-05-25 05:00:57,111 [INFO] fyers_data: Straddle 23800: 16 bars
+2026-05-25 05:00:57,675 [INFO] fyers_data: Straddle 23900: 16 bars
+2026-05-25 05:00:58,250 [INFO] fyers_data: Straddle 24000: 16 bars
+2026-05-25 05:00:58,807 [INFO] fyers_data: Straddle 24100: 16 bars
+2026-05-25 05:00:59,373 [INFO] fyers_data: Straddle 24200: 16 bars
+2026-05-25 05:00:59,950 [INFO] fyers_data: Straddle 24300: 16 bars
+2026-05-25 05:01:00,541 [INFO] fyers_data: Straddle 24400: 16 bars
+2026-05-25 05:01:00,542 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=2 lower_below=2 | score=+7.5 label=very_bullish
+2026-05-25 05:01:00,828 [INFO] position_manager: Strike CE 24200 delta=0.113
+2026-05-25 05:01:00,829 [ERROR] position_manager: Entry: strike selection failed
+2026-05-25 05:01:00,829 [ERROR] strategy: Entry failed.
+2026-05-25 05:01:01,452 [ERROR] dashboard_gen: generate_dashboard error: 'view'
+2026-05-25 05:01:01,452 [INFO] strategy: Run complete.
+2026-05-25 05:01:01,452 [INFO] main: ✓ main.py finished
