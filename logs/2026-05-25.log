@@ -637,3 +637,26 @@
 2026-05-25 06:55:32,137 [ERROR] dashboard_gen: generate_dashboard error: 'view'
 2026-05-25 06:55:32,138 [INFO] strategy: Run complete.
 2026-05-25 06:55:32,138 [INFO] main: ✓ main.py finished
+2026-05-25 07:00:57,298 [INFO] main: ▶ main.py started
+2026-05-25 07:00:58,075 [INFO] strategy: ============================================================
+2026-05-25 07:00:58,076 [INFO] strategy: Run at 2026-05-25 12:30:58 IST
+2026-05-25 07:00:58,431 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-25 07:00:58,693 [INFO] fyers_data: Spot: 23954.5
+2026-05-25 07:00:59,341 [INFO] fyers_data: Straddle 23600: 40 bars
+2026-05-25 07:00:59,870 [INFO] fyers_data: Straddle 23700: 40 bars
+2026-05-25 07:01:00,398 [INFO] fyers_data: Straddle 23800: 40 bars
+2026-05-25 07:01:00,930 [INFO] fyers_data: Straddle 23900: 40 bars
+2026-05-25 07:01:01,815 [INFO] fyers_data: Straddle 24000: 40 bars
+2026-05-25 07:01:02,424 [INFO] fyers_data: Straddle 24100: 40 bars
+2026-05-25 07:01:03,042 [INFO] fyers_data: Straddle 24200: 40 bars
+2026-05-25 07:01:03,574 [INFO] fyers_data: Straddle 24300: 40 bars
+2026-05-25 07:01:04,136 [INFO] fyers_data: Straddle 24400: 40 bars
+2026-05-25 07:01:04,136 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=1 upper_above=3 | lower_above=0 lower_below=4 | score=-6.5 label=bearish
+2026-05-25 07:01:04,393 [INFO] strategy: MTM P&L: ₹-367
+2026-05-25 07:01:04,642 [INFO] position_manager: Adjust trigger: score -6.5 < 1.0
+2026-05-25 07:01:04,642 [INFO] strategy: Score adj trigger | entry=very_bullish score=-6.5 → rebalance to bearish
+2026-05-25 07:01:04,642 [INFO] position_manager: Rebalance | label=bearish | cur CE=4 PE=2 | target CE=4 PE=2 | add CE=0 PE=0 | close CE=0 PE=0
+2026-05-25 07:01:04,642 [INFO] strategy: Adjustment triggered but no change needed.
+2026-05-25 07:01:04,642 [ERROR] dashboard_gen: generate_dashboard error: 'view'
+2026-05-25 07:01:04,643 [INFO] strategy: Run complete.
+2026-05-25 07:01:04,643 [INFO] main: ✓ main.py finished
