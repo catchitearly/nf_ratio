@@ -25,3 +25,10 @@
 2026-05-25 04:08:51,138 [ERROR] strategy: Spot fetch failed – aborting run.
 2026-05-25 04:08:51,138 [INFO] dashboard_gen: Dashboard written -> docs/index.html
 2026-05-25 04:08:51,139 [INFO] main: ✓ main.py finished
+2026-05-25 04:11:22,614 [INFO] main: ▶ main.py started
+2026-05-25 04:11:23,571 [INFO] strategy: ============================================================
+2026-05-25 04:11:23,572 [INFO] strategy: Run at 2026-05-25 09:41:23 IST
+2026-05-25 04:11:23,901 [ERROR] fyers_data: Fyers auth failed: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+2026-05-25 04:11:23,902 [ERROR] strategy: Spot fetch failed – aborting run.
+2026-05-25 04:11:23,903 [INFO] dashboard_gen: Dashboard written -> docs/index.html
+2026-05-25 04:11:23,903 [INFO] main: ✓ main.py finished
