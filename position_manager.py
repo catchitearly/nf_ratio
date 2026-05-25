@@ -1,7 +1,13 @@
 """
 position_manager.py
-Paper-trade position management.
-Uses batched quotes for MTM + delta checks to minimise API calls.
+Paper-trade position management:
+  - Score-based entry sizing
+  - 12:00 one-time add
+  - Rebalance: close to nearest ratio multiple, add where needed
+  - Max 10 lots per side
+  - Max 4 adjustments per day
+  - Trailing SL (alert only)
+  - Post-4-adj exit check
 """
 
 import logging
@@ -10,80 +16,74 @@ from datetime import datetime
 from config import (
     LOT_SIZE, DELTA_ENTRY_MIN, DELTA_ENTRY_MAX, DELTA_ALERT,
     HEDGE_OFFSET, STRIKE_STEP,
-    QTY_NEUTRAL_CE, QTY_NEUTRAL_PE,
-    QTY_BULL_CE, QTY_BULL_PE,
-    QTY_BEAR_CE, QTY_BEAR_PE,
-    QTY_ADD_CHANGE
+    MAX_LOTS_CE, MAX_LOTS_PE,
+    ENTRY_LOTS, ADD_1200_LOTS, TARGET_RATIO,
+    TSL_ACTIVATE_PNL, TSL_INITIAL_GAP, TSL_STEP_PROFIT, TSL_STEP_MOVE,
+    POST_ADJ_EXIT_PNL, POST_ADJ_EXIT_LOSS, MAX_ADJUSTMENTS
 )
-from fyers_data import get_option_quote, get_quotes_batch, bs_delta, _option_symbol
-from view_engine import VIEW_BULL, VIEW_BEAR, VIEW_NEUTRAL
+from fyers_data import get_quotes_batch, bs_delta, _option_symbol
 
 log = logging.getLogger(__name__)
 
 
-# ── Strike selection ────────────────────────────────────────────────────────
+# ── Lot helpers ──────────────────────────────────────────────────────────────
+
+def open_sell_lots(positions: list[dict], opt_type: str) -> int:
+    return sum(p["lots"] for p in positions
+               if p["action"] == "SELL"
+               and p["opt_type"] == opt_type
+               and not p.get("closed"))
+
+
+def _cap_add(lots: int, opt_type: str, positions: list[dict]) -> int:
+    cap = MAX_LOTS_CE if opt_type == "CE" else MAX_LOTS_PE
+    return max(0, min(lots, cap - open_sell_lots(positions, opt_type)))
+
+
+# ── Strike selection ─────────────────────────────────────────────────────────
 
 def find_delta_strike(spot: float, opt_type: str,
-                      days_to_expiry: float) -> tuple[int, float] | tuple[None, None]:
-    """
-    Use BS delta to estimate the target strike range, then confirm
-    with a small batch quote — minimises API calls vs scanning one by one.
-    Returns (strike, delta) or (None, None).
-    """
+                      dte: float) -> tuple[int, float] | tuple[None, None]:
     try:
-        direction = 1 if opt_type == "CE" else -1
-        atm       = round(spot / STRIKE_STEP) * STRIKE_STEP
-
-        # ── Step 1: BS scan to find candidate range (no API calls) ─────────
+        direction  = 1 if opt_type == "CE" else -1
+        atm        = round(spot / STRIKE_STEP) * STRIKE_STEP
         candidates = []
         for steps in range(1, 25):
             strike = atm + direction * steps * STRIKE_STEP
-            delta  = bs_delta(spot, strike, opt_type, days_to_expiry)
+            delta  = bs_delta(spot, strike, opt_type, dte)
             if DELTA_ENTRY_MIN <= delta <= DELTA_ENTRY_MAX:
                 candidates.append((strike, delta))
             elif delta < DELTA_ENTRY_MIN:
-                break   # too far OTM
-
+                break
         if not candidates:
-            log.warning(f"BS scan: no {opt_type} candidate in delta range near {spot}")
             return None, None
-
-        # ── Step 2: Batch-fetch quotes for candidates (1 API call) ─────────
         syms  = [_option_symbol(s, opt_type) for s, _ in candidates]
-        batch = get_quotes_batch(syms)
-
-        # ── Step 3: Pick first candidate with fyers delta if available ──────
+        batch = get_quotes_batch(syms) or {}
         for strike, bs_d in candidates:
-            sym = _option_symbol(strike, opt_type)
-            if batch and sym in batch and batch[sym].get("greeks_source") == "fyers":
-                delta = batch[sym]["delta"]
-            else:
-                delta = bs_d   # fall back to BS estimate
-
+            sym   = _option_symbol(strike, opt_type)
+            q     = batch.get(sym, {})
+            delta = (q["delta"] if q.get("greeks_source") == "fyers"
+                     and q.get("delta") else bs_d)
             if DELTA_ENTRY_MIN <= delta <= DELTA_ENTRY_MAX:
-                log.info(f"Selected {opt_type} sell strike {strike} delta={delta:.3f}")
+                log.info(f"Strike {opt_type} {strike} delta={delta:.3f}")
                 return strike, delta
-
-        log.warning(f"No {opt_type} strike confirmed in delta range near {spot}")
         return None, None
-
     except Exception as e:
-        log.error(f"find_delta_strike error ({opt_type}): {e}")
+        log.error(f"find_delta_strike ({opt_type}): {e}")
         return None, None
 
 
-def _ltp_from_batch(batch: dict | None, strike: int, opt_type: str) -> float:
-    """Extract LTP from a pre-fetched batch dict; fallback to 0."""
+# ── Leg builders ─────────────────────────────────────────────────────────────
+
+def _fetch_ltps(pairs: list[tuple[int, str]]) -> dict:
     try:
-        if not batch:
-            return 0.0
-        sym = _option_symbol(strike, opt_type)
-        return batch.get(sym, {}).get("ltp", 0.0)
-    except Exception:
-        return 0.0
+        syms  = [_option_symbol(s, t) for s, t in pairs]
+        batch = get_quotes_batch(syms) or {}
+        return {sym: batch.get(sym, {}).get("ltp", 0.0) for sym in syms}
+    except Exception as e:
+        log.error(f"_fetch_ltps: {e}")
+        return {}
 
-
-# ── Leg builder ─────────────────────────────────────────────────────────────
 
 def _make_leg(strike: int, opt_type: str, action: str,
               lots: int, ltp: float, tag: str) -> dict:
@@ -102,61 +102,139 @@ def _make_leg(strike: int, opt_type: str, action: str,
     }
 
 
-def _fetch_leg_ltps(strikes_types: list[tuple[int, str]]) -> dict:
-    """Batch-fetch LTPs for a list of (strike, opt_type) pairs. Returns sym→ltp dict."""
-    try:
-        syms  = [_option_symbol(s, t) for s, t in strikes_types]
-        batch = get_quotes_batch(syms) or {}
-        return {sym: batch.get(sym, {}).get("ltp", 0.0) for sym in syms}
-    except Exception as e:
-        log.error(f"_fetch_leg_ltps error: {e}")
-        return {}
-
-
-def _build_spread_legs(sell_strike: int, opt_type: str, lots: int,
-                       tag: str, hedge_direction: int) -> list[dict]:
-    """
-    Build sell + hedge pair for one side.
-    hedge_direction: +1 for CE (hedge higher), -1 for PE (hedge lower).
-    Fetches both LTPs in one batch call.
-    """
-    hedge_strike = sell_strike + hedge_direction * HEDGE_OFFSET
-    ltps = _fetch_leg_ltps([(sell_strike, opt_type), (hedge_strike, opt_type)])
-    sell_sym  = _option_symbol(sell_strike,  opt_type)
-    hedge_sym = _option_symbol(hedge_strike, opt_type)
+def _add_spread(sell_strike: int, opt_type: str, lots: int,
+                tag: str, positions: list[dict]) -> list[dict]:
+    """Add sell+hedge respecting max-lot cap."""
+    lots = _cap_add(lots, opt_type, positions)
+    if lots <= 0:
+        return []
+    hdir         = 1 if opt_type == "CE" else -1
+    hedge_strike = sell_strike + hdir * HEDGE_OFFSET
+    ltps = _fetch_ltps([(sell_strike, opt_type), (hedge_strike, opt_type)])
     return [
-        _make_leg(sell_strike,  opt_type, "SELL", lots, ltps.get(sell_sym,  0.0), tag),
-        _make_leg(hedge_strike, opt_type, "BUY",  lots, ltps.get(hedge_sym, 0.0), f"{tag}_hedge"),
+        _make_leg(sell_strike,  opt_type, "SELL", lots,
+                  ltps.get(_option_symbol(sell_strike,  opt_type), 0.0), tag),
+        _make_leg(hedge_strike, opt_type, "BUY",  lots,
+                  ltps.get(_option_symbol(hedge_strike, opt_type), 0.0), f"{tag}_h"),
     ]
 
 
-# ── Entry / adjustment builders ─────────────────────────────────────────────
+def _close_sell_lots(positions: list[dict], opt_type: str,
+                     lots_to_close: int) -> list[dict]:
+    """
+    Paper-close the oldest open SELL legs on opt_type, up to lots_to_close.
+    Matching BUY (hedge) legs are also closed.
+    Returns list of newly closed leg symbols.
+    """
+    closed_syms = []
+    remaining   = lots_to_close
+    # Sort by entry_time ascending (close oldest first)
+    sell_legs = sorted(
+        [p for p in positions if p["action"] == "SELL"
+         and p["opt_type"] == opt_type and not p.get("closed")],
+        key=lambda x: x.get("entry_time", "")
+    )
+    for leg in sell_legs:
+        if remaining <= 0:
+            break
+        close_lots = min(leg["lots"], remaining)
+        if close_lots == leg["lots"]:
+            leg["closed"]     = True
+            leg["close_time"] = datetime.now().isoformat()
+            closed_syms.append(leg["symbol"])
+        else:
+            # Partial close: split the leg
+            leg["lots"] -= close_lots
+            leg["qty"]   = leg["lots"] * LOT_SIZE
+            # Create a closed record for the partial
+            closed_leg = dict(leg)
+            closed_leg["lots"]       = close_lots
+            closed_leg["qty"]        = close_lots * LOT_SIZE
+            closed_leg["closed"]     = True
+            closed_leg["close_time"] = datetime.now().isoformat()
+            closed_leg["tag"]        = leg["tag"] + "_partial"
+            positions.append(closed_leg)
+            closed_syms.append(leg["symbol"])
+        remaining -= close_lots
 
-def build_entry_legs(view: str, spot: float,
-                     days_to_expiry: float) -> list[dict] | None:
+    # Close matching hedge legs proportionally
+    hedge_legs = sorted(
+        [p for p in positions if p["action"] == "BUY"
+         and p["opt_type"] == opt_type and not p.get("closed")],
+        key=lambda x: x.get("entry_time", "")
+    )
+    hedge_rem = lots_to_close
+    for leg in hedge_legs:
+        if hedge_rem <= 0:
+            break
+        close_lots = min(leg["lots"], hedge_rem)
+        if close_lots == leg["lots"]:
+            leg["closed"]     = True
+            leg["close_time"] = datetime.now().isoformat()
+        else:
+            leg["lots"] -= close_lots
+            leg["qty"]   = leg["lots"] * LOT_SIZE
+            closed_leg = dict(leg)
+            closed_leg["lots"]       = close_lots
+            closed_leg["qty"]        = close_lots * LOT_SIZE
+            closed_leg["closed"]     = True
+            closed_leg["close_time"] = datetime.now().isoformat()
+            positions.append(closed_leg)
+        hedge_rem -= close_lots
+
+    log.info(f"Closed {lots_to_close - remaining} {opt_type} sell lots")
+    return closed_syms
+
+
+# ── Rebalance: nearest ratio multiple ────────────────────────────────────────
+
+def compute_rebalance(current_ce: int, current_pe: int,
+                      target_ce: int, target_pe: int) -> tuple[int, int, int, int]:
+    """
+    Find highest multiplier N such that N*target fits within current on both sides.
+    If one side needs more than current, add on that side and close other.
+    Returns (ce_to_add, pe_to_add, ce_to_close, pe_to_close).
+    """
+    # Try highest N where both fit
+    max_n_ce = current_ce // target_ce if target_ce > 0 else 0
+    max_n_pe = current_pe // target_pe if target_pe > 0 else 0
+    n = min(max_n_ce, max_n_pe)
+
+    if n >= 1:
+        # Both sides can reach n*target by closing
+        goal_ce = n * target_ce
+        goal_pe = n * target_pe
+        ce_to_close = max(0, current_ce - goal_ce)
+        pe_to_close = max(0, current_pe - goal_pe)
+        return 0, 0, ce_to_close, pe_to_close
+    else:
+        # n=0: at least one side is below target×1
+        # Add the deficit side, close other to match ratio
+        need_ce = target_ce - current_ce
+        need_pe = target_pe - current_pe
+        ce_to_add   = max(0, need_ce)
+        pe_to_add   = max(0, need_pe)
+        ce_to_close = max(0, current_ce - target_ce)
+        pe_to_close = max(0, current_pe - target_pe)
+        return ce_to_add, pe_to_add, ce_to_close, pe_to_close
+
+
+# ── Entry ─────────────────────────────────────────────────────────────────────
+
+def build_entry_legs(label: str, spot: float, dte: float) -> list[dict] | None:
     try:
-        ce_lots = {VIEW_NEUTRAL: QTY_NEUTRAL_CE,
-                   VIEW_BULL:    QTY_BULL_CE,
-                   VIEW_BEAR:    QTY_BEAR_CE}[view]
-        pe_lots = {VIEW_NEUTRAL: QTY_NEUTRAL_PE,
-                   VIEW_BULL:    QTY_BULL_PE,
-                   VIEW_BEAR:    QTY_BEAR_PE}[view]
-
-        ce_strike, _ = find_delta_strike(spot, "CE", days_to_expiry)
-        pe_strike, _ = find_delta_strike(spot, "PE", days_to_expiry)
-
+        ce_lots, pe_lots = ENTRY_LOTS.get(label, (3, 3))
+        ce_strike, _ = find_delta_strike(spot, "CE", dte)
+        pe_strike, _ = find_delta_strike(spot, "PE", dte)
         if ce_strike is None or pe_strike is None:
-            log.error("Entry failed – delta strike selection returned None.")
+            log.error("Entry: strike selection failed")
             return None
-
-        # Batch-fetch all 4 LTPs in one call
         ce_hedge = ce_strike + HEDGE_OFFSET
         pe_hedge = pe_strike - HEDGE_OFFSET
-        ltps = _fetch_leg_ltps([
+        ltps = _fetch_ltps([
             (ce_strike, "CE"), (ce_hedge, "CE"),
             (pe_strike, "PE"), (pe_hedge, "PE")
         ])
-
         legs = [
             _make_leg(ce_strike, "CE", "SELL", ce_lots,
                       ltps.get(_option_symbol(ce_strike, "CE"), 0.0), "sell"),
@@ -167,130 +245,192 @@ def build_entry_legs(view: str, spot: float,
             _make_leg(pe_hedge,  "PE", "BUY",  pe_lots,
                       ltps.get(_option_symbol(pe_hedge,  "PE"), 0.0), "hedge"),
         ]
-        log.info(
-            f"Entry | view={view} | "
-            f"CE sell={ce_strike}x{ce_lots} hedge={ce_hedge} | "
-            f"PE sell={pe_strike}x{pe_lots} hedge={pe_hedge}"
-        )
+        log.info(f"Entry | label={label} CE {ce_strike}x{ce_lots} PE {pe_strike}x{pe_lots}")
         return legs
     except Exception as e:
-        log.error(f"build_entry_legs error: {e}")
+        log.error(f"build_entry_legs: {e}")
         return None
 
 
-def build_adjustment_legs(new_view: str, old_view: str,
-                           spot: float, days_to_expiry: float) -> list[dict] | None:
+# ── 12:00 addition ────────────────────────────────────────────────────────────
+
+def build_1200_legs(entry_label: str, current_label: str,
+                    spot: float, dte: float,
+                    positions: list[dict]) -> list[dict] | None:
     try:
-        add = QTY_ADD_CHANGE
+        def _fam(l):
+            if l in ("very_bullish", "bullish"):   return "bullish"
+            if l in ("very_bearish", "bearish"):   return "bearish"
+            return "neutral"
+        key = (_fam(entry_label), _fam(current_label))
+        ce_add, pe_add = ADD_1200_LOTS.get(key, (0, 0))
+        log.info(f"12:00 add | key={key} ce={ce_add} pe={pe_add}")
         legs = []
-
-        if new_view == VIEW_BEAR:
-            strike, _ = find_delta_strike(spot, "CE", days_to_expiry)
-            if strike:
-                legs = _build_spread_legs(strike, "CE", add, "sell_adj", +1)
-
-        elif new_view == VIEW_BULL:
-            strike, _ = find_delta_strike(spot, "PE", days_to_expiry)
-            if strike:
-                legs = _build_spread_legs(strike, "PE", add, "sell_adj", -1)
-
-        else:   # neutral — add both sides
-            ce_strike, _ = find_delta_strike(spot, "CE", days_to_expiry)
-            pe_strike, _ = find_delta_strike(spot, "PE", days_to_expiry)
-            if ce_strike:
-                legs += _build_spread_legs(ce_strike, "CE", add, "sell_adj", +1)
-            if pe_strike:
-                legs += _build_spread_legs(pe_strike, "PE", add, "sell_adj", -1)
-
-        if not legs:
-            log.warning(f"build_adjustment_legs: no legs built ({old_view}→{new_view})")
-            return None
-
-        log.info(f"Adjustment | {old_view}→{new_view} | {len(legs)} legs")
-        return legs
+        if ce_add > 0:
+            s, _ = find_delta_strike(spot, "CE", dte)
+            if s:
+                legs += _add_spread(s, "CE", ce_add, "sell_1200", positions)
+        if pe_add > 0:
+            s, _ = find_delta_strike(spot, "PE", dte)
+            if s:
+                legs += _add_spread(s, "PE", pe_add, "sell_1200", positions)
+        return legs if legs else None
     except Exception as e:
-        log.error(f"build_adjustment_legs error: {e}")
+        log.error(f"build_1200_legs: {e}")
         return None
 
 
-def build_add_1135_legs(entry_view: str, spot: float,
-                        days_to_expiry: float) -> list[dict] | None:
-    """11:35 one-time add — same ratio as entry."""
-    return build_entry_legs(entry_view, spot, days_to_expiry)
+# ── Rebalance on view change ──────────────────────────────────────────────────
+
+def build_rebalance_legs(new_label: str, spot: float, dte: float,
+                         positions: list[dict]) -> tuple[list[dict], list[str]]:
+    """
+    Rebalance to nearest multiple of TARGET_RATIO[new_label].
+    Returns (new_legs_to_add, closed_symbols).
+    Modifies positions in-place for closes.
+    """
+    new_legs     = []
+    closed_syms  = []
+    try:
+        target_ce, target_pe = TARGET_RATIO.get(new_label, (4, 4))
+        cur_ce = open_sell_lots(positions, "CE")
+        cur_pe = open_sell_lots(positions, "PE")
+
+        ce_add, pe_add, ce_close, pe_close = compute_rebalance(
+            cur_ce, cur_pe, target_ce, target_pe
+        )
+        log.info(f"Rebalance | label={new_label} | "
+                 f"cur CE={cur_ce} PE={cur_pe} | "
+                 f"target CE={target_ce} PE={target_pe} | "
+                 f"add CE={ce_add} PE={pe_add} | "
+                 f"close CE={ce_close} PE={pe_close}")
+
+        # Close first
+        if ce_close > 0:
+            closed_syms += _close_sell_lots(positions, "CE", ce_close)
+        if pe_close > 0:
+            closed_syms += _close_sell_lots(positions, "PE", pe_close)
+
+        # Then add (respecting max cap after closes)
+        if ce_add > 0:
+            s, _ = find_delta_strike(spot, "CE", dte)
+            if s:
+                new_legs += _add_spread(s, "CE", ce_add, "sell_reb", positions)
+        if pe_add > 0:
+            s, _ = find_delta_strike(spot, "PE", dte)
+            if s:
+                new_legs += _add_spread(s, "PE", pe_add, "sell_reb", positions)
+
+    except Exception as e:
+        log.error(f"build_rebalance_legs: {e}")
+    return new_legs, closed_syms
 
 
-# ── MTM — batched ───────────────────────────────────────────────────────────
+# ── Adjustment trigger check ──────────────────────────────────────────────────
+
+def should_adjust(entry_label: str, confirmed_score: float,
+                  neutral_adjusted: bool) -> bool:
+    """
+    Returns True if score has crossed the adjustment threshold
+    for the given entry direction.
+    neutral_adjusted: True if neutral entry has already been adjusted once.
+    After neutral adjustment, thresholds stay at ±3.0 forever.
+    """
+    try:
+        from config import ADJ_TRIGGER
+
+        def _fam(l):
+            if l in ("very_bullish", "bullish"): return "bullish"
+            if l in ("very_bearish", "bearish"): return "bearish"
+            return "neutral"
+
+        fam = _fam(entry_label)
+        # Neutral adjusted: always use neutral thresholds
+        if neutral_adjusted and fam == "neutral":
+            fam = "neutral"
+
+        below_thresh, above_thresh = ADJ_TRIGGER.get(fam, (None, None))
+        if below_thresh is not None and confirmed_score < below_thresh:
+            log.info(f"Adjust trigger: score {confirmed_score:+.1f} < {below_thresh}")
+            return True
+        if above_thresh is not None and confirmed_score > above_thresh:
+            log.info(f"Adjust trigger: score {confirmed_score:+.1f} > {above_thresh}")
+            return True
+        return False
+    except Exception as e:
+        log.error(f"should_adjust: {e}")
+        return False
+
+
+# ── Trailing SL ───────────────────────────────────────────────────────────────
+
+def compute_tsl(peak_pnl: float) -> float | None:
+    """
+    Returns TSL level if peak >= TSL_ACTIVATE_PNL, else None.
+    TSL = 1000 + ((peak - 1500) // 200) * 100
+    """
+    if peak_pnl < TSL_ACTIVATE_PNL:
+        return None
+    steps = int((peak_pnl - TSL_ACTIVATE_PNL) // TSL_STEP_PROFIT)
+    tsl   = (TSL_ACTIVATE_PNL - TSL_INITIAL_GAP) + steps * TSL_STEP_MOVE
+    return round(tsl, 2)
+
+
+# ── MTM ───────────────────────────────────────────────────────────────────────
 
 def update_positions_mtm(positions: list[dict]) -> list[dict]:
-    """
-    Refresh all position LTPs and PnL in ONE batched quote call.
-    """
     try:
         open_legs = [p for p in positions if not p.get("closed")]
         if not open_legs:
             return positions
-
         syms  = [_option_symbol(p["strike"], p["opt_type"]) for p in open_legs]
         batch = get_quotes_batch(syms) or {}
-
         for leg in open_legs:
             sym = _option_symbol(leg["strike"], leg["opt_type"])
             ltp = batch.get(sym, {}).get("ltp", 0.0)
             if ltp == 0:
                 continue
             leg["current_ltp"] = ltp
-            multiplier = -1 if leg["action"] == "SELL" else 1
-            leg["pnl"] = multiplier * (ltp - leg["entry_price"]) * leg["qty"]
-
+            mult       = -1 if leg["action"] == "SELL" else 1
+            leg["pnl"] = mult * (ltp - leg["entry_price"]) * leg["qty"]
     except Exception as e:
-        log.error(f"update_positions_mtm error: {e}")
+        log.error(f"update_positions_mtm: {e}")
     return positions
 
 
 def total_pnl(positions: list[dict]) -> float:
-    return sum(leg.get("pnl", 0.0) for leg in positions)
+    return sum(p.get("pnl", 0.0) for p in positions)
 
 
-# ── Delta breach check — reuses MTM batch ───────────────────────────────────
+# ── Delta breach ──────────────────────────────────────────────────────────────
 
-def check_delta_breaches(positions: list[dict], spot: float,
-                         days_to_expiry: float,
-                         already_alerted: list[str]) -> list[str]:
-    """
-    Check delta on all SELL legs using one batched quote call.
-    Returns list of newly breached symbols.
-    """
+def check_delta_breaches(positions, spot, dte, already_alerted):
     breached = []
     try:
-        sell_legs = [p for p in positions
-                     if p["action"] == "SELL" and p["symbol"] not in already_alerted
-                     and not p.get("closed")]
+        sell_legs = [p for p in positions if p["action"] == "SELL"
+                     and not p.get("closed")
+                     and p["symbol"] not in already_alerted]
         if not sell_legs:
             return []
-
         syms  = [_option_symbol(p["strike"], p["opt_type"]) for p in sell_legs]
         batch = get_quotes_batch(syms) or {}
-
         for leg in sell_legs:
-            sym = _option_symbol(leg["strike"], leg["opt_type"])
-            q   = batch.get(sym, {})
-            if q.get("greeks_source") == "fyers" and q.get("delta") is not None:
-                delta = abs(q["delta"])
-            else:
-                delta = bs_delta(spot, leg["strike"], leg["opt_type"], days_to_expiry)
-
+            sym   = _option_symbol(leg["strike"], leg["opt_type"])
+            q     = batch.get(sym, {})
+            delta = (abs(q["delta"]) if q.get("greeks_source") == "fyers"
+                     and q.get("delta") else
+                     bs_delta(spot, leg["strike"], leg["opt_type"], dte))
             if delta >= DELTA_ALERT:
-                log.warning(f"Delta breach: {sym} delta={delta:.3f}")
+                log.warning(f"Delta breach: {sym} {delta:.3f}")
                 breached.append(sym)
     except Exception as e:
-        log.error(f"check_delta_breaches error: {e}")
+        log.error(f"check_delta_breaches: {e}")
     return breached
 
 
-# ── Close all ────────────────────────────────────────────────────────────────
+# ── Close all ─────────────────────────────────────────────────────────────────
 
 def close_all_positions(positions: list[dict]) -> list[dict]:
-    """Paper-close all open positions at current LTP."""
     try:
         positions = update_positions_mtm(positions)
         now = datetime.now().isoformat()
@@ -298,7 +438,7 @@ def close_all_positions(positions: list[dict]) -> list[dict]:
             if not leg.get("closed"):
                 leg["closed"]     = True
                 leg["close_time"] = now
-        log.info(f"Closed {len(positions)} legs | PnL: ₹{total_pnl(positions):,.0f}")
+        log.info(f"Closed all | PnL: {total_pnl(positions):,.0f}")
     except Exception as e:
-        log.error(f"close_all_positions error: {e}")
+        log.error(f"close_all_positions: {e}")
     return positions
