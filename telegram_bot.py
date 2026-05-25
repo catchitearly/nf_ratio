@@ -99,3 +99,25 @@ def send_status(view: str, spot: float, pnl: float):
         f"Spot: {spot:.0f} | P&amp;L: ₹{pnl:,.0f}"
     )
     _send(msg)
+
+
+def send_tsl_alert(pnl: float, tsl: float, peak: float):
+    msg = (
+        f"⚠️ <b>TRAILING SL HIT</b>\n"
+        f"Current P&amp;L: &#8377;{pnl:,.0f}\n"
+        f"Trail SL Level: &#8377;{tsl:,.0f}\n"
+        f"Peak P&amp;L was: &#8377;{peak:,.0f}\n"
+        f"<i>Paper trade – no position closed.</i>"
+    )
+    _send(msg)
+
+
+def send_post_adj_close_alert(pnl: float, adj_count: int):
+    direction = "PROFIT" if pnl >= 0 else "LOSS"
+    msg = (
+        f"🔒 <b>POST-ADJUSTMENT EXIT</b>\n"
+        f"Reason: {direction} target hit after {adj_count} adjustments\n"
+        f"P&amp;L: &#8377;{pnl:,.0f}\n"
+        f"All positions closed."
+    )
+    _send(msg)
