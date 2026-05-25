@@ -80,28 +80,32 @@ def _error_rows(errors):
 
 def _view_log_rows(view_log):
     if not view_log:
-        return "<tr><td colspan='5' style='text-align:center;color:var(--muted)'>No view data yet</td></tr>"
+        return "<tr><td colspan='6' style='text-align:center;color:var(--muted)'>No view data yet</td></tr>"
     rows = ""
-    prev_view = None
+    prev_label = None
     for entry in reversed(view_log):
-        v         = entry.get("view", "")
-        changed   = v != prev_view and prev_view is not None
+        v         = entry.get("label") or entry.get("view", "")
+        score     = entry.get("score")
+        changed   = v != prev_label and prev_label is not None
         row_bg    = "background:#ffffff06;" if changed else ""
-        chg_mark  = "<span style='color:#f0b429;margin-left:6px'>&#8635; CHANGED</span>" if changed else ""
+        chg_mark  = "<span style='color:#f0b429;margin-left:6px'>&#8635;</span>" if changed else ""
         confirmed = entry.get("confirmed", "")
         pending   = entry.get("pending", "")
         conf_html = _view_badge(confirmed) if confirmed else "<span style='color:var(--muted)'>&mdash;</span>"
         pend_html = _view_badge(pending)   if pending   else "&mdash;"
         spot_val  = entry.get("spot", "&mdash;")
         time_val  = entry.get("time", "&mdash;")
+        score_col = ("#00c896" if score and score >= 0 else "#ff4e6a") if score is not None else "#5a6480"
+        score_str = (f"{score:+.1f}" if score is not None else "&mdash;")
         rows += ("<tr style='" + row_bg + "'>"
                  "<td style='color:var(--muted);white-space:nowrap'>" + str(time_val) + "</td>"
                  "<td>" + _view_badge(v) + chg_mark + "</td>"
+                 "<td style='font-family:monospace;font-weight:700;color:" + score_col + "'>" + score_str + "</td>"
                  "<td>" + conf_html + "</td>"
                  "<td>" + pend_html + "</td>"
                  "<td style='font-family:monospace'>&#8377;" + str(spot_val) + "</td>"
                  "</tr>")
-        prev_view = v
+        prev_label = v
     return rows
 
 
@@ -110,30 +114,37 @@ def generate_dashboard(state: dict):
         os.makedirs(os.path.dirname(DASHBOARD_FILE), exist_ok=True)
 
         atm          = state.get("atm") or 0
-        view         = state.get("current_view") or "neutral"
-        pending      = state.get("pending_view") or "&mdash;"
-        entry_view   = state.get("entry_view") or "&mdash;"
-        last_run     = _fmt_time(state.get("last_run"))
-        positions    = state.get("positions", [])
-        errors       = state.get("errors", [])
-        entry_done   = state.get("entry_done", False)
-        closed       = state.get("closed", False)
-        add_done     = state.get("add_1135_done", False)
-        snapshot     = state.get("straddle_snapshot", {})
-        view_log     = state.get("view_log", [])
-        equity_curve = state.get("equity_curve", [])
-        pnl          = total_pnl(positions)
-        view_col     = VIEW_COLOR.get(view, "#888")
-        pnl_col      = _pnl_color(pnl)
+        view         = state.get("current_label") or state.get("current_view") or "neutral"
+        pending      = state.get("pending_label") or state.get("pending_view") or "&mdash;"
+        entry_view   = state.get("entry_label") or state.get("entry_view") or "&mdash;"
+        raw_score    = state.get("current_score")
+        score_display = (f"{raw_score:+.1f}" if raw_score is not None else "&mdash;")
+        add_done      = state.get("add_1200_done") or state.get("add_1145_done") or state.get("add_1135_done", False)
+        adj_count     = state.get("adjustment_count", 0)
+        peak_pnl      = state.get("peak_pnl", 0.0)
+        tsl_level     = state.get("tsl_level")
+        tsl_alerted   = state.get("tsl_alerted", False)
+        last_run      = _fmt_time(state.get("last_run"))
+        positions     = state.get("positions", [])
+        errors        = state.get("errors", [])
+        entry_done    = state.get("entry_done", False)
+        closed        = state.get("closed", False)
+        snapshot      = state.get("straddle_snapshot", {})
+        view_log      = state.get("view_log", [])
+        equity_curve  = state.get("equity_curve", [])
+        pnl           = total_pnl(positions)
+        view_col      = VIEW_COLOR.get(view, "#888")
+        pnl_col       = _pnl_color(pnl)
 
-        straddle_html  = _straddle_rows(snapshot, atm)
-        pos_html       = _position_rows(positions)
-        err_html       = _error_rows(errors)
-        vlog_html      = _view_log_rows(view_log)
+        straddle_html = _straddle_rows(snapshot, atm)
+        pos_html      = _position_rows(positions)
+        err_html      = _error_rows(errors)
+        vlog_html     = _view_log_rows(view_log)
 
         status_flags = ""
         if entry_done:  status_flags += "<span class='badge green'>ENTRY DONE</span> "
-        if add_done:    status_flags += "<span class='badge blue'>1135 ADD DONE</span> "
+        if add_done:    status_flags += "<span class='badge blue'>12:00 ADD</span> "
+        if tsl_alerted: status_flags += "<span class='badge yellow'>TSL HIT</span> "
         if closed:      status_flags += "<span class='badge red'>CLOSED</span> "
         if not status_flags: status_flags = "<span class='badge yellow'>WAITING</span>"
 
@@ -220,12 +231,15 @@ def generate_dashboard(state: dict):
 <div id="panel-overview" class="panel active">
   <div class="grid">
     <div class="card"><div class="label">ATM Strike</div><div class="value">{atm or '&mdash;'}</div><div class="sub">9:15 candle close</div></div>
-    <div class="card"><div class="label">Current View</div>
+    <div class="card"><div class="label">Score / Label</div>
       <div class="value" style="font-size:14px;padding-top:4px">
         <span class="view-pill" style="background:{view_col}20;color:{view_col};border:1px solid {view_col}60">{view}</span>
-      </div><div class="sub">Pending: {pending}</div></div>
+      </div>
+      <div class="sub">Score: <b style="color:{view_col}">{score_display}</b> &nbsp;|&nbsp; Pending: {pending}</div></div>
     <div class="card"><div class="label">Entry View</div><div class="value" style="font-size:15px">{entry_view.upper()}</div><div class="sub">at 10:30 AM</div></div>
     <div class="card"><div class="label">Total P&amp;L</div><div class="value" style="color:{pnl_col}">&#8377;{pnl:,.0f}</div><div class="sub">{len(positions)} legs</div></div>
+    <div class="card"><div class="label">Adjustments</div><div class="value" style="color:{'#f0b429' if adj_count>=4 else '#fff'}">{adj_count}/4</div><div class="sub">Max 4 per day</div></div>
+    <div class="card"><div class="label">Trail SL</div><div class="value" style="font-size:15px;color:{'#ff4e6a' if tsl_alerted else '#5a6480'}">{'&#8377;'+str(int(tsl_level)) if tsl_level else '&mdash;'}</div><div class="sub">Peak: &#8377;{int(peak_pnl):,}</div></div>
     <div class="card"><div class="label">Status</div><div class="value" style="font-size:12px;padding-top:6px">{status_flags}</div><div class="sub">Paper Trade Mode</div></div>
   </div>
   <div class="section">
@@ -249,7 +263,7 @@ def generate_dashboard(state: dict):
   <div class="section">
     <div class="section-hdr"><h2>&#129517; Direction View Log</h2>
       <span style="color:var(--muted);font-size:10px">{len(view_log)} entries &middot; {view_changes} changes &middot; newest first</span></div>
-    {'<table><thead><tr><th>Time</th><th>Raw View</th><th>Confirmed</th><th>Pending</th><th>Spot</th></tr></thead><tbody>' + vlog_html + '</tbody></table>' if view_log else '<div class="no-data">No view data yet</div>'}
+    {'<table><thead><tr><th>Time</th><th>Label</th><th>Score</th><th>Confirmed</th><th>Pending</th><th>Spot</th></tr></thead><tbody>' + vlog_html + '</tbody></table>' if view_log else '<div class="no-data">No view data yet</div>'}
   </div>
 </div>
 
