@@ -3,3 +3,11 @@
 2026-05-25 02:45:17,395 [INFO] strategy: Run at 2026-05-25 08:15:17 IST
 2026-05-25 02:45:17,395 [INFO] strategy: Outside trading hours – skipping.
 2026-05-25 02:45:17,395 [INFO] main: ✓ main.py finished
+2026-05-25 04:00:50,816 [INFO] main: ▶ main.py started
+2026-05-25 04:00:51,205 [INFO] strategy: ============================================================
+2026-05-25 04:00:51,205 [INFO] strategy: Run at 2026-05-25 09:30:51 IST
+2026-05-25 04:00:51,219 [INFO] strategy: New trading day: 2026-05-25
+2026-05-25 04:00:51,568 [ERROR] fyers_data: Fyers auth failed: {'s': 'error', 'code': -17, 'message': 'Could not authenticate the user'}
+2026-05-25 04:00:51,569 [ERROR] strategy: Spot fetch failed – aborting run.
+2026-05-25 04:00:51,569 [INFO] dashboard_gen: Dashboard written -> docs/index.html
+2026-05-25 04:00:51,570 [INFO] main: ✓ main.py finished
