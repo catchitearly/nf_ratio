@@ -58,3 +58,27 @@ Traceback (most recent call last):
 ValueError: not enough values to unpack (expected 4, got 2)
 2026-05-25 04:14:10,067 [INFO] dashboard_gen: Dashboard written -> docs/index.html
 2026-05-25 04:14:10,068 [INFO] main: ✓ main.py finished
+2026-05-25 04:15:32,068 [INFO] main: ▶ main.py started
+2026-05-25 04:15:32,400 [INFO] strategy: ============================================================
+2026-05-25 04:15:32,400 [INFO] strategy: Run at 2026-05-25 09:45:32 IST
+2026-05-25 04:15:32,753 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-25 04:15:32,975 [INFO] fyers_data: Spot: 23944
+2026-05-25 04:15:33,466 [INFO] fyers_data: Straddle 23600: 7 bars
+2026-05-25 04:15:33,931 [INFO] fyers_data: Straddle 23700: 7 bars
+2026-05-25 04:15:34,404 [INFO] fyers_data: Straddle 23800: 7 bars
+2026-05-25 04:15:34,868 [INFO] fyers_data: Straddle 23900: 7 bars
+2026-05-25 04:15:35,321 [INFO] fyers_data: Straddle 24000: 7 bars
+2026-05-25 04:15:35,780 [INFO] fyers_data: Straddle 24100: 7 bars
+2026-05-25 04:15:36,239 [INFO] fyers_data: Straddle 24200: 7 bars
+2026-05-25 04:15:36,680 [INFO] fyers_data: Straddle 24300: 7 bars
+2026-05-25 04:15:37,135 [INFO] fyers_data: Straddle 24400: 7 bars
+2026-05-25 04:15:37,135 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4
+2026-05-25 04:15:37,135 [INFO] view_engine: Computed view: bearish
+2026-05-25 04:15:37,135 [ERROR] strategy: Unhandled error: not enough values to unpack (expected 4, got 2)
+Traceback (most recent call last):
+  File "/home/runner/work/nf_ratio/nf_ratio/strategy.py", line 132, in run
+    raw_label, score, direction, snapshot = compute_view(atm)
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 4, got 2)
+2026-05-25 04:15:37,614 [INFO] dashboard_gen: Dashboard written -> docs/index.html
+2026-05-25 04:15:37,614 [INFO] main: ✓ main.py finished
