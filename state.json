@@ -5,10 +5,10 @@
   "entry_label": "very_bullish",
   "current_label": "bearish",
   "prev_label": "neutral",
-  "pending_label": "neutral",
-  "pending_label_count": 1,
-  "current_score": -1.5,
-  "raw_label": "neutral",
+  "pending_label": null,
+  "pending_label_count": 0,
+  "current_score": -6.5,
+  "raw_label": "bearish",
   "adjustment_count": 2,
   "add_1200_done": true,
   "neutral_adjusted": false,
@@ -26,8 +26,8 @@
       "entry_price": 28.85,
       "entry_time": "2026-05-25T05:10:45.902657",
       "tag": "sell",
-      "current_ltp": 20.65,
-      "pnl": 1230.0000000000005
+      "current_ltp": 19.8,
+      "pnl": 1357.5
     },
     {
       "symbol": "NSE:NIFTY26MAY24300CE",
@@ -39,8 +39,8 @@
       "entry_price": 13.3,
       "entry_time": "2026-05-25T05:10:45.902668",
       "tag": "hedge",
-      "current_ltp": 9.8,
-      "pnl": -525.0
+      "current_ltp": 9.4,
+      "pnl": -585.0
     },
     {
       "symbol": "NSE:NIFTY26MAY23800PE",
@@ -52,8 +52,8 @@
       "entry_price": 31.55,
       "entry_time": "2026-05-25T05:10:45.902670",
       "tag": "sell",
-      "current_ltp": 33.5,
-      "pnl": -292.4999999999999
+      "current_ltp": 35.15,
+      "pnl": -539.9999999999997
     },
     {
       "symbol": "NSE:NIFTY26MAY23700PE",
@@ -65,8 +65,8 @@
       "entry_price": 18.1,
       "entry_time": "2026-05-25T05:10:45.902672",
       "tag": "hedge",
-      "current_ltp": 18.35,
-      "pnl": 37.5
+      "current_ltp": 19.15,
+      "pnl": 157.49999999999957
     },
     {
       "symbol": "NSE:NIFTY26MAY24200CE",
@@ -78,8 +78,8 @@
       "entry_price": 21.15,
       "entry_time": "2026-05-25T06:40:53.605038",
       "tag": "sell_reb",
-      "current_ltp": 20.65,
-      "pnl": 75.0
+      "current_ltp": 19.8,
+      "pnl": 202.4999999999997
     },
     {
       "symbol": "NSE:NIFTY26MAY24300CE",
@@ -91,8 +91,8 @@
       "entry_price": 10.15,
       "entry_time": "2026-05-25T06:40:53.605049",
       "tag": "sell_reb_h",
-      "current_ltp": 9.8,
-      "pnl": -52.49999999999994
+      "current_ltp": 9.4,
+      "pnl": -112.5
     },
     {
       "symbol": "NSE:NIFTY26MAY23800PE",
@@ -129,56 +129,56 @@
   "closed": false,
   "straddle_snapshot": {
     "23600": {
-      "vwap": 400.58,
-      "current_price": 391.0,
+      "vwap": 400.44,
+      "current_price": 385.65,
       "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": 322.11,
-      "current_price": 308.85,
+      "vwap": 321.88,
+      "current_price": 304.4,
       "below_vwap": true,
       "above_vwap": false
     },
     "23800": {
-      "vwap": 256.29,
-      "current_price": 240.6,
+      "vwap": 255.97,
+      "current_price": 236.8,
       "below_vwap": true,
       "above_vwap": false
     },
     "23900": {
-      "vwap": 215.91,
-      "current_price": 197.05,
+      "vwap": 215.58,
+      "current_price": 195.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "24000": {
-      "vwap": 203.35,
-      "current_price": 186.45,
+      "vwap": 203.1,
+      "current_price": 187.55,
       "below_vwap": true,
       "above_vwap": false
     },
     "24100": {
-      "vwap": 222.53,
-      "current_price": 211.2,
+      "vwap": 222.39,
+      "current_price": 215.15,
       "below_vwap": true,
       "above_vwap": false
     },
     "24200": {
-      "vwap": 274.28,
-      "current_price": 267.95,
-      "below_vwap": true,
-      "above_vwap": false
+      "vwap": 274.27,
+      "current_price": 274.35,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24300": {
-      "vwap": 350.15,
-      "current_price": 346.45,
-      "below_vwap": true,
-      "above_vwap": false
+      "vwap": 350.18,
+      "current_price": 352.4,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24400": {
-      "vwap": 437.93,
-      "current_price": 438.2,
+      "vwap": 437.98,
+      "current_price": 445.65,
       "below_vwap": false,
       "above_vwap": true
     }
@@ -455,6 +455,14 @@
       "confirmed": "",
       "pending": "neutral",
       "spot": 23964.25
+    },
+    {
+      "time": "12:40:41",
+      "label": "bearish",
+      "score": -6.5,
+      "confirmed": "bearish",
+      "pending": "",
+      "spot": 23958.9
     }
   ],
   "equity_curve": [
@@ -553,9 +561,13 @@
     {
       "time": "12:35:36",
       "pnl": -337.5
+    },
+    {
+      "time": "12:40:42",
+      "pnl": -330.0
     }
   ],
-  "last_run": "2026-05-25T07:05:36.445017",
+  "last_run": "2026-05-25T07:10:42.418245",
   "errors": [
     {
       "time": "2026-05-22T04:14:04.458024",
