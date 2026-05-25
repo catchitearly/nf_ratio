@@ -24,44 +24,44 @@ HEDGE_OFFSET    = 100
 
 # ── Lot size ───────────────────────────────────────────────────────────────
 LOT_SIZE    = 75
-MAX_LOTS_CE = 10
-MAX_LOTS_PE = 10
+MAX_LOTS_CE = 20
+MAX_LOTS_PE = 20
 
 # ── Entry lots by score label: (ce_sell, pe_sell) ──────────────────────────
 ENTRY_LOTS = {
-    "very_bullish": (2, 4),
-    "bullish":      (2, 4),
-    "neutral":      (3, 3),
-    "bearish":      (4, 2),
-    "very_bearish": (4, 2),
+    "very_bullish": (4,  8),
+    "bullish":      (4,  8),
+    "neutral":      (6,  6),
+    "bearish":      (8,  4),
+    "very_bearish": (8,  4),
 }
 
 # ── 12:00 addition lots by (entry_family, current_family): (ce_add, pe_add) ─
 ADD_1200_LOTS = {
-    ("bullish",  "very_bullish"): (0, 1),
-    ("bullish",  "bullish"):      (0, 1),
-    ("bullish",  "neutral"):      (2, 0),
-    ("bullish",  "bearish"):      (4, 0),
-    ("bullish",  "very_bearish"): (4, 0),
-    ("bearish",  "very_bearish"): (1, 0),
-    ("bearish",  "bearish"):      (1, 0),
-    ("bearish",  "neutral"):      (0, 2),
-    ("bearish",  "bullish"):      (0, 4),
-    ("bearish",  "very_bullish"): (0, 4),
-    ("neutral",  "neutral"):      (1, 1),
-    ("neutral",  "bullish"):      (0, 3),
-    ("neutral",  "very_bullish"): (0, 3),
-    ("neutral",  "bearish"):      (3, 0),
-    ("neutral",  "very_bearish"): (3, 0),
+    ("bullish",  "very_bullish"): (0, 2),
+    ("bullish",  "bullish"):      (0, 2),
+    ("bullish",  "neutral"):      (4, 0),
+    ("bullish",  "bearish"):      (8, 0),
+    ("bullish",  "very_bearish"): (8, 0),
+    ("bearish",  "very_bearish"): (2, 0),
+    ("bearish",  "bearish"):      (2, 0),
+    ("bearish",  "neutral"):      (0, 4),
+    ("bearish",  "bullish"):      (0, 8),
+    ("bearish",  "very_bullish"): (0, 8),
+    ("neutral",  "neutral"):      (2, 2),
+    ("neutral",  "bullish"):      (0, 6),
+    ("neutral",  "very_bullish"): (0, 6),
+    ("neutral",  "bearish"):      (6, 0),
+    ("neutral",  "very_bearish"): (6, 0),
 }
 
 # ── Target ratio (ce, pe) for rebalancing ──────────────────────────────────
 TARGET_RATIO = {
-    "very_bullish": (2, 4),
-    "bullish":      (2, 4),
-    "neutral":      (4, 4),
-    "bearish":      (4, 2),
-    "very_bearish": (4, 2),
+    "very_bullish": (4,  8),
+    "bullish":      (4,  8),
+    "neutral":      (8,  8),
+    "bearish":      (8,  4),
+    "very_bearish": (8,  4),
 }
 
 # ── Score labels ───────────────────────────────────────────────────────────
