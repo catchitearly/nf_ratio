@@ -547,3 +547,28 @@
 2026-05-25 06:35:37,155 [ERROR] dashboard_gen: generate_dashboard error: 'view'
 2026-05-25 06:35:37,155 [INFO] strategy: Run complete.
 2026-05-25 06:35:37,156 [INFO] main: ✓ main.py finished
+2026-05-25 06:40:37,361 [INFO] main: ▶ main.py started
+2026-05-25 06:40:38,234 [INFO] strategy: ============================================================
+2026-05-25 06:40:38,234 [INFO] strategy: Run at 2026-05-25 12:10:38 IST
+2026-05-25 06:40:40,496 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-25 06:40:40,779 [INFO] fyers_data: Spot: 23965.75
+2026-05-25 06:40:41,590 [INFO] fyers_data: Straddle 23600: 36 bars
+2026-05-25 06:40:42,160 [INFO] fyers_data: Straddle 23700: 36 bars
+2026-05-25 06:40:45,644 [INFO] fyers_data: Straddle 23800: 36 bars
+2026-05-25 06:40:46,239 [INFO] fyers_data: Straddle 23900: 36 bars
+2026-05-25 06:40:47,242 [INFO] fyers_data: Straddle 24000: 36 bars
+2026-05-25 06:40:48,336 [INFO] fyers_data: Straddle 24100: 36 bars
+2026-05-25 06:40:48,908 [INFO] fyers_data: Straddle 24200: 36 bars
+2026-05-25 06:40:49,481 [INFO] fyers_data: Straddle 24300: 36 bars
+2026-05-25 06:40:50,173 [INFO] fyers_data: Straddle 24400: 36 bars
+2026-05-25 06:40:50,173 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=3 upper_above=1 | lower_above=0 lower_below=4 | score=-1.5 label=neutral
+2026-05-25 06:40:50,173 [INFO] view_engine: Label confirmed: very_bullish → neutral
+2026-05-25 06:40:52,226 [INFO] strategy: MTM P&L: ₹-75
+2026-05-25 06:40:52,518 [INFO] position_manager: Adjust trigger: score -1.5 < 1.0
+2026-05-25 06:40:52,518 [INFO] strategy: Score adj trigger | entry=very_bullish score=-1.5 → rebalance to neutral
+2026-05-25 06:40:52,518 [INFO] position_manager: Rebalance | label=neutral | cur CE=2 PE=4 | target CE=4 PE=4 | add CE=2 PE=0 | close CE=0 PE=0
+2026-05-25 06:40:52,797 [INFO] position_manager: Strike CE 24200 delta=0.113
+2026-05-25 06:40:54,236 [INFO] strategy: Adjustment done: +2 legs, 0 closed | adj=1
+2026-05-25 06:40:54,237 [ERROR] dashboard_gen: generate_dashboard error: 'view'
+2026-05-25 06:40:54,238 [INFO] strategy: Run complete.
+2026-05-25 06:40:54,238 [INFO] main: ✓ main.py finished
