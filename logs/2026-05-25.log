@@ -870,3 +870,23 @@
 2026-05-25 07:50:44,019 [INFO] dashboard_gen: Dashboard written -> docs/index.html (47769 bytes)
 2026-05-25 07:50:44,020 [INFO] strategy: Run complete.
 2026-05-25 07:50:44,020 [INFO] main: ✓ main.py finished
+2026-05-25 07:55:28,330 [INFO] main: ▶ main.py started
+2026-05-25 07:55:28,640 [INFO] strategy: ============================================================
+2026-05-25 07:55:28,640 [INFO] strategy: Run at 2026-05-25 13:25:28 IST
+2026-05-25 07:55:28,986 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-25 07:55:29,276 [INFO] fyers_data: Spot: 23981.75
+2026-05-25 07:55:29,748 [INFO] fyers_data: Straddle 23600: 51 bars
+2026-05-25 07:55:30,318 [INFO] fyers_data: Straddle 23700: 51 bars
+2026-05-25 07:55:30,811 [INFO] fyers_data: Straddle 23800: 51 bars
+2026-05-25 07:55:31,279 [INFO] fyers_data: Straddle 23900: 51 bars
+2026-05-25 07:55:31,742 [INFO] fyers_data: Straddle 24000: 51 bars
+2026-05-25 07:55:32,225 [INFO] fyers_data: Straddle 24100: 51 bars
+2026-05-25 07:55:32,701 [INFO] fyers_data: Straddle 24200: 51 bars
+2026-05-25 07:55:33,175 [INFO] fyers_data: Straddle 24300: 51 bars
+2026-05-25 07:55:33,652 [INFO] fyers_data: Straddle 24400: 51 bars
+2026-05-25 07:55:33,653 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=1 lower_below=3 | score=+4.5 label=bullish
+2026-05-25 07:55:33,653 [INFO] view_engine: Label confirmed: very_bearish → bullish
+2026-05-25 07:55:33,882 [INFO] strategy: MTM P&L: ₹-105
+2026-05-25 07:55:34,111 [INFO] dashboard_gen: Dashboard written -> docs/index.html (48427 bytes)
+2026-05-25 07:55:34,112 [INFO] strategy: Run complete.
+2026-05-25 07:55:34,112 [INFO] main: ✓ main.py finished
