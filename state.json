@@ -20,56 +20,56 @@
   "closed": false,
   "straddle_snapshot": {
     "23600": {
-      "vwap": 441.45,
-      "current_price": 473.45,
+      "vwap": 441.59,
+      "current_price": 471.35,
       "below_vwap": false,
       "above_vwap": true
     },
     "23700": {
-      "vwap": 345.24,
-      "current_price": 371.7,
+      "vwap": 345.29,
+      "current_price": 372.6,
       "below_vwap": false,
       "above_vwap": true
     },
     "23800": {
-      "vwap": 250.92,
-      "current_price": 273.65,
+      "vwap": 251.07,
+      "current_price": 273.2,
       "below_vwap": false,
       "above_vwap": true
     },
     "23900": {
-      "vwap": 168.86,
-      "current_price": 178.6,
+      "vwap": 168.93,
+      "current_price": 179.7,
       "below_vwap": false,
       "above_vwap": true
     },
     "24000": {
-      "vwap": 115.68,
-      "current_price": 105.15,
+      "vwap": 115.6,
+      "current_price": 104.85,
       "below_vwap": true,
       "above_vwap": false
     },
     "24100": {
-      "vwap": 111.95,
-      "current_price": 90.3,
+      "vwap": 111.66,
+      "current_price": 89.05,
       "below_vwap": true,
       "above_vwap": false
     },
     "24200": {
-      "vwap": 171.15,
-      "current_price": 148.9,
+      "vwap": 170.96,
+      "current_price": 145.6,
       "below_vwap": true,
       "above_vwap": false
     },
     "24300": {
-      "vwap": 262.03,
-      "current_price": 240.25,
+      "vwap": 261.7,
+      "current_price": 236.0,
       "below_vwap": true,
       "above_vwap": false
     },
     "24400": {
-      "vwap": 367.3,
-      "current_price": 336.2,
+      "vwap": 367.16,
+      "current_price": 333.95,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -90,10 +90,18 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 24078.2
+    },
+    {
+      "time": "11:13:02",
+      "label": "very_bullish",
+      "score": 11.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 24075.25
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-05-26T05:40:39.536956",
+  "last_run": "2026-05-26T05:43:03.030244",
   "errors": [
     {
       "time": "2026-05-26T05:37:59.131093",
@@ -101,6 +109,10 @@
     },
     {
       "time": "2026-05-26T05:40:38.837869",
+      "msg": "Entry failed."
+    },
+    {
+      "time": "2026-05-26T05:43:02.464580",
       "msg": "Entry failed."
     }
   ]

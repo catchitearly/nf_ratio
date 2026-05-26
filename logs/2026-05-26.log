@@ -51,3 +51,26 @@
 2026-05-26 05:40:39,536 [INFO] dashboard_gen: Dashboard written -> docs/index.html (14738 bytes)
 2026-05-26 05:40:39,537 [INFO] strategy: Run complete.
 2026-05-26 05:40:39,537 [INFO] main: ✓ main.py finished
+2026-05-26 05:42:55,111 [INFO] main: ▶ main.py started
+2026-05-26 05:42:55,993 [INFO] strategy: ============================================================
+2026-05-26 05:42:55,993 [INFO] strategy: Run at 2026-05-26 11:12:55 IST
+2026-05-26 05:42:56,321 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-26 05:42:56,593 [INFO] fyers_data: Spot: 24075.25
+2026-05-26 05:42:57,226 [INFO] fyers_data: Straddle 23600: 24 bars
+2026-05-26 05:42:57,912 [INFO] fyers_data: Straddle 23700: 24 bars
+2026-05-26 05:42:58,567 [INFO] fyers_data: Straddle 23800: 24 bars
+2026-05-26 05:42:59,056 [INFO] fyers_data: Straddle 23900: 24 bars
+2026-05-26 05:42:59,626 [INFO] fyers_data: Straddle 24000: 24 bars
+2026-05-26 05:43:00,166 [INFO] fyers_data: Straddle 24100: 24 bars
+2026-05-26 05:43:00,777 [INFO] fyers_data: Straddle 24200: 24 bars
+2026-05-26 05:43:01,310 [INFO] fyers_data: Straddle 24300: 24 bars
+2026-05-26 05:43:02,209 [INFO] fyers_data: Straddle 24400: 24 bars
+2026-05-26 05:43:02,209 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-05-26 05:43:02,464 [INFO] position_manager: Skip CE 24300: LTP=1.85 < 2.0
+2026-05-26 05:43:02,464 [WARNING] position_manager: No valid CE strike found (all failed LTP/delta/dist check)
+2026-05-26 05:43:02,464 [WARNING] position_manager: No PE BS candidate >=50pts from ATM near 24075.25 (DTE=1)
+2026-05-26 05:43:02,464 [ERROR] position_manager: Entry: strike selection failed
+2026-05-26 05:43:02,464 [ERROR] strategy: Entry failed.
+2026-05-26 05:43:03,030 [INFO] dashboard_gen: Dashboard written -> docs/index.html (15509 bytes)
+2026-05-26 05:43:03,030 [INFO] strategy: Run complete.
+2026-05-26 05:43:03,030 [INFO] main: ✓ main.py finished
