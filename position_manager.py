@@ -15,7 +15,7 @@ from datetime import datetime
 
 from config import (
     LOT_SIZE, DELTA_ENTRY_MIN, DELTA_ENTRY_MAX, DELTA_ALERT,
-    HEDGE_OFFSET, STRIKE_STEP,
+    HEDGE_OFFSET, STRIKE_STEP, MIN_SELL_LTP, MIN_STRIKE_DIST,
     MAX_LOTS_CE, MAX_LOTS_PE,
     ENTRY_LOTS, ADD_1200_LOTS, TARGET_RATIO,
     TSL_ACTIVATE_PNL, TSL_INITIAL_GAP, TSL_STEP_PROFIT, TSL_STEP_MOVE,
@@ -43,34 +43,63 @@ def _cap_add(lots: int, opt_type: str, positions: list[dict]) -> int:
 # ── Strike selection ─────────────────────────────────────────────────────────
 
 def find_delta_strike(spot: float, opt_type: str,
-                      dte: float) -> tuple[int, float] | tuple[None, None]:
+                      dte: float) -> tuple[int, float, float] | tuple[None, None, None]:
+    """
+    Find sell strike satisfying ALL three conditions:
+      1. Delta between DELTA_ENTRY_MIN and DELTA_ENTRY_MAX (0.10-0.15)
+      2. LTP > MIN_SELL_LTP (> Rs 2)
+      3. Strike at least MIN_STRIKE_DIST points from ATM (>= 300 pts)
+    Returns (strike, delta, ltp) or (None, None, None).
+    """
     try:
-        direction  = 1 if opt_type == "CE" else -1
-        atm        = round(spot / STRIKE_STEP) * STRIKE_STEP
+        direction = 1 if opt_type == "CE" else -1
+        atm       = round(spot / STRIKE_STEP) * STRIKE_STEP
         candidates = []
-        for steps in range(1, 25):
-            strike = atm + direction * steps * STRIKE_STEP
-            delta  = bs_delta(spot, strike, opt_type, dte)
+
+        for steps in range(1, 30):
+            strike   = atm + direction * steps * STRIKE_STEP
+            distance = abs(strike - atm)
+
+            # Condition 3: min distance from ATM
+            if distance < MIN_STRIKE_DIST:
+                continue
+
+            delta = bs_delta(spot, strike, opt_type, dte)
             if DELTA_ENTRY_MIN <= delta <= DELTA_ENTRY_MAX:
                 candidates.append((strike, delta))
             elif delta < DELTA_ENTRY_MIN:
-                break
+                break   # going too far OTM
+
         if not candidates:
-            return None, None
+            log.warning(f"No {opt_type} BS candidate >=300pts from ATM near {spot}")
+            return None, None, None
+
+        # Batch fetch LTPs for all candidates in one call
         syms  = [_option_symbol(s, opt_type) for s, _ in candidates]
         batch = get_quotes_batch(syms) or {}
+
         for strike, bs_d in candidates:
-            sym   = _option_symbol(strike, opt_type)
-            q     = batch.get(sym, {})
+            sym = _option_symbol(strike, opt_type)
+            q   = batch.get(sym, {})
+            ltp = q.get("ltp", 0.0)
+
+            # Condition 2: LTP > Rs 2
+            if ltp < MIN_SELL_LTP:
+                log.info(f"Skip {opt_type} {strike}: LTP={ltp:.2f} < {MIN_SELL_LTP}")
+                continue
+
+            # Condition 1: delta (use Fyers greek if available, else BS)
             delta = (q["delta"] if q.get("greeks_source") == "fyers"
                      and q.get("delta") else bs_d)
             if DELTA_ENTRY_MIN <= delta <= DELTA_ENTRY_MAX:
-                log.info(f"Strike {opt_type} {strike} delta={delta:.3f}")
-                return strike, delta
-        return None, None
+                log.info(f"Selected {opt_type} {strike} | delta={delta:.3f} ltp={ltp:.2f} dist={abs(strike-atm)}pts")
+                return strike, delta, ltp
+
+        log.warning(f"No valid {opt_type} strike found (all failed LTP/delta/dist check)")
+        return None, None, None
     except Exception as e:
         log.error(f"find_delta_strike ({opt_type}): {e}")
-        return None, None
+        return None, None, None
 
 
 # ── Leg builders ─────────────────────────────────────────────────────────────
@@ -86,7 +115,8 @@ def _fetch_ltps(pairs: list[tuple[int, str]]) -> dict:
 
 
 def _make_leg(strike: int, opt_type: str, action: str,
-              lots: int, ltp: float, tag: str) -> dict:
+              lots: int, ltp: float, tag: str,
+              delta: float = 0.0) -> dict:
     return {
         "symbol":      _option_symbol(strike, opt_type),
         "strike":      strike,
@@ -95,7 +125,8 @@ def _make_leg(strike: int, opt_type: str, action: str,
         "lots":        lots,
         "qty":         lots * LOT_SIZE,
         "entry_price": ltp,
-        "entry_time":  datetime.now().isoformat(),
+        "entry_time":  datetime.now().strftime("%H:%M:%S"),
+        "entry_delta": round(delta, 3),
         "tag":         tag,
         "current_ltp": ltp,
         "pnl":         0.0
@@ -103,19 +134,22 @@ def _make_leg(strike: int, opt_type: str, action: str,
 
 
 def _add_spread(sell_strike: int, opt_type: str, lots: int,
-                tag: str, positions: list[dict]) -> list[dict]:
+                tag: str, positions: list[dict],
+                sell_delta: float = 0.0, sell_ltp: float = 0.0) -> list[dict]:
     """Add sell+hedge respecting max-lot cap."""
     lots = _cap_add(lots, opt_type, positions)
     if lots <= 0:
         return []
     hdir         = 1 if opt_type == "CE" else -1
     hedge_strike = sell_strike + hdir * HEDGE_OFFSET
-    ltps = _fetch_ltps([(sell_strike, opt_type), (hedge_strike, opt_type)])
+    hedge_ltp    = _fetch_ltps([(hedge_strike, opt_type)]).get(
+                       _option_symbol(hedge_strike, opt_type), 0.0)
+    sell_price   = sell_ltp if sell_ltp > 0 else _fetch_ltps(
+                       [(sell_strike, opt_type)]).get(
+                       _option_symbol(sell_strike, opt_type), 0.0)
     return [
-        _make_leg(sell_strike,  opt_type, "SELL", lots,
-                  ltps.get(_option_symbol(sell_strike,  opt_type), 0.0), tag),
-        _make_leg(hedge_strike, opt_type, "BUY",  lots,
-                  ltps.get(_option_symbol(hedge_strike, opt_type), 0.0), f"{tag}_h"),
+        _make_leg(sell_strike,  opt_type, "SELL", lots, sell_price,  tag,          sell_delta),
+        _make_leg(hedge_strike, opt_type, "BUY",  lots, hedge_ltp,   f"{tag}_h",   0.0),
     ]
 
 
@@ -224,28 +258,22 @@ def compute_rebalance(current_ce: int, current_pe: int,
 def build_entry_legs(label: str, spot: float, dte: float) -> list[dict] | None:
     try:
         ce_lots, pe_lots = ENTRY_LOTS.get(label, (3, 3))
-        ce_strike, _ = find_delta_strike(spot, "CE", dte)
-        pe_strike, _ = find_delta_strike(spot, "PE", dte)
+        ce_strike, ce_delta, ce_ltp = find_delta_strike(spot, "CE", dte)
+        pe_strike, pe_delta, pe_ltp = find_delta_strike(spot, "PE", dte)
         if ce_strike is None or pe_strike is None:
             log.error("Entry: strike selection failed")
             return None
         ce_hedge = ce_strike + HEDGE_OFFSET
         pe_hedge = pe_strike - HEDGE_OFFSET
-        ltps = _fetch_ltps([
-            (ce_strike, "CE"), (ce_hedge, "CE"),
-            (pe_strike, "PE"), (pe_hedge, "PE")
-        ])
+        ce_hedge_ltp = _fetch_ltps([(ce_hedge, "CE")]).get(_option_symbol(ce_hedge, "CE"), 0.0)
+        pe_hedge_ltp = _fetch_ltps([(pe_hedge, "PE")]).get(_option_symbol(pe_hedge, "PE"), 0.0)
         legs = [
-            _make_leg(ce_strike, "CE", "SELL", ce_lots,
-                      ltps.get(_option_symbol(ce_strike, "CE"), 0.0), "sell"),
-            _make_leg(ce_hedge,  "CE", "BUY",  ce_lots,
-                      ltps.get(_option_symbol(ce_hedge,  "CE"), 0.0), "hedge"),
-            _make_leg(pe_strike, "PE", "SELL", pe_lots,
-                      ltps.get(_option_symbol(pe_strike, "PE"), 0.0), "sell"),
-            _make_leg(pe_hedge,  "PE", "BUY",  pe_lots,
-                      ltps.get(_option_symbol(pe_hedge,  "PE"), 0.0), "hedge"),
+            _make_leg(ce_strike, "CE", "SELL", ce_lots, ce_ltp or 0.0, "sell",  ce_delta or 0.0),
+            _make_leg(ce_hedge,  "CE", "BUY",  ce_lots, ce_hedge_ltp,  "hedge", 0.0),
+            _make_leg(pe_strike, "PE", "SELL", pe_lots, pe_ltp or 0.0, "sell",  pe_delta or 0.0),
+            _make_leg(pe_hedge,  "PE", "BUY",  pe_lots, pe_hedge_ltp,  "hedge", 0.0),
         ]
-        log.info(f"Entry | label={label} CE {ce_strike}x{ce_lots} PE {pe_strike}x{pe_lots}")
+        log.info(f"Entry | label={label} CE {ce_strike}x{ce_lots} d={ce_delta:.3f} PE {pe_strike}x{pe_lots} d={pe_delta:.3f}")
         return legs
     except Exception as e:
         log.error(f"build_entry_legs: {e}")
@@ -267,13 +295,13 @@ def build_1200_legs(entry_label: str, current_label: str,
         log.info(f"12:00 add | key={key} ce={ce_add} pe={pe_add}")
         legs = []
         if ce_add > 0:
-            s, _ = find_delta_strike(spot, "CE", dte)
+            s, d, ltp = find_delta_strike(spot, "CE", dte)
             if s:
-                legs += _add_spread(s, "CE", ce_add, "sell_1200", positions)
+                legs += _add_spread(s, "CE", ce_add, "sell_1200", positions, d or 0.0, ltp or 0.0)
         if pe_add > 0:
-            s, _ = find_delta_strike(spot, "PE", dte)
+            s, d, ltp = find_delta_strike(spot, "PE", dte)
             if s:
-                legs += _add_spread(s, "PE", pe_add, "sell_1200", positions)
+                legs += _add_spread(s, "PE", pe_add, "sell_1200", positions, d or 0.0, ltp or 0.0)
         return legs if legs else None
     except Exception as e:
         log.error(f"build_1200_legs: {e}")
@@ -313,13 +341,13 @@ def build_rebalance_legs(new_label: str, spot: float, dte: float,
 
         # Then add (respecting max cap after closes)
         if ce_add > 0:
-            s, _ = find_delta_strike(spot, "CE", dte)
+            s, d, ltp = find_delta_strike(spot, "CE", dte)
             if s:
-                new_legs += _add_spread(s, "CE", ce_add, "sell_reb", positions)
+                new_legs += _add_spread(s, "CE", ce_add, "sell_reb", positions, d or 0.0, ltp or 0.0)
         if pe_add > 0:
-            s, _ = find_delta_strike(spot, "PE", dte)
+            s, d, ltp = find_delta_strike(spot, "PE", dte)
             if s:
-                new_legs += _add_spread(s, "PE", pe_add, "sell_reb", positions)
+                new_legs += _add_spread(s, "PE", pe_add, "sell_reb", positions, d or 0.0, ltp or 0.0)
 
     except Exception as e:
         log.error(f"build_rebalance_legs: {e}")
