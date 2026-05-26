@@ -20,56 +20,56 @@
   "closed": false,
   "straddle_snapshot": {
     "23600": {
-      "vwap": 441.69,
-      "current_price": 463.15,
+      "vwap": 442.11,
+      "current_price": 466.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "23700": {
-      "vwap": 345.4,
-      "current_price": 365.05,
+      "vwap": 345.59,
+      "current_price": 366.6,
       "below_vwap": false,
       "above_vwap": true
     },
     "23800": {
-      "vwap": 251.15,
-      "current_price": 267.35,
+      "vwap": 251.38,
+      "current_price": 268.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "23900": {
-      "vwap": 168.98,
-      "current_price": 174.55,
+      "vwap": 169.01,
+      "current_price": 174.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "24000": {
-      "vwap": 115.42,
-      "current_price": 101.25,
+      "vwap": 114.93,
+      "current_price": 100.85,
       "below_vwap": true,
       "above_vwap": false
     },
     "24100": {
-      "vwap": 111.16,
-      "current_price": 89.5,
+      "vwap": 110.13,
+      "current_price": 88.05,
       "below_vwap": true,
       "above_vwap": false
     },
     "24200": {
-      "vwap": 170.6,
-      "current_price": 151.15,
+      "vwap": 169.99,
+      "current_price": 150.5,
       "below_vwap": true,
       "above_vwap": false
     },
     "24300": {
-      "vwap": 261.34,
-      "current_price": 243.2,
+      "vwap": 260.96,
+      "current_price": 242.55,
       "below_vwap": true,
       "above_vwap": false
     },
     "24400": {
-      "vwap": 367.05,
-      "current_price": 339.9,
+      "vwap": 366.75,
+      "current_price": 340.35,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -114,10 +114,18 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 24068.5
+    },
+    {
+      "time": "11:20:39",
+      "label": "very_bullish",
+      "score": 11.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 24068.95
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-05-26T05:45:41.195122",
+  "last_run": "2026-05-26T05:50:40.186022",
   "errors": [
     {
       "time": "2026-05-26T05:37:59.131093",
@@ -137,6 +145,10 @@
     },
     {
       "time": "2026-05-26T05:45:40.433605",
+      "msg": "Entry failed."
+    },
+    {
+      "time": "2026-05-26T05:50:39.600041",
       "msg": "Entry failed."
     }
   ]
