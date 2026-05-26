@@ -59,7 +59,7 @@ def find_delta_strike(spot: float, opt_type: str,
         # DTE < 5: 200pts,  DTE < 10: 250pts,  else: 300pts (config value)
         if dte < 1:
             min_dist = 250
-        elif dte < 3 :
+        elif dte < 3:
             min_dist = 300
         else:
             min_dist = MIN_STRIKE_DIST
@@ -415,7 +415,8 @@ def compute_tsl(peak_pnl: float) -> float | None:
 
 # ── MTM ───────────────────────────────────────────────────────────────────────
 
-def update_positions_mtm(positions: list[dict]) -> list[dict]:
+def update_positions_mtm(positions: list[dict], spot: float = 0.0,
+                          dte: float = 1.0) -> list[dict]:
     try:
         open_legs = [p for p in positions if not p.get("closed")]
         if not open_legs:
@@ -424,12 +425,18 @@ def update_positions_mtm(positions: list[dict]) -> list[dict]:
         batch = get_quotes_batch(syms) or {}
         for leg in open_legs:
             sym = _option_symbol(leg["strike"], leg["opt_type"])
-            ltp = batch.get(sym, {}).get("ltp", 0.0)
+            q   = batch.get(sym, {})
+            ltp = q.get("ltp", 0.0)
             if ltp == 0:
                 continue
             leg["current_ltp"] = ltp
             mult       = -1 if leg["action"] == "SELL" else 1
             leg["pnl"] = mult * (ltp - leg["entry_price"]) * leg["qty"]
+            # Update current delta
+            if q.get("greeks_source") == "fyers" and q.get("delta") is not None:
+                leg["current_delta"] = round(abs(q["delta"]), 3)
+            elif spot > 0:
+                leg["current_delta"] = round(bs_delta(spot, leg["strike"], leg["opt_type"], dte), 3)
     except Exception as e:
         log.error(f"update_positions_mtm: {e}")
     return positions
