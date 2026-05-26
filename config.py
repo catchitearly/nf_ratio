@@ -11,8 +11,8 @@ TELEGRAM_CHAT_ID   = os.environ.get("TELEGRAM_CHAT_ID", "")
 
 # ── Instrument ─────────────────────────────────────────────────────────────
 INDEX_SYMBOL   = "NSE:NIFTY50-INDEX"
-EXPIRY_DATE    = "26-05-2026"
-EXPIRY_STR     = "26MAY"
+EXPIRY_DATE    = "02-06-2026"
+EXPIRY_STR     = "26602"
 STRIKE_STEP    = 100
 STRADDLE_RANGE = 4
 
