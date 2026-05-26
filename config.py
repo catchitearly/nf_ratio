@@ -19,8 +19,10 @@ STRADDLE_RANGE = 4
 # ── Delta thresholds ───────────────────────────────────────────────────────
 DELTA_ENTRY_MIN = 0.10
 DELTA_ENTRY_MAX = 0.15
-DELTA_ALERT     = 0.35
-HEDGE_OFFSET    = 100
+DELTA_ALERT        = 0.35
+HEDGE_OFFSET        = 100
+MIN_SELL_LTP        = 2.0     # sell strike LTP must be > Rs 2
+MIN_STRIKE_DIST     = 300     # sell strike must be >= 300 pts from ATM
 
 # ── Lot size ───────────────────────────────────────────────────────────────
 LOT_SIZE    = 75
