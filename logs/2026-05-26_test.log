@@ -122,3 +122,29 @@
 2026-05-26 03:01:18,028 [INFO] test_run:   SELL PE 23500 x4L @ ₹5.35 delta=0.139 time=03:01:16
 2026-05-26 03:01:18,028 [INFO] test_run: ============================================================
 2026-05-26 03:01:18,028 [INFO] test_run: Check Telegram for entry alert and docs/index.html for dashboard.
+2026-05-26 03:09:26,597 [INFO] test_run: ============================================================
+2026-05-26 03:09:26,607 [INFO] test_run: TEST RUN at 2026-05-26 08:39:26 IST
+2026-05-26 03:09:26,607 [INFO] test_run: Scenario: bullish | Spot: 24000.0 | ATM: 24000
+2026-05-26 03:09:27,473 [INFO] strategy: ============================================================
+2026-05-26 03:09:27,473 [INFO] strategy: Run at 2026-05-26 08:39:27 IST
+2026-05-26 03:09:27,473 [INFO] test_run: [MOCK] compute_view | score=+7.5 label=very_bullish
+2026-05-26 03:09:28,183 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-26 03:09:28,421 [INFO] position_manager: Selected CE 24600 | delta=0.132 ltp=4.60 dist=600pts
+2026-05-26 03:09:28,666 [INFO] position_manager: Selected PE 23500 | delta=0.139 ltp=5.35 dist=500pts
+2026-05-26 03:09:29,138 [INFO] position_manager: Entry | label=very_bullish CE 24600x4 d=0.132 PE 23500x8 d=0.139
+2026-05-26 03:09:29,625 [INFO] strategy: Entry done: label=very_bullish legs=4
+2026-05-26 03:09:29,860 [INFO] strategy: MTM P&L: ₹0
+2026-05-26 03:09:30,099 [INFO] dashboard_gen: Dashboard written -> docs/index.html (15635 bytes)
+2026-05-26 03:09:30,099 [INFO] strategy: Run complete.
+2026-05-26 03:09:30,100 [INFO] test_run: ============================================================
+2026-05-26 03:09:30,100 [INFO] test_run: TEST COMPLETE — Final state summary:
+2026-05-26 03:09:30,100 [INFO] test_run:   Entry done:    True
+2026-05-26 03:09:30,100 [INFO] test_run:   Entry label:   very_bullish
+2026-05-26 03:09:30,100 [INFO] test_run:   Score:         7.5
+2026-05-26 03:09:30,100 [INFO] test_run:   Positions:     4 legs
+2026-05-26 03:09:30,100 [INFO] test_run:   Adj count:     0
+2026-05-26 03:09:30,100 [INFO] test_run:   Dashboard:     docs/index.html
+2026-05-26 03:09:30,100 [INFO] test_run:   SELL CE 24600 x4L @ ₹4.6 delta=0.132 time=03:09:29
+2026-05-26 03:09:30,100 [INFO] test_run:   SELL PE 23500 x8L @ ₹5.35 delta=0.139 time=03:09:29
+2026-05-26 03:09:30,100 [INFO] test_run: ============================================================
+2026-05-26 03:09:30,100 [INFO] test_run: Check Telegram for entry alert and docs/index.html for dashboard.
