@@ -1,1 +1,29 @@
 
+2026-05-26 05:37:51,009 [INFO] main: ▶ main.py started
+2026-05-26 05:37:51,888 [INFO] strategy: ============================================================
+2026-05-26 05:37:51,888 [INFO] strategy: Run at 2026-05-26 11:07:51 IST
+2026-05-26 05:37:51,889 [ERROR] state_manager: load_state error: Expecting value: line 2 column 1 (char 1) – fresh start.
+2026-05-26 05:37:51,904 [INFO] strategy: New trading day: 2026-05-26
+2026-05-26 05:37:52,307 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-26 05:37:52,591 [INFO] fyers_data: Spot: 24071.25
+2026-05-26 05:37:53,424 [INFO] fyers_data: 9:15 candle close: 24012.55
+2026-05-26 05:37:53,424 [INFO] strategy: ATM fixed at 24000
+2026-05-26 05:37:54,006 [INFO] fyers_data: Straddle 23600: 23 bars
+2026-05-26 05:37:54,568 [INFO] fyers_data: Straddle 23700: 23 bars
+2026-05-26 05:37:55,171 [INFO] fyers_data: Straddle 23800: 23 bars
+2026-05-26 05:37:55,819 [INFO] fyers_data: Straddle 23900: 23 bars
+2026-05-26 05:37:56,432 [INFO] fyers_data: Straddle 24000: 23 bars
+2026-05-26 05:37:57,109 [INFO] fyers_data: Straddle 24100: 23 bars
+2026-05-26 05:37:57,738 [INFO] fyers_data: Straddle 24200: 23 bars
+2026-05-26 05:37:58,300 [INFO] fyers_data: Straddle 24300: 23 bars
+2026-05-26 05:37:58,862 [INFO] fyers_data: Straddle 24400: 23 bars
+2026-05-26 05:37:58,862 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-05-26 05:37:58,862 [INFO] view_engine: Label pending (1/2): current=None pending=very_bullish
+2026-05-26 05:37:59,130 [INFO] position_manager: Skip CE 24300: LTP=1.90 < 2.0
+2026-05-26 05:37:59,130 [WARNING] position_manager: No valid CE strike found (all failed LTP/delta/dist check)
+2026-05-26 05:37:59,130 [WARNING] position_manager: No PE BS candidate >=100pts from ATM near 24071.25 (DTE=1)
+2026-05-26 05:37:59,131 [ERROR] position_manager: Entry: strike selection failed
+2026-05-26 05:37:59,131 [ERROR] strategy: Entry failed.
+2026-05-26 05:37:59,750 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13967 bytes)
+2026-05-26 05:37:59,750 [INFO] strategy: Run complete.
+2026-05-26 05:37:59,751 [INFO] main: ✓ main.py finished

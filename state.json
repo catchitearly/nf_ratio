@@ -1,1 +1,95 @@
-
+{
+  "date": "2026-05-26",
+  "atm": 24000,
+  "entry_done": false,
+  "entry_label": null,
+  "current_label": null,
+  "prev_label": null,
+  "pending_label": "very_bullish",
+  "pending_label_count": 1,
+  "current_score": 11.5,
+  "raw_label": "very_bullish",
+  "adjustment_count": 0,
+  "add_1200_done": false,
+  "neutral_adjusted": false,
+  "peak_pnl": 0.0,
+  "tsl_level": null,
+  "tsl_alerted": false,
+  "positions": [],
+  "delta_alerts_sent": [],
+  "closed": false,
+  "straddle_snapshot": {
+    "23600": {
+      "vwap": 441.36,
+      "current_price": 468.55,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "23700": {
+      "vwap": 345.04,
+      "current_price": 370.15,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "23800": {
+      "vwap": 250.79,
+      "current_price": 271.15,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "23900": {
+      "vwap": 168.79,
+      "current_price": 177.9,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "24000": {
+      "vwap": 115.76,
+      "current_price": 104.75,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24100": {
+      "vwap": 112.28,
+      "current_price": 89.5,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24200": {
+      "vwap": 171.42,
+      "current_price": 147.9,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24300": {
+      "vwap": 262.48,
+      "current_price": 238.15,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24400": {
+      "vwap": 367.41,
+      "current_price": 336.05,
+      "below_vwap": true,
+      "above_vwap": false
+    }
+  },
+  "view_log": [
+    {
+      "time": "11:07:58",
+      "label": "very_bullish",
+      "score": 11.5,
+      "confirmed": "",
+      "pending": "very_bullish",
+      "spot": 24071.25
+    }
+  ],
+  "equity_curve": [],
+  "last_run": "2026-05-26T05:37:59.750576",
+  "errors": [
+    {
+      "time": "2026-05-26T05:37:59.131093",
+      "msg": "Entry failed."
+    }
+  ]
+}
