@@ -58,7 +58,7 @@ def find_delta_strike(spot: float, opt_type: str,
         # Min distance relaxes when DTE is low — avoids no-candidate failure
         # DTE < 5: 200pts,  DTE < 10: 250pts,  else: 300pts (config value)
         if dte < 1:
-            min_dist = 250
+            min_dist = 100
         elif dte < 3:
             min_dist = 300
         else:
