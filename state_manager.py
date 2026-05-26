@@ -22,6 +22,7 @@ DEFAULT_STATE = {
     "pending_label_count":0,
     "current_score":      None,
     "raw_label":          None,
+    "prev_raw_label":     None,
     # adjustment tracking
     "adjustment_count":   0,
     "add_1200_done":      False,
