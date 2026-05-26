@@ -317,7 +317,7 @@ def generate_dashboard(state: dict):
             "<div class='section-hdr'><h2>&#128203; Positions</h2>"
             "<span style='color:var(--muted);font-size:10px'>Paper Trade</span></div>"
             "<table><thead><tr><th>St</th><th>Type</th><th>Strike</th><th>Action</th>"
-            "<th>Lots</th><th>Entry &#8377;</th><th>LTP &#8377;</th><th>P&amp;L</th></tr></thead>"
+            "<th>Lots</th><th>Delta</th><th>Time</th><th>Entry &#8377;</th><th>LTP &#8377;</th><th>P&amp;L</th></tr></thead>"
             "<tbody>" + pos_html + "</tbody></table></div>\n"
         )
 
