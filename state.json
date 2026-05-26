@@ -2,13 +2,13 @@
   "date": "2026-05-26",
   "atm": 24000,
   "entry_done": true,
-  "entry_label": "very_bullish",
-  "current_label": "very_bullish",
+  "entry_label": "very_bearish",
+  "current_label": "very_bearish",
   "prev_label": null,
   "pending_label": null,
   "pending_label_count": 0,
-  "current_score": 7.5,
-  "raw_label": "very_bullish",
+  "current_score": -11.5,
+  "raw_label": "very_bearish",
   "adjustment_count": 0,
   "add_1200_done": false,
   "neutral_adjusted": false,
@@ -21,10 +21,10 @@
       "strike": 24600,
       "opt_type": "CE",
       "action": "SELL",
-      "lots": 4,
-      "qty": 300,
+      "lots": 8,
+      "qty": 600,
       "entry_price": 4.6,
-      "entry_time": "02:58:11",
+      "entry_time": "03:01:16",
       "entry_delta": 0.132,
       "tag": "sell",
       "current_ltp": 4.6,
@@ -35,10 +35,10 @@
       "strike": 24700,
       "opt_type": "CE",
       "action": "BUY",
-      "lots": 4,
-      "qty": 300,
+      "lots": 8,
+      "qty": 600,
       "entry_price": 2.5,
-      "entry_time": "02:58:11",
+      "entry_time": "03:01:16",
       "entry_delta": 0.0,
       "tag": "hedge",
       "current_ltp": 2.5,
@@ -49,10 +49,10 @@
       "strike": 23500,
       "opt_type": "PE",
       "action": "SELL",
-      "lots": 8,
-      "qty": 600,
+      "lots": 4,
+      "qty": 300,
       "entry_price": 5.35,
-      "entry_time": "02:58:11",
+      "entry_time": "03:01:16",
       "entry_delta": 0.139,
       "tag": "sell",
       "current_ltp": 5.35,
@@ -63,10 +63,10 @@
       "strike": 23400,
       "opt_type": "PE",
       "action": "BUY",
-      "lots": 8,
-      "qty": 600,
+      "lots": 4,
+      "qty": 300,
       "entry_price": 4.4,
-      "entry_time": "02:58:11",
+      "entry_time": "03:01:16",
       "entry_delta": 0.0,
       "tag": "hedge",
       "current_ltp": 4.4,
@@ -78,27 +78,27 @@
   "straddle_snapshot": {
     "24000": {
       "vwap": 200.0,
-      "current_price": 190.0,
-      "below_vwap": true,
-      "above_vwap": false
+      "current_price": 210.0,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24100": {
       "vwap": 150.0,
-      "current_price": 140.0,
-      "below_vwap": true,
-      "above_vwap": false
+      "current_price": 160.0,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24200": {
       "vwap": 140.0,
-      "current_price": 130.0,
-      "below_vwap": true,
-      "above_vwap": false
+      "current_price": 150.0,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24300": {
       "vwap": 130.0,
-      "current_price": 120.0,
-      "below_vwap": true,
-      "above_vwap": false
+      "current_price": 140.0,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "24400": {
       "vwap": 120.0,
@@ -108,21 +108,21 @@
     },
     "23900": {
       "vwap": 150.0,
-      "current_price": 160.0,
-      "below_vwap": false,
-      "above_vwap": true
+      "current_price": 140.0,
+      "below_vwap": true,
+      "above_vwap": false
     },
     "23800": {
       "vwap": 140.0,
-      "current_price": 150.0,
-      "below_vwap": false,
-      "above_vwap": true
+      "current_price": 130.0,
+      "below_vwap": true,
+      "above_vwap": false
     },
     "23700": {
       "vwap": 130.0,
-      "current_price": 140.0,
-      "below_vwap": false,
-      "above_vwap": true
+      "current_price": 120.0,
+      "below_vwap": true,
+      "above_vwap": false
     },
     "23600": {
       "vwap": 120.0,
@@ -133,21 +133,21 @@
   },
   "view_log": [
     {
-      "time": "08:28:09",
-      "label": "very_bullish",
-      "score": 7.5,
-      "confirmed": "very_bullish",
+      "time": "08:31:15",
+      "label": "very_bearish",
+      "score": -11.5,
+      "confirmed": "very_bearish",
       "pending": "",
       "spot": 24000.0
     }
   ],
   "equity_curve": [
     {
-      "time": "08:28:11",
+      "time": "08:31:17",
       "pnl": 0.0
     }
   ],
-  "last_run": "2026-05-26T02:58:12.055812",
+  "last_run": "2026-05-26T03:01:18.026942",
   "errors": [],
   "_test": true
 }
