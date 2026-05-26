@@ -143,3 +143,26 @@
 2026-05-26 06:25:38,738 [INFO] dashboard_gen: Dashboard written -> docs/index.html (20058 bytes)
 2026-05-26 06:25:38,739 [INFO] strategy: Run complete.
 2026-05-26 06:25:38,739 [INFO] main: ✓ main.py finished
+2026-05-26 06:30:41,607 [INFO] main: ▶ main.py started
+2026-05-26 06:30:41,911 [INFO] strategy: ============================================================
+2026-05-26 06:30:41,911 [INFO] strategy: Run at 2026-05-26 12:00:41 IST
+2026-05-26 06:30:42,211 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-26 06:30:42,427 [INFO] fyers_data: Spot: 24037.2
+2026-05-26 06:30:42,873 [INFO] fyers_data: Straddle 23600: 34 bars
+2026-05-26 06:30:43,533 [INFO] fyers_data: Straddle 23700: 34 bars
+2026-05-26 06:30:43,974 [INFO] fyers_data: Straddle 23800: 34 bars
+2026-05-26 06:30:44,444 [INFO] fyers_data: Straddle 23900: 34 bars
+2026-05-26 06:30:44,904 [INFO] fyers_data: Straddle 24000: 34 bars
+2026-05-26 06:30:45,366 [INFO] fyers_data: Straddle 24100: 34 bars
+2026-05-26 06:30:45,827 [INFO] fyers_data: Straddle 24200: 34 bars
+2026-05-26 06:30:46,630 [INFO] fyers_data: Straddle 24300: 34 bars
+2026-05-26 06:30:47,068 [INFO] fyers_data: Straddle 24400: 34 bars
+2026-05-26 06:30:47,068 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=0 lower_below=4 | score=+0.5 label=neutral
+2026-05-26 06:30:47,292 [INFO] strategy: MTM P&L: ₹112
+2026-05-26 06:30:47,507 [INFO] position_manager: 12:00 add | key=('neutral', 'neutral') ce=2 pe=2
+2026-05-26 06:30:47,715 [INFO] position_manager: Selected CE 24600 | delta=0.148 ltp=26.10 dist=600pts
+2026-05-26 06:30:48,152 [INFO] position_manager: Selected PE 23500 | delta=0.123 ltp=31.25 dist=500pts
+2026-05-26 06:30:48,864 [INFO] strategy: 12:00 add done: 4 legs | adj=1
+2026-05-26 06:30:49,339 [INFO] dashboard_gen: Dashboard written -> docs/index.html (22590 bytes)
+2026-05-26 06:30:49,340 [INFO] strategy: Run complete.
+2026-05-26 06:30:49,340 [INFO] main: ✓ main.py finished
