@@ -30,7 +30,7 @@ log = logging.getLogger("test_run")
 # ── Mock config ────────────────────────────────────────────────────────────
 MOCK_SPOT      = 24000.0          # simulated spot price
 MOCK_ATM       = 24000            # ATM = nearest 100 multiple of spot
-MOCK_DTE       = 3                # days to expiry
+MOCK_DTE       = int(os.environ.get('TEST_DTE', '7'))  # days to expiry (override via env)
 
 # Simulated VWAP scenario — set your desired test view here:
 # very_bullish: ATM below + all upper below + all lower above
@@ -161,8 +161,16 @@ def run_test():
 
     # Force fresh state for test
     state = reset_daily_state({}, date.today().isoformat())
-    state["atm"]   = MOCK_ATM
-    # Simulate we're at 10:30 so entry fires
+    state["atm"]          = MOCK_ATM
+    # Pre-seed confirmed label so entry doesn't wait for 2-bar confirmation
+    from view_engine import compute_score, score_to_label
+    sc  = SCENARIOS.get(MOCK_SCENARIO, SCENARIOS["bullish"])
+    scr = compute_score(sc["atm_below"], sc["upper_below"], sc["upper_above"],
+                        sc["lower_above"], sc["lower_below"])
+    lbl = score_to_label(scr)
+    state["current_label"]      = lbl
+    state["pending_label"]      = None
+    state["pending_label_count"]= 0
     state["_test"] = True
 
     # Patch _now_time in strategy to return 10:30
