@@ -179,7 +179,7 @@ def run():
         if state.get("entry_done"):
 
             # MTM refresh
-            state["positions"] = update_positions_mtm(state["positions"])
+            state["positions"] = update_positions_mtm(state["positions"], spot=spot, dte=dte)
             pnl  = total_pnl(state["positions"])
             log.info(f"MTM P&L: ₹{pnl:,.0f}")
 
