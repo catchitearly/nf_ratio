@@ -53,22 +53,38 @@ def _straddle_rows(snapshot, atm):
 
 def _position_rows(positions):
     if not positions:
-        return "<tr><td colspan='8' style='text-align:center;color:var(--muted)'>No positions yet</td></tr>"
+        return "<tr><td colspan='11' style='text-align:center;color:var(--muted)'>No positions yet</td></tr>"
     rows = ""
     for p in positions:
-        pnl  = p.get("pnl", 0)
-        pc   = _pnl_color(pnl)
-        st   = "<span style='color:#00c896'>&#10003;</span>" if p.get("closed") else "<span style='color:#f0b429'>&#9679;</span>"
-        ac   = "#ff4e6a" if p.get("action") == "SELL" else "#4ea8ff"
-        tc   = "#38bdf8" if p.get("opt_type") == "CE"  else "#f97316"
-        rows += ("<tr><td>" + st + "</td>"
+        pnl         = p.get("pnl", 0)
+        pc          = _pnl_color(pnl)
+        st          = "<span style='color:#00c896'>&#10003;</span>" if p.get("closed") else "<span style='color:#f0b429'>&#9679;</span>"
+        ac          = "#ff4e6a" if p.get("action") == "SELL" else "#4ea8ff"
+        tc          = "#38bdf8" if p.get("opt_type") == "CE"  else "#f97316"
+        entry_d     = p.get("entry_delta", 0.0)
+        entry_d_str = f"{entry_d:.3f}" if entry_d else "&mdash;"
+        entry_d_col = "#f0b429" if (entry_d and entry_d >= 0.10) else "#5a6480"
+        cur_d       = p.get("current_delta", 0.0)
+        cur_d_str   = f"{cur_d:.3f}" if cur_d else "&mdash;"
+        cur_d_col   = "#ff4e6a" if (cur_d and cur_d >= 0.30) else "#00c896" if (cur_d and cur_d >= 0.10) else "#5a6480"
+        etime       = str(p.get("entry_time", "&mdash;"))
+        if "T" in etime:
+            try: etime = etime.split("T")[1][:8]
+            except: pass
+        etime = etime[:8]
+        rows += ("<tr>"
+                 "<td>" + st + "</td>"
                  "<td style='color:" + tc + ";font-weight:700'>" + str(p.get("opt_type","")) + "</td>"
                  "<td>" + str(p.get("strike","")) + "</td>"
                  "<td style='color:" + ac + ";font-weight:700'>" + str(p.get("action","")) + "</td>"
                  "<td>" + str(p.get("lots","")) + "</td>"
+                 "<td style='color:var(--muted);font-size:11px'>" + etime + "</td>"
+                 "<td style='color:" + entry_d_col + ";font-family:monospace'>" + entry_d_str + "</td>"
+                 "<td style='color:" + cur_d_col   + ";font-family:monospace'>" + cur_d_str   + "</td>"
                  "<td>&#8377;" + f"{p.get('entry_price',0):.1f}" + "</td>"
                  "<td>&#8377;" + f"{p.get('current_ltp',0):.1f}" + "</td>"
-                 "<td style='color:" + pc + ";font-weight:700'>&#8377;" + f"{pnl:,.0f}" + "</td></tr>")
+                 "<td style='color:" + pc + ";font-weight:700'>&#8377;" + f"{pnl:,.0f}" + "</td>"
+                 "</tr>")
     return rows
 
 def _error_rows(errors):
@@ -317,7 +333,7 @@ def generate_dashboard(state: dict):
             "<div class='section-hdr'><h2>&#128203; Positions</h2>"
             "<span style='color:var(--muted);font-size:10px'>Paper Trade</span></div>"
             "<table><thead><tr><th>St</th><th>Type</th><th>Strike</th><th>Action</th>"
-            "<th>Lots</th><th>Delta</th><th>Time</th><th>Entry &#8377;</th><th>LTP &#8377;</th><th>P&amp;L</th></tr></thead>"
+            "<th>Lots</th><th>Time</th><th>Entry &#916;</th><th>Cur &#916;</th><th>Entry &#8377;</th><th>LTP &#8377;</th><th>P&amp;L</th></tr></thead>"
             "<tbody>" + pos_html + "</tbody></table></div>\n"
         )
 
