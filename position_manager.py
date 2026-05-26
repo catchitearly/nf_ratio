@@ -54,24 +54,33 @@ def find_delta_strike(spot: float, opt_type: str,
     try:
         direction = 1 if opt_type == "CE" else -1
         atm       = round(spot / STRIKE_STEP) * STRIKE_STEP
-        candidates = []
 
-        for steps in range(1, 30):
+        # Min distance relaxes when DTE is low — avoids no-candidate failure
+        # DTE < 5: 200pts,  DTE < 10: 250pts,  else: 300pts (config value)
+        if dte < 1:
+            min_dist = 200
+        elif dte < 3 :
+            min_dist = 250
+        else:
+            min_dist = MIN_STRIKE_DIST
+
+        candidates = []
+        for steps in range(1, 35):
             strike   = atm + direction * steps * STRIKE_STEP
             distance = abs(strike - atm)
 
-            # Condition 3: min distance from ATM
-            if distance < MIN_STRIKE_DIST:
+            # Condition 3: min distance from ATM (DTE-adjusted)
+            if distance < min_dist:
                 continue
 
             delta = bs_delta(spot, strike, opt_type, dte)
             if DELTA_ENTRY_MIN <= delta <= DELTA_ENTRY_MAX:
                 candidates.append((strike, delta))
             elif delta < DELTA_ENTRY_MIN:
-                break   # going too far OTM
+                break   # going too far OTM, stop scanning
 
         if not candidates:
-            log.warning(f"No {opt_type} BS candidate >=300pts from ATM near {spot}")
+            log.warning(f"No {opt_type} BS candidate >={min_dist}pts from ATM near {spot} (DTE={dte})")
             return None, None, None
 
         # Batch fetch LTPs for all candidates in one call
