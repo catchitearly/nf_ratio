@@ -1,0 +1,56 @@
+name: Test Run (Manual)
+
+on:
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: 'Market scenario to simulate'
+        required: true
+        default: 'bullish'
+        type: choice
+        options:
+          - very_bullish
+          - bullish
+          - neutral
+          - bearish
+          - very_bearish
+
+jobs:
+  test-strategy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install fyers-apiv3 requests pytz
+
+      - name: Run test
+        env:
+          FYERS_CLIENT_ID:    ${{ secrets.FYERS_CLIENT_ID }}
+          FYERS_ACCESS_TOKEN: ${{ secrets.FYERS_ACCESS_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID:   ${{ secrets.TELEGRAM_CHAT_ID }}
+          TEST_SCENARIO:      ${{ github.event.inputs.scenario }}
+        run: python test_run.py
+
+      - name: Commit and push dashboard
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/index.html state.json logs/ 2>/dev/null || true
+          git commit --allow-empty -m "test run: ${{ github.event.inputs.scenario }} $(date -u '+%H:%M UTC')"
+          git push
+        if: always()
