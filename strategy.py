@@ -34,7 +34,8 @@ from position_manager import (
 from telegram_bot import (
     send_entry_alert, send_adjustment_alert, send_add_1135_alert,
     send_delta_alert, send_close_alert, send_error_alert,
-    send_status, send_tsl_alert, send_post_adj_close_alert
+    send_status, send_tsl_alert, send_post_adj_close_alert,
+    send_raw_view_change, send_confirmed_view_change
 )
 from dashboard_gen import generate_dashboard
 
@@ -136,6 +137,16 @@ def run():
 
         confirmed_label, label_changed = update_view_state(state, raw_label)
         confirmed_score = score if confirmed_label else None
+
+        # ── View change alerts (raw + confirmed) ──────────────────────────
+        prev_raw = state.get("prev_raw_label")
+        if prev_raw and raw_label != prev_raw:
+            send_raw_view_change(prev_raw, raw_label, score, spot,
+                                 state.get("pending_label_count", 1))
+        state["prev_raw_label"] = raw_label
+        if label_changed and confirmed_label:
+            old_conf = state.get("prev_label") or state.get("entry_label", "")
+            send_confirmed_view_change(old_conf, confirmed_label, score, spot)
 
         # ── View log ───────────────────────────────────────────────────────
         state.setdefault("view_log", []).append({
