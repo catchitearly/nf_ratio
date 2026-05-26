@@ -1,1 +1,90 @@
-
+{
+  "date": "2026-05-26",
+  "atm": 24000,
+  "entry_done": false,
+  "entry_label": null,
+  "current_label": null,
+  "prev_label": null,
+  "pending_label": "bearish",
+  "pending_label_count": 1,
+  "current_score": -6.5,
+  "raw_label": "bearish",
+  "adjustment_count": 0,
+  "add_1200_done": false,
+  "neutral_adjusted": false,
+  "peak_pnl": 0.0,
+  "tsl_level": null,
+  "tsl_alerted": false,
+  "positions": [],
+  "delta_alerts_sent": [],
+  "closed": false,
+  "straddle_snapshot": {
+    "23600": {
+      "vwap": 430.08,
+      "current_price": 426.35,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "23700": {
+      "vwap": 336.67,
+      "current_price": 330.1,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "23800": {
+      "vwap": 240.97,
+      "current_price": 234.6,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "23900": {
+      "vwap": 162.97,
+      "current_price": 152.85,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24000": {
+      "vwap": 118.34,
+      "current_price": 108.75,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24100": {
+      "vwap": 126.09,
+      "current_price": 125.15,
+      "below_vwap": true,
+      "above_vwap": false
+    },
+    "24200": {
+      "vwap": 186.69,
+      "current_price": 191.6,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "24300": {
+      "vwap": 274.21,
+      "current_price": 282.3,
+      "below_vwap": false,
+      "above_vwap": true
+    },
+    "24400": {
+      "vwap": 375.09,
+      "current_price": 378.75,
+      "below_vwap": false,
+      "above_vwap": true
+    }
+  },
+  "view_log": [
+    {
+      "time": "10:00:50",
+      "label": "bearish",
+      "score": -6.5,
+      "confirmed": "",
+      "pending": "bearish",
+      "spot": 24024.6
+    }
+  ],
+  "equity_curve": [],
+  "last_run": "2026-05-26T04:30:50.173544",
+  "errors": []
+}
