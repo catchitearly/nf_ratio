@@ -1,0 +1,24 @@
+2026-05-26 02:48:01,561 [INFO] test_run: ============================================================
+2026-05-26 02:48:01,572 [INFO] test_run: TEST RUN at 2026-05-26 08:18:01 IST
+2026-05-26 02:48:01,572 [INFO] test_run: Scenario: bullish | Spot: 24000.0 | ATM: 24000
+2026-05-26 02:48:01,878 [INFO] strategy: ============================================================
+2026-05-26 02:48:01,878 [INFO] strategy: Run at 2026-05-26 08:18:01 IST
+2026-05-26 02:48:01,879 [INFO] test_run: [MOCK] compute_view | score=+7.5 label=very_bullish
+2026-05-26 02:48:01,879 [INFO] view_engine: Label pending (1/2): current=None pending=very_bullish
+2026-05-26 02:48:02,240 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-26 02:48:02,476 [INFO] position_manager: Selected CE 24400 | delta=0.121 ltp=13.30 dist=400pts
+2026-05-26 02:48:02,476 [WARNING] position_manager: No PE BS candidate >=300pts from ATM near 24000.0
+2026-05-26 02:48:02,476 [ERROR] position_manager: Entry: strike selection failed
+2026-05-26 02:48:02,477 [ERROR] strategy: Entry failed.
+2026-05-26 02:48:02,988 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13939 bytes)
+2026-05-26 02:48:02,988 [INFO] strategy: Run complete.
+2026-05-26 02:48:02,988 [INFO] test_run: ============================================================
+2026-05-26 02:48:02,988 [INFO] test_run: TEST COMPLETE — Final state summary:
+2026-05-26 02:48:02,988 [INFO] test_run:   Entry done:    False
+2026-05-26 02:48:02,988 [INFO] test_run:   Entry label:   None
+2026-05-26 02:48:02,988 [INFO] test_run:   Score:         7.5
+2026-05-26 02:48:02,988 [INFO] test_run:   Positions:     0 legs
+2026-05-26 02:48:02,989 [INFO] test_run:   Adj count:     0
+2026-05-26 02:48:02,989 [INFO] test_run:   Dashboard:     docs/index.html
+2026-05-26 02:48:02,989 [INFO] test_run: ============================================================
+2026-05-26 02:48:02,989 [INFO] test_run: Check Telegram for entry alert and docs/index.html for dashboard.
