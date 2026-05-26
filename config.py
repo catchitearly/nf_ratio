@@ -22,7 +22,7 @@ DELTA_ENTRY_MAX = 0.15
 DELTA_ALERT        = 0.35
 HEDGE_OFFSET        = 100
 MIN_SELL_LTP        = 2.0     # sell strike LTP must be > Rs 2
-MIN_STRIKE_DIST     = 300     # sell strike must be >= 300 pts from ATM
+MIN_STRIKE_DIST     = 100     # sell strike must be >= 300 pts from ATM
 
 # ── Lot size ───────────────────────────────────────────────────────────────
 LOT_SIZE    = 75
