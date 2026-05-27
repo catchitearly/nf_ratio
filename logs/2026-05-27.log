@@ -324,3 +324,22 @@ ModuleNotFoundError: No module named 'journal'
 2026-05-27 05:15:47,897 [INFO] dashboard_gen: Dashboard written -> docs/index.html (25693 bytes)
 2026-05-27 05:15:47,897 [INFO] strategy: Run complete.
 2026-05-27 05:15:47,897 [INFO] main: ✓ main.py finished
+2026-05-27 05:20:38,388 [INFO] main: ▶ main.py started
+2026-05-27 05:20:39,357 [INFO] strategy: ============================================================
+2026-05-27 05:20:39,357 [INFO] strategy: Run at 2026-05-27 10:50:39 IST
+2026-05-27 05:20:39,680 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-27 05:20:39,925 [INFO] fyers_data: Spot: 23939.2
+2026-05-27 05:20:40,424 [INFO] fyers_data: Straddle 23500: 20 bars
+2026-05-27 05:20:41,394 [INFO] fyers_data: Straddle 23600: 20 bars
+2026-05-27 05:20:41,894 [INFO] fyers_data: Straddle 23700: 20 bars
+2026-05-27 05:20:42,389 [INFO] fyers_data: Straddle 23800: 20 bars
+2026-05-27 05:20:42,893 [INFO] fyers_data: Straddle 23900: 20 bars
+2026-05-27 05:20:43,390 [INFO] fyers_data: Straddle 24000: 20 bars
+2026-05-27 05:20:43,884 [INFO] fyers_data: Straddle 24100: 20 bars
+2026-05-27 05:20:44,375 [INFO] fyers_data: Straddle 24200: 20 bars
+2026-05-27 05:20:44,877 [INFO] fyers_data: Straddle 24300: 20 bars
+2026-05-27 05:20:44,878 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=3 lower_below=1 | score=+9.5 label=very_bullish
+2026-05-27 05:20:45,842 [INFO] strategy: MTM P&L: ₹-104
+2026-05-27 05:20:46,094 [INFO] dashboard_gen: Dashboard written -> docs/index.html (26438 bytes)
+2026-05-27 05:20:46,095 [INFO] strategy: Run complete.
+2026-05-27 05:20:46,095 [INFO] main: ✓ main.py finished
