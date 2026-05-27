@@ -243,3 +243,26 @@ ModuleNotFoundError: No module named 'journal'
 2026-05-27 04:55:31,889 [INFO] dashboard_gen: Dashboard written -> docs/index.html (21136 bytes)
 2026-05-27 04:55:31,889 [INFO] strategy: Run complete.
 2026-05-27 04:55:31,889 [INFO] main: ✓ main.py finished
+2026-05-27 05:00:54,275 [INFO] main: ▶ main.py started
+2026-05-27 05:00:54,601 [INFO] strategy: ============================================================
+2026-05-27 05:00:54,601 [INFO] strategy: Run at 2026-05-27 10:30:54 IST
+2026-05-27 05:00:55,054 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-27 05:00:55,436 [INFO] fyers_data: Spot: 23961.2
+2026-05-27 05:00:56,038 [INFO] fyers_data: Straddle 23500: 16 bars
+2026-05-27 05:00:56,581 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-05-27 05:00:57,253 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-05-27 05:00:57,924 [INFO] fyers_data: Straddle 23800: 16 bars
+2026-05-27 05:00:58,504 [INFO] fyers_data: Straddle 23900: 16 bars
+2026-05-27 05:00:59,170 [INFO] fyers_data: Straddle 24000: 16 bars
+2026-05-27 05:00:59,790 [INFO] fyers_data: Straddle 24100: 16 bars
+2026-05-27 05:01:00,490 [INFO] fyers_data: Straddle 24200: 16 bars
+2026-05-27 05:01:01,200 [INFO] fyers_data: Straddle 24300: 16 bars
+2026-05-27 05:01:01,200 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-05-27 05:01:01,473 [INFO] position_manager: Selected CE 24200 | delta=0.326 ltp=70.65 dist=200pts
+2026-05-27 05:01:01,790 [INFO] position_manager: Selected PE 23800 | delta=0.339 ltp=87.05 dist=200pts
+2026-05-27 05:01:02,406 [INFO] position_manager: Entry | label=very_bullish CE 24200x4 d=0.326 PE 23800x8 d=0.339
+2026-05-27 05:01:03,046 [INFO] strategy: Entry done: label=very_bullish legs=4
+2026-05-27 05:01:03,308 [INFO] strategy: MTM P&L: ₹-104
+2026-05-27 05:01:03,636 [INFO] dashboard_gen: Dashboard written -> docs/index.html (23548 bytes)
+2026-05-27 05:01:03,637 [INFO] strategy: Run complete.
+2026-05-27 05:01:03,637 [INFO] main: ✓ main.py finished

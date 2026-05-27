@@ -1,8 +1,8 @@
 {
   "date": "2026-05-27",
   "atm": 23900,
-  "entry_done": false,
-  "entry_label": null,
+  "entry_done": true,
+  "entry_label": "very_bullish",
   "current_label": "very_bullish",
   "prev_label": "neutral",
   "pending_label": null,
@@ -16,61 +16,122 @@
   "peak_pnl": 0.0,
   "tsl_level": null,
   "tsl_alerted": false,
-  "positions": [],
+  "positions": [
+    {
+      "symbol": "NSE:NIFTY2660224200CE",
+      "strike": 24200,
+      "opt_type": "CE",
+      "action": "SELL",
+      "lots": 4,
+      "qty": 260,
+      "entry_price": 70.65,
+      "entry_time": "05:01:02",
+      "entry_delta": 0.326,
+      "tag": "sell",
+      "current_ltp": 70.9,
+      "pnl": -65.0,
+      "current_delta": 0.326
+    },
+    {
+      "symbol": "NSE:NIFTY2660224400CE",
+      "strike": 24400,
+      "opt_type": "CE",
+      "action": "BUY",
+      "lots": 4,
+      "qty": 260,
+      "entry_price": 29.1,
+      "entry_time": "05:01:02",
+      "entry_delta": 0.0,
+      "tag": "hedge",
+      "current_ltp": 29.25,
+      "pnl": 38.99999999999963,
+      "current_delta": 0.19
+    },
+    {
+      "symbol": "NSE:NIFTY2660223800PE",
+      "strike": 23800,
+      "opt_type": "PE",
+      "action": "SELL",
+      "lots": 8,
+      "qty": 520,
+      "entry_price": 87.05,
+      "entry_time": "05:01:02",
+      "entry_delta": 0.339,
+      "tag": "sell",
+      "current_ltp": 87.2,
+      "pnl": -78.00000000000296,
+      "current_delta": 0.339
+    },
+    {
+      "symbol": "NSE:NIFTY2660223600PE",
+      "strike": 23600,
+      "opt_type": "PE",
+      "action": "BUY",
+      "lots": 8,
+      "qty": 520,
+      "entry_price": 40.3,
+      "entry_time": "05:01:02",
+      "entry_delta": 0.0,
+      "tag": "hedge",
+      "current_ltp": 40.3,
+      "pnl": 0.0,
+      "current_delta": 0.196
+    }
+  ],
   "delta_alerts_sent": [],
   "closed": false,
   "straddle_snapshot": {
     "23500": {
-      "vwap": 504.95,
-      "current_price": 535.3,
+      "vwap": 506.34,
+      "current_price": 532.25,
       "below_vwap": false,
       "above_vwap": true
     },
     "23600": {
-      "vwap": 438.6,
-      "current_price": 461.65,
+      "vwap": 439.75,
+      "current_price": 460.0,
       "below_vwap": false,
       "above_vwap": true
     },
     "23700": {
-      "vwap": 385.07,
-      "current_price": 400.6,
+      "vwap": 385.7,
+      "current_price": 399.0,
       "below_vwap": false,
       "above_vwap": true
     },
     "23800": {
-      "vwap": 350.25,
-      "current_price": 353.45,
+      "vwap": 350.5,
+      "current_price": 353.25,
       "below_vwap": false,
       "above_vwap": true
     },
     "23900": {
-      "vwap": 333.48,
-      "current_price": 324.9,
+      "vwap": 333.25,
+      "current_price": 325.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "24000": {
-      "vwap": 335.77,
-      "current_price": 316.45,
+      "vwap": 334.58,
+      "current_price": 318.0,
       "below_vwap": true,
       "above_vwap": false
     },
     "24100": {
-      "vwap": 356.66,
-      "current_price": 327.25,
+      "vwap": 354.85,
+      "current_price": 330.25,
       "below_vwap": true,
       "above_vwap": false
     },
     "24200": {
-      "vwap": 395.51,
-      "current_price": 359.2,
+      "vwap": 393.3,
+      "current_price": 362.4,
       "below_vwap": true,
       "above_vwap": false
     },
     "24300": {
-      "vwap": 452.96,
-      "current_price": 408.4,
+      "vwap": 450.4,
+      "current_price": 413.55,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -163,10 +224,23 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 23956.05
+    },
+    {
+      "time": "10:31:01",
+      "label": "very_bullish",
+      "score": 11.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 23961.2
     }
   ],
-  "equity_curve": [],
-  "last_run": "2026-05-27T04:55:31.889320",
+  "equity_curve": [
+    {
+      "time": "10:31:03",
+      "pnl": -104.0
+    }
+  ],
+  "last_run": "2026-05-27T05:01:03.636446",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
