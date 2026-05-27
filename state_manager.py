@@ -36,6 +36,7 @@ DEFAULT_STATE = {
     "delta_alerts_sent":  [],
     # close
     "closed":             False,
+    "journal_saved":      False,
     # dashboard data
     "straddle_snapshot":  {},
     "view_log":           [],
