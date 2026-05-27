@@ -922,3 +922,22 @@ ModuleNotFoundError: No module named 'journal'
 2026-05-27 07:50:42,463 [INFO] dashboard_gen: Dashboard written -> docs/index.html (47000 bytes)
 2026-05-27 07:50:42,464 [INFO] strategy: Run complete.
 2026-05-27 07:50:42,464 [INFO] main: ✓ main.py finished
+2026-05-27 07:55:35,780 [INFO] main: ▶ main.py started
+2026-05-27 07:55:38,278 [INFO] strategy: ============================================================
+2026-05-27 07:55:38,278 [INFO] strategy: Run at 2026-05-27 13:25:38 IST
+2026-05-27 07:55:38,601 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-27 07:55:38,819 [INFO] fyers_data: Spot: 23897.05
+2026-05-27 07:55:39,395 [INFO] fyers_data: Straddle 23500: 51 bars
+2026-05-27 07:55:39,887 [INFO] fyers_data: Straddle 23600: 51 bars
+2026-05-27 07:55:40,718 [INFO] fyers_data: Straddle 23700: 51 bars
+2026-05-27 07:55:41,160 [INFO] fyers_data: Straddle 23800: 51 bars
+2026-05-27 07:55:41,664 [INFO] fyers_data: Straddle 23900: 51 bars
+2026-05-27 07:55:42,167 [INFO] fyers_data: Straddle 24000: 51 bars
+2026-05-27 07:55:42,611 [INFO] fyers_data: Straddle 24100: 51 bars
+2026-05-27 07:55:43,051 [INFO] fyers_data: Straddle 24200: 51 bars
+2026-05-27 07:55:43,556 [INFO] fyers_data: Straddle 24300: 51 bars
+2026-05-27 07:55:43,556 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=1 upper_above=3 | lower_above=0 lower_below=4 | score=-6.5 label=bearish
+2026-05-27 07:55:43,767 [INFO] strategy: MTM P&L: ₹-2,145
+2026-05-27 07:55:43,982 [INFO] dashboard_gen: Dashboard written -> docs/index.html (47665 bytes)
+2026-05-27 07:55:43,983 [INFO] strategy: Run complete.
+2026-05-27 07:55:43,983 [INFO] main: ✓ main.py finished
