@@ -28,9 +28,11 @@
       "entry_time": "05:01:02",
       "entry_delta": 0.326,
       "tag": "sell",
-      "current_ltp": 54.35,
-      "pnl": 4238.000000000001,
-      "current_delta": 0.271
+      "current_ltp": 52.3,
+      "pnl": 4771.000000000002,
+      "current_delta": 0.271,
+      "closed": true,
+      "close_time": "2026-05-27T09:30:52.482070"
     },
     {
       "symbol": "NSE:NIFTY2660224400CE",
@@ -43,9 +45,11 @@
       "entry_time": "05:01:02",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 22.0,
-      "pnl": -1846.0000000000005,
-      "current_delta": 0.149
+      "current_ltp": 21.15,
+      "pnl": -2067.000000000001,
+      "current_delta": 0.149,
+      "closed": true,
+      "close_time": "2026-05-27T09:30:52.482070"
     },
     {
       "symbol": "NSE:NIFTY2660223800PE",
@@ -58,9 +62,11 @@
       "entry_time": "05:01:02",
       "entry_delta": 0.339,
       "tag": "sell",
-      "current_ltp": 100.3,
-      "pnl": -6890.0,
-      "current_delta": 0.399
+      "current_ltp": 101.15,
+      "pnl": -7332.000000000005,
+      "current_delta": 0.399,
+      "closed": true,
+      "close_time": "2026-05-27T09:30:52.482070"
     },
     {
       "symbol": "NSE:NIFTY2660223600PE",
@@ -73,13 +79,15 @@
       "entry_time": "05:01:02",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 44.1,
-      "pnl": 1976.0000000000023,
-      "current_delta": 0.244
+      "current_ltp": 44.6,
+      "pnl": 2236.0000000000023,
+      "current_delta": 0.244,
+      "closed": true,
+      "close_time": "2026-05-27T09:30:52.482070"
     }
   ],
   "delta_alerts_sent": [],
-  "closed": false,
+  "closed": true,
   "straddle_snapshot": {
     "23500": {
       "vwap": 499.33,
@@ -876,12 +884,12 @@
       "pnl": -2522.0
     }
   ],
-  "last_run": "2026-05-27T09:25:38.472275",
+  "last_run": "2026-05-27T09:30:53.133362",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
       "msg": "'NoneType' object has no attribute 'upper'"
     }
   ],
-  "journal_saved": false
+  "journal_saved": true
 }
