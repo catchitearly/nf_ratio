@@ -767,3 +767,23 @@ ModuleNotFoundError: No module named 'journal'
 2026-05-27 07:10:43,456 [INFO] dashboard_gen: Dashboard written -> docs/index.html (41563 bytes)
 2026-05-27 07:10:43,457 [INFO] strategy: Run complete.
 2026-05-27 07:10:43,457 [INFO] main: ✓ main.py finished
+2026-05-27 07:15:35,692 [INFO] main: ▶ main.py started
+2026-05-27 07:15:36,337 [INFO] strategy: ============================================================
+2026-05-27 07:15:36,337 [INFO] strategy: Run at 2026-05-27 12:45:36 IST
+2026-05-27 07:15:36,669 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-27 07:15:36,897 [INFO] fyers_data: Spot: 23932.85
+2026-05-27 07:15:37,644 [INFO] fyers_data: Straddle 23500: 43 bars
+2026-05-27 07:15:38,139 [INFO] fyers_data: Straddle 23600: 43 bars
+2026-05-27 07:15:38,624 [INFO] fyers_data: Straddle 23700: 43 bars
+2026-05-27 07:15:39,100 [INFO] fyers_data: Straddle 23800: 43 bars
+2026-05-27 07:15:39,672 [INFO] fyers_data: Straddle 23900: 43 bars
+2026-05-27 07:15:40,223 [INFO] fyers_data: Straddle 24000: 43 bars
+2026-05-27 07:15:40,722 [INFO] fyers_data: Straddle 24100: 43 bars
+2026-05-27 07:15:41,228 [INFO] fyers_data: Straddle 24200: 43 bars
+2026-05-27 07:15:41,734 [INFO] fyers_data: Straddle 24300: 43 bars
+2026-05-27 07:15:41,734 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=0 lower_below=4 | score=+0.5 label=neutral
+2026-05-27 07:15:41,735 [INFO] view_engine: Label confirmed: bearish → neutral
+2026-05-27 07:15:42,695 [INFO] strategy: MTM P&L: ₹533
+2026-05-27 07:15:42,922 [INFO] dashboard_gen: Dashboard written -> docs/index.html (42227 bytes)
+2026-05-27 07:15:42,923 [INFO] strategy: Run complete.
+2026-05-27 07:15:42,923 [INFO] main: ✓ main.py finished
