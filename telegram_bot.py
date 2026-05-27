@@ -46,10 +46,12 @@ def send_entry_alert(label: str, legs: list, spot: float):
 def send_raw_view_change(old_label: str, new_label: str,
                          score: float, spot: float, pending_count: int):
     """Alert on every raw label change (unconfirmed, 1st bar)."""
+    old_label = (old_label or "none").upper()
+    new_label = (new_label or "none")
     emoji = VIEW_EMOJI.get(new_label, "⚪")
     lines = [
         f"{emoji} <b>VIEW SHIFT</b> (raw, {pending_count}/2 bars)",
-        f"{old_label.upper()} to <b>{new_label.upper()}</b>",
+        f"{old_label} to <b>{new_label.upper()}</b>",
         f"Score: <code>{score:+.1f}</code> | Spot: {spot:.0f}",
         "<i>Awaiting confirmation...</i>"
     ]
@@ -59,10 +61,12 @@ def send_raw_view_change(old_label: str, new_label: str,
 def send_confirmed_view_change(old_label: str, new_label: str,
                                 score: float, spot: float):
     """Alert when 2-bar confirmation completes."""
+    old_label = (old_label or "none").upper()
+    new_label = (new_label or "none")
     emoji = VIEW_EMOJI.get(new_label, "⚪")
     lines = [
         f"{emoji} <b>VIEW CONFIRMED</b> ✅",
-        f"{old_label.upper()} to <b>{new_label.upper()}</b>",
+        f"{old_label} to <b>{new_label.upper()}</b>",
         f"Score: <code>{score:+.1f}</code> | Spot: {spot:.0f}"
     ]
     _send("\n".join(lines))
