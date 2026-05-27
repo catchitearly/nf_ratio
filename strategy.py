@@ -38,6 +38,7 @@ from telegram_bot import (
     send_raw_view_change, send_confirmed_view_change
 )
 from dashboard_gen import generate_dashboard
+from journal import generate_journal
 
 log = logging.getLogger(__name__)
 IST = pytz.timezone("Asia/Kolkata")
@@ -125,6 +126,12 @@ def run():
                 state["positions"] = close_all_positions(state["positions"])
                 state["closed"]    = True
                 send_close_alert(total_pnl(state["positions"]), state["positions"])
+            # Generate end-of-day journal (once)
+            if not state.get("journal_saved"):
+                jpath = generate_journal(state)
+                if jpath:
+                    state["journal_saved"] = True
+                    log.info(f"Journal saved: {jpath}")
             generate_dashboard(state)
             save_state(state)
             return
@@ -145,7 +152,7 @@ def run():
                                  state.get("pending_label_count", 1))
         state["prev_raw_label"] = raw_label
         if label_changed and confirmed_label:
-            old_conf = state.get("prev_label") or state.get("entry_label", "")
+            old_conf = state.get("prev_label") or state.get("entry_label") or "none"
             send_confirmed_view_change(old_conf, confirmed_label, score, spot)
 
         # ── View log ───────────────────────────────────────────────────────
