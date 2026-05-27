@@ -47,3 +47,12 @@ Traceback (most recent call last):
 AttributeError: 'NoneType' object has no attribute 'upper'
 2026-05-27 04:05:35,578 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13980 bytes)
 2026-05-27 04:05:35,578 [INFO] main: ✓ main.py finished
+2026-05-27 04:10:38,501 [INFO] main: ▶ main.py started
+2026-05-27 04:10:39,342 [CRITICAL] main: FATAL: No module named 'journal'
+Traceback (most recent call last):
+  File "/home/runner/work/nf_ratio/nf_ratio/main.py", line 31, in main
+    from strategy import run
+  File "/home/runner/work/nf_ratio/nf_ratio/strategy.py", line 41, in <module>
+    from journal import generate_journal
+ModuleNotFoundError: No module named 'journal'
+
