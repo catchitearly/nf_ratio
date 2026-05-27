@@ -17,24 +17,24 @@ STRIKE_STEP    = 100
 STRADDLE_RANGE = 4
 
 # ── Delta thresholds ───────────────────────────────────────────────────────
-DELTA_ENTRY_MIN = 0.10
-DELTA_ENTRY_MAX = 0.15
-DELTA_ALERT        = 0.35
-HEDGE_OFFSET        = 100
+DELTA_ENTRY_MIN = 0.25
+DELTA_ENTRY_MAX = 0.35
+DELTA_ALERT        = 0.45
+HEDGE_OFFSET        = 200
 MIN_SELL_LTP        = 2.0     # sell strike LTP must be > Rs 2
-MIN_STRIKE_DIST     = 300     # sell strike must be >= 300 pts from ATM
+MIN_STRIKE_DIST     = 100     # sell strike must be >= 300 pts from ATM
 
 # ── Lot size ───────────────────────────────────────────────────────────────
-LOT_SIZE    = 75
+LOT_SIZE    = 65
 MAX_LOTS_CE = 20
 MAX_LOTS_PE = 20
 
 # ── Entry lots by score label: (ce_sell, pe_sell) ──────────────────────────
 ENTRY_LOTS = {
     "very_bullish": (4,  8),
-    "bullish":      (4,  8),
-    "neutral":      (6,  6),
-    "bearish":      (8,  4),
+    "bullish":      (4,  6),
+    "neutral":      (12,  12),
+    "bearish":      (6,  4),
     "very_bearish": (8,  4),
 }
 
@@ -92,14 +92,14 @@ POST_ADJ_EXIT_PNL  = 500       # close all if |pnl| > this after max adj
 POST_ADJ_EXIT_LOSS = -500
 
 # ── Trailing SL ────────────────────────────────────────────────────────────
-TSL_ACTIVATE_PNL   = 1500      # TSL activates when peak >= this
+TSL_ACTIVATE_PNL   = 1000      # TSL activates when peak >= this
 TSL_INITIAL_GAP    = 500       # TSL = peak - 500 at activation
 TSL_STEP_PROFIT    = 200       # every this much new profit above 1500
 TSL_STEP_MOVE      = 100       # TSL moves up by this per step
 
 # ── Timing ─────────────────────────────────────────────────────────────────
 ENTRY_TIME    = time(10, 30)
-ADD_1200_TIME = time(12,  0)
+ADD_1200_TIME = time(15,  0)
 CLOSE_TIME    = time(15,  0)
 MARKET_OPEN   = time( 9, 15)
 
