@@ -3,10 +3,10 @@
   "atm": 23900,
   "entry_done": false,
   "entry_label": null,
-  "current_label": null,
+  "current_label": "neutral",
   "prev_label": null,
-  "pending_label": "neutral",
-  "pending_label_count": 1,
+  "pending_label": null,
+  "pending_label_count": 0,
   "current_score": -0.5,
   "raw_label": "neutral",
   "prev_raw_label": "neutral",
@@ -84,10 +84,18 @@
       "confirmed": "",
       "pending": "neutral",
       "spot": 23907.15
+    },
+    {
+      "time": "09:35:40",
+      "label": "neutral",
+      "score": -0.5,
+      "confirmed": "neutral",
+      "pending": "",
+      "spot": 23907.15
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-05-28T04:01:03.295503",
+  "last_run": "2026-05-28T04:05:40.103343",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
