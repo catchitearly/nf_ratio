@@ -31,11 +31,11 @@ MAX_LOTS_PE = 20
 
 # ── Entry lots by score label: (ce_sell, pe_sell) ──────────────────────────
 ENTRY_LOTS = {
-    "very_bullish": (4,  8),
-    "bullish":      (4,  6),
+    "very_bullish": (4,  12),
+    "bullish":      (4,  8),
     "neutral":      (12,  12),
-    "bearish":      (6,  4),
-    "very_bearish": (8,  4),
+    "bearish":      (8,  4),
+    "very_bearish": (12,  4),
 }
 
 # ── 12:00 addition lots by (entry_family, current_family): (ce_add, pe_add) ─
