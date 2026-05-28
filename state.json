@@ -409,6 +409,14 @@
       "confirmed": "neutral",
       "pending": "",
       "spot": 23907.15
+    },
+    {
+      "time": "12:20:39",
+      "label": "neutral",
+      "score": -0.5,
+      "confirmed": "neutral",
+      "pending": "",
+      "spot": 23907.15
     }
   ],
   "equity_curve": [
@@ -499,9 +507,13 @@
     {
       "time": "12:15:45",
       "pnl": 0.0
+    },
+    {
+      "time": "12:20:40",
+      "pnl": 0.0
     }
   ],
-  "last_run": "2026-05-28T06:45:46.254879",
+  "last_run": "2026-05-28T06:50:40.459559",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
