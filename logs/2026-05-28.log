@@ -2067,3 +2067,40 @@
 2026-05-28 08:40:40,869 [INFO] dashboard_gen: Dashboard written -> docs/index.html (51865 bytes)
 2026-05-28 08:40:40,870 [INFO] strategy: Run complete.
 2026-05-28 08:40:40,870 [INFO] main: ✓ main.py finished
+2026-05-28 08:45:34,521 [INFO] main: ▶ main.py started
+2026-05-28 08:45:35,565 [INFO] strategy: ============================================================
+2026-05-28 08:45:35,565 [INFO] strategy: Run at 2026-05-28 14:15:35 IST
+2026-05-28 08:45:35,903 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-28 08:45:36,126 [INFO] fyers_data: Spot: 23907.15
+2026-05-28 08:45:36,355 [WARNING] fyers_data: No candles for NSE:NIFTY2660223500CE: 
+2026-05-28 08:45:36,573 [WARNING] fyers_data: No candles for NSE:NIFTY2660223500PE: 
+2026-05-28 08:45:36,573 [WARNING] fyers_data: Missing candles for straddle 23500
+2026-05-28 08:45:36,866 [WARNING] fyers_data: No candles for NSE:NIFTY2660223600CE: 
+2026-05-28 08:45:37,136 [WARNING] fyers_data: No candles for NSE:NIFTY2660223600PE: 
+2026-05-28 08:45:37,136 [WARNING] fyers_data: Missing candles for straddle 23600
+2026-05-28 08:45:37,410 [WARNING] fyers_data: No candles for NSE:NIFTY2660223700CE: 
+2026-05-28 08:45:37,633 [WARNING] fyers_data: No candles for NSE:NIFTY2660223700PE: 
+2026-05-28 08:45:37,633 [WARNING] fyers_data: Missing candles for straddle 23700
+2026-05-28 08:45:37,861 [WARNING] fyers_data: No candles for NSE:NIFTY2660223800CE: 
+2026-05-28 08:45:38,080 [WARNING] fyers_data: No candles for NSE:NIFTY2660223800PE: 
+2026-05-28 08:45:38,080 [WARNING] fyers_data: Missing candles for straddle 23800
+2026-05-28 08:45:38,350 [WARNING] fyers_data: No candles for NSE:NIFTY2660223900CE: 
+2026-05-28 08:45:38,623 [WARNING] fyers_data: No candles for NSE:NIFTY2660223900PE: 
+2026-05-28 08:45:38,623 [WARNING] fyers_data: Missing candles for straddle 23900
+2026-05-28 08:45:38,847 [WARNING] fyers_data: No candles for NSE:NIFTY2660224000CE: 
+2026-05-28 08:45:39,074 [WARNING] fyers_data: No candles for NSE:NIFTY2660224000PE: 
+2026-05-28 08:45:39,074 [WARNING] fyers_data: Missing candles for straddle 24000
+2026-05-28 08:45:39,292 [WARNING] fyers_data: No candles for NSE:NIFTY2660224100CE: 
+2026-05-28 08:45:39,517 [WARNING] fyers_data: No candles for NSE:NIFTY2660224100PE: 
+2026-05-28 08:45:39,517 [WARNING] fyers_data: Missing candles for straddle 24100
+2026-05-28 08:45:39,746 [WARNING] fyers_data: No candles for NSE:NIFTY2660224200CE: 
+2026-05-28 08:45:40,019 [WARNING] fyers_data: No candles for NSE:NIFTY2660224200PE: 
+2026-05-28 08:45:40,019 [WARNING] fyers_data: Missing candles for straddle 24200
+2026-05-28 08:45:40,238 [WARNING] fyers_data: No candles for NSE:NIFTY2660224300CE: 
+2026-05-28 08:45:40,462 [WARNING] fyers_data: No candles for NSE:NIFTY2660224300PE: 
+2026-05-28 08:45:40,462 [WARNING] fyers_data: Missing candles for straddle 24300
+2026-05-28 08:45:40,462 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=0 upper_above=0 | lower_above=0 lower_below=0 | score=-0.5 label=neutral
+2026-05-28 08:45:40,687 [INFO] strategy: MTM P&L: ₹0
+2026-05-28 08:45:40,903 [INFO] dashboard_gen: Dashboard written -> docs/index.html (52526 bytes)
+2026-05-28 08:45:40,904 [INFO] strategy: Run complete.
+2026-05-28 08:45:40,904 [INFO] main: ✓ main.py finished
