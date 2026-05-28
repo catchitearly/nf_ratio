@@ -30,7 +30,9 @@
       "tag": "sell",
       "current_ltp": 95.0,
       "pnl": -0.0,
-      "current_delta": 0.345
+      "current_delta": 0.345,
+      "closed": true,
+      "close_time": "2026-05-28T09:30:51.264727"
     },
     {
       "symbol": "NSE:NIFTY2660224300CE",
@@ -45,7 +47,9 @@
       "tag": "hedge",
       "current_ltp": 41.2,
       "pnl": 0.0,
-      "current_delta": 0.192
+      "current_delta": 0.192,
+      "closed": true,
+      "close_time": "2026-05-28T09:30:51.264727"
     },
     {
       "symbol": "NSE:NIFTY2660223700PE",
@@ -60,7 +64,9 @@
       "tag": "sell",
       "current_ltp": 56.45,
       "pnl": -0.0,
-      "current_delta": 0.289
+      "current_delta": 0.289,
+      "closed": true,
+      "close_time": "2026-05-28T09:30:51.264727"
     },
     {
       "symbol": "NSE:NIFTY2660223500PE",
@@ -75,12 +81,14 @@
       "tag": "hedge",
       "current_ltp": 23.65,
       "pnl": 0.0,
-      "current_delta": 0.15
+      "current_delta": 0.15,
+      "closed": true,
+      "close_time": "2026-05-28T09:30:51.264727"
     }
   ],
   "delta_alerts_sent": [],
-  "closed": false,
-  "journal_saved": false,
+  "closed": true,
+  "journal_saved": true,
   "straddle_snapshot": {
     "23500": {
       "vwap": null,
@@ -873,7 +881,7 @@
       "pnl": 0.0
     }
   ],
-  "last_run": "2026-05-28T09:25:38.637079",
+  "last_run": "2026-05-28T09:30:51.974768",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
