@@ -1,887 +1,93 @@
 {
-  "date": "2026-05-28",
-  "atm": 23900,
-  "entry_done": true,
-  "entry_label": "neutral",
-  "current_label": "neutral",
+  "date": "2026-05-29",
+  "atm": 24000,
+  "entry_done": false,
+  "entry_label": null,
+  "current_label": null,
   "prev_label": null,
-  "pending_label": null,
-  "pending_label_count": 0,
-  "current_score": -0.5,
-  "raw_label": "neutral",
-  "prev_raw_label": "neutral",
+  "pending_label": "very_bearish",
+  "pending_label_count": 1,
+  "current_score": -7.5,
+  "raw_label": "very_bearish",
+  "prev_raw_label": "very_bearish",
   "adjustment_count": 0,
   "add_1200_done": false,
   "neutral_adjusted": false,
   "peak_pnl": 0.0,
   "tsl_level": null,
   "tsl_alerted": false,
-  "positions": [
-    {
-      "symbol": "NSE:NIFTY2660224100CE",
-      "strike": 24100,
-      "opt_type": "CE",
-      "action": "SELL",
-      "lots": 12,
-      "qty": 780,
-      "entry_price": 95.0,
-      "entry_time": "05:00:59",
-      "entry_delta": 0.345,
-      "tag": "sell",
-      "current_ltp": 95.0,
-      "pnl": -0.0,
-      "current_delta": 0.345,
-      "closed": true,
-      "close_time": "2026-05-28T09:30:51.264727"
-    },
-    {
-      "symbol": "NSE:NIFTY2660224300CE",
-      "strike": 24300,
-      "opt_type": "CE",
-      "action": "BUY",
-      "lots": 12,
-      "qty": 780,
-      "entry_price": 41.2,
-      "entry_time": "05:00:59",
-      "entry_delta": 0.0,
-      "tag": "hedge",
-      "current_ltp": 41.2,
-      "pnl": 0.0,
-      "current_delta": 0.192,
-      "closed": true,
-      "close_time": "2026-05-28T09:30:51.264727"
-    },
-    {
-      "symbol": "NSE:NIFTY2660223700PE",
-      "strike": 23700,
-      "opt_type": "PE",
-      "action": "SELL",
-      "lots": 12,
-      "qty": 780,
-      "entry_price": 56.45,
-      "entry_time": "05:00:59",
-      "entry_delta": 0.289,
-      "tag": "sell",
-      "current_ltp": 56.45,
-      "pnl": -0.0,
-      "current_delta": 0.289,
-      "closed": true,
-      "close_time": "2026-05-28T09:30:51.264727"
-    },
-    {
-      "symbol": "NSE:NIFTY2660223500PE",
-      "strike": 23500,
-      "opt_type": "PE",
-      "action": "BUY",
-      "lots": 12,
-      "qty": 780,
-      "entry_price": 23.65,
-      "entry_time": "05:00:59",
-      "entry_delta": 0.0,
-      "tag": "hedge",
-      "current_ltp": 23.65,
-      "pnl": 0.0,
-      "current_delta": 0.15,
-      "closed": true,
-      "close_time": "2026-05-28T09:30:51.264727"
-    }
-  ],
+  "positions": [],
   "delta_alerts_sent": [],
-  "closed": true,
-  "journal_saved": true,
+  "closed": false,
+  "journal_saved": false,
   "straddle_snapshot": {
-    "23500": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
-      "above_vwap": false
-    },
     "23600": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 436.44,
+      "current_price": 413.35,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 367.7,
+      "current_price": 353.0,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23800": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 316.49,
+      "current_price": 311.2,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23900": {
-      "vwap": null,
-      "current_price": null,
+      "vwap": 287.82,
+      "current_price": 289.15,
       "below_vwap": false,
-      "above_vwap": false
+      "above_vwap": true
     },
     "24000": {
-      "vwap": null,
-      "current_price": null,
+      "vwap": 278.29,
+      "current_price": 288.5,
       "below_vwap": false,
-      "above_vwap": false
+      "above_vwap": true
     },
     "24100": {
-      "vwap": null,
-      "current_price": null,
+      "vwap": 292.22,
+      "current_price": 309.15,
       "below_vwap": false,
-      "above_vwap": false
+      "above_vwap": true
     },
     "24200": {
-      "vwap": null,
-      "current_price": null,
+      "vwap": 329.11,
+      "current_price": 353.0,
       "below_vwap": false,
-      "above_vwap": false
+      "above_vwap": true
     },
     "24300": {
-      "vwap": null,
-      "current_price": null,
+      "vwap": 387.78,
+      "current_price": 414.35,
       "below_vwap": false,
-      "above_vwap": false
+      "above_vwap": true
+    },
+    "24400": {
+      "vwap": 462.52,
+      "current_price": 490.9,
+      "below_vwap": false,
+      "above_vwap": true
     }
   },
   "view_log": [
     {
-      "time": "09:31:03",
-      "label": "neutral",
-      "score": -0.5,
+      "time": "09:30:58",
+      "label": "very_bearish",
+      "score": -7.5,
       "confirmed": "",
-      "pending": "neutral",
-      "spot": 23907.15
-    },
-    {
-      "time": "09:35:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "09:40:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "09:45:42",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "09:50:41",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "09:55:37",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:00:54",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:05:34",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:10:43",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:15:37",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:20:47",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:25:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:30:58",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:35:35",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:40:46",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:45:39",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:50:44",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "10:55:35",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:00:55",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:05:35",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:10:47",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:15:44",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:20:42",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:25:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:31:01",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:35:36",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:40:46",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:45:48",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:50:39",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "11:55:33",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:00:55",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:05:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:10:43",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:15:45",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:20:39",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:25:43",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:35:39",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:40:45",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:45:42",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:50:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "12:55:37",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:00:54",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:05:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:10:41",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:15:43",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:20:39",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:25:36",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:31:01",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:35:37",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:40:44",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:45:44",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:50:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "13:55:34",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:00:53",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:05:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:10:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:15:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:20:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:25:40",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:31:07",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:35:36",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:40:44",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:45:52",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:50:43",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
-    },
-    {
-      "time": "14:55:38",
-      "label": "neutral",
-      "score": -0.5,
-      "confirmed": "neutral",
-      "pending": "",
-      "spot": 23907.15
+      "pending": "very_bearish",
+      "spot": 23897.65
     }
   ],
-  "equity_curve": [
-    {
-      "time": "10:31:00",
-      "pnl": 0.0
-    },
-    {
-      "time": "10:35:35",
-      "pnl": 0.0
-    },
-    {
-      "time": "10:40:47",
-      "pnl": 0.0
-    },
-    {
-      "time": "10:45:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "10:50:44",
-      "pnl": 0.0
-    },
-    {
-      "time": "10:55:35",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:00:56",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:05:35",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:10:48",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:15:45",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:20:42",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:25:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:31:01",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:35:37",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:40:46",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:45:49",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:50:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "11:55:33",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:00:55",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:05:38",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:10:43",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:15:45",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:20:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:25:43",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:35:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:40:45",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:45:43",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:50:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "12:55:37",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:00:54",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:05:38",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:10:41",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:15:43",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:20:39",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:25:36",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:31:01",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:35:37",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:40:44",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:45:44",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:50:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "13:55:34",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:00:53",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:05:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:10:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:15:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:20:41",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:25:40",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:31:07",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:35:36",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:40:44",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:45:52",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:50:43",
-      "pnl": 0.0
-    },
-    {
-      "time": "14:55:38",
-      "pnl": 0.0
-    }
-  ],
-  "last_run": "2026-05-28T09:55:33.248157",
+  "equity_curve": [],
+  "last_run": "2026-05-29T04:00:58.433750",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
