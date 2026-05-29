@@ -99,7 +99,7 @@ TSL_STEP_MOVE      = 100       # TSL moves up by this per step
 
 # ── Timing ─────────────────────────────────────────────────────────────────
 ENTRY_TIME    = time(10, 30)
-ADD_1200_TIME = time(15,  0)
+ADD_1200_TIME = time(12,  0)
 CLOSE_TIME    = time(15,  0)
 MARKET_OPEN   = time( 9, 15)
 
