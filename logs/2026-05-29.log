@@ -131,3 +131,22 @@
 2026-05-29 04:30:50,098 [INFO] dashboard_gen: Dashboard written -> docs/index.html (18218 bytes)
 2026-05-29 04:30:50,099 [INFO] strategy: Run complete.
 2026-05-29 04:30:50,099 [INFO] main: ✓ main.py finished
+2026-05-29 04:35:32,701 [INFO] main: ▶ main.py started
+2026-05-29 04:35:33,580 [INFO] strategy: ============================================================
+2026-05-29 04:35:33,580 [INFO] strategy: Run at 2026-05-29 10:05:33 IST
+2026-05-29 04:35:34,030 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-05-29 04:35:34,293 [INFO] fyers_data: Spot: 23937.45
+2026-05-29 04:35:34,836 [INFO] fyers_data: Straddle 23600: 11 bars
+2026-05-29 04:35:35,363 [INFO] fyers_data: Straddle 23700: 11 bars
+2026-05-29 04:35:36,422 [INFO] fyers_data: Straddle 23800: 11 bars
+2026-05-29 04:35:36,946 [INFO] fyers_data: Straddle 23900: 11 bars
+2026-05-29 04:35:37,517 [INFO] fyers_data: Straddle 24000: 11 bars
+2026-05-29 04:35:38,098 [INFO] fyers_data: Straddle 24100: 11 bars
+2026-05-29 04:35:38,704 [INFO] fyers_data: Straddle 24200: 11 bars
+2026-05-29 04:35:39,261 [INFO] fyers_data: Straddle 24300: 11 bars
+2026-05-29 04:35:39,877 [INFO] fyers_data: Straddle 24400: 11 bars
+2026-05-29 04:35:39,877 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=3 lower_below=1 | score=+9.5 label=very_bullish
+2026-05-29 04:35:39,877 [INFO] view_engine: Label pending (1/2): current=very_bearish pending=very_bullish
+2026-05-29 04:35:40,535 [INFO] dashboard_gen: Dashboard written -> docs/index.html (18996 bytes)
+2026-05-29 04:35:40,535 [INFO] strategy: Run complete.
+2026-05-29 04:35:40,535 [INFO] main: ✓ main.py finished
