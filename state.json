@@ -3,10 +3,10 @@
   "atm": 24000,
   "entry_done": false,
   "entry_label": null,
-  "current_label": null,
+  "current_label": "very_bearish",
   "prev_label": null,
-  "pending_label": "very_bearish",
-  "pending_label_count": 1,
+  "pending_label": null,
+  "pending_label_count": 0,
   "current_score": -7.5,
   "raw_label": "very_bearish",
   "prev_raw_label": "very_bearish",
@@ -22,56 +22,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "23600": {
-      "vwap": 436.44,
-      "current_price": 413.35,
+      "vwap": 433.89,
+      "current_price": 419.6,
       "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": 367.7,
-      "current_price": 353.0,
+      "vwap": 365.39,
+      "current_price": 359.05,
       "below_vwap": true,
       "above_vwap": false
     },
     "23800": {
-      "vwap": 316.49,
-      "current_price": 311.2,
+      "vwap": 315.71,
+      "current_price": 313.45,
       "below_vwap": true,
       "above_vwap": false
     },
     "23900": {
-      "vwap": 287.82,
-      "current_price": 289.15,
+      "vwap": 288.12,
+      "current_price": 288.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "24000": {
-      "vwap": 278.29,
-      "current_price": 288.5,
+      "vwap": 279.47,
+      "current_price": 285.1,
       "below_vwap": false,
       "above_vwap": true
     },
     "24100": {
-      "vwap": 292.22,
-      "current_price": 309.15,
+      "vwap": 294.35,
+      "current_price": 303.65,
       "below_vwap": false,
       "above_vwap": true
     },
     "24200": {
-      "vwap": 329.11,
-      "current_price": 353.0,
+      "vwap": 331.75,
+      "current_price": 344.95,
       "below_vwap": false,
       "above_vwap": true
     },
     "24300": {
-      "vwap": 387.78,
-      "current_price": 414.35,
+      "vwap": 390.71,
+      "current_price": 404.4,
       "below_vwap": false,
       "above_vwap": true
     },
     "24400": {
-      "vwap": 462.52,
-      "current_price": 490.9,
+      "vwap": 465.38,
+      "current_price": 481.15,
       "below_vwap": false,
       "above_vwap": true
     }
@@ -84,10 +84,18 @@
       "confirmed": "",
       "pending": "very_bearish",
       "spot": 23897.65
+    },
+    {
+      "time": "09:35:38",
+      "label": "very_bearish",
+      "score": -7.5,
+      "confirmed": "very_bearish",
+      "pending": "",
+      "spot": 23910.25
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-05-29T04:00:58.433750",
+  "last_run": "2026-05-29T04:05:38.765832",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
