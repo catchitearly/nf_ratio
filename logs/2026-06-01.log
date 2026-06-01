@@ -223,3 +223,25 @@
 2026-06-01 04:55:33,005 [INFO] dashboard_gen: Dashboard written -> docs/index.html (21638 bytes)
 2026-06-01 04:55:33,005 [INFO] strategy: Run complete.
 2026-06-01 04:55:33,005 [INFO] main: ✓ main.py finished
+2026-06-01 05:00:57,343 [INFO] main: ▶ main.py started
+2026-06-01 05:00:57,707 [INFO] strategy: ============================================================
+2026-06-01 05:00:57,708 [INFO] strategy: Run at 2026-06-01 10:30:57 IST
+2026-06-01 05:00:58,072 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-01 05:00:58,332 [INFO] fyers_data: Spot: 23538.65
+2026-06-01 05:00:58,852 [INFO] fyers_data: Straddle 23200: 16 bars
+2026-06-01 05:00:59,374 [INFO] fyers_data: Straddle 23300: 16 bars
+2026-06-01 05:00:59,899 [INFO] fyers_data: Straddle 23400: 16 bars
+2026-06-01 05:01:00,439 [INFO] fyers_data: Straddle 23500: 16 bars
+2026-06-01 05:01:00,970 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-06-01 05:01:01,517 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-06-01 05:01:02,066 [INFO] fyers_data: Straddle 23800: 16 bars
+2026-06-01 05:01:02,639 [INFO] fyers_data: Straddle 23900: 16 bars
+2026-06-01 05:01:03,183 [INFO] fyers_data: Straddle 24000: 16 bars
+2026-06-01 05:01:03,184 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-10.5 label=very_bearish
+2026-06-01 05:01:03,184 [WARNING] position_manager: No CE BS candidate >=100pts from ATM near 23538.65 (DTE=1)
+2026-06-01 05:01:03,184 [WARNING] position_manager: No PE BS candidate >=100pts from ATM near 23538.65 (DTE=1)
+2026-06-01 05:01:03,184 [ERROR] position_manager: Entry: strike selection failed
+2026-06-01 05:01:03,184 [ERROR] strategy: Entry failed.
+2026-06-01 05:01:03,860 [INFO] dashboard_gen: Dashboard written -> docs/index.html (22409 bytes)
+2026-06-01 05:01:03,860 [INFO] strategy: Run complete.
+2026-06-01 05:01:03,860 [INFO] main: ✓ main.py finished

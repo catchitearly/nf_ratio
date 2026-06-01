@@ -22,56 +22,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "23200": {
-      "vwap": 449.79,
-      "current_price": 412.55,
+      "vwap": 447.09,
+      "current_price": 396.75,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 363.05,
-      "current_price": 330.65,
+      "vwap": 360.92,
+      "current_price": 318.45,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 289.4,
-      "current_price": 266.1,
+      "vwap": 287.54,
+      "current_price": 257.55,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 238.96,
-      "current_price": 223.75,
+      "vwap": 237.73,
+      "current_price": 219.65,
       "below_vwap": true,
       "above_vwap": false
     },
     "23600": {
-      "vwap": 217.88,
-      "current_price": 210.9,
+      "vwap": 217.59,
+      "current_price": 211.5,
       "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": 227.72,
-      "current_price": 230.25,
+      "vwap": 228.02,
+      "current_price": 236.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "23800": {
-      "vwap": 264.55,
-      "current_price": 280.3,
+      "vwap": 265.57,
+      "current_price": 289.85,
       "below_vwap": false,
       "above_vwap": true
     },
     "23900": {
-      "vwap": 322.81,
-      "current_price": 351.35,
+      "vwap": 324.02,
+      "current_price": 363.0,
       "below_vwap": false,
       "above_vwap": true
     },
     "24000": {
-      "vwap": 397.73,
-      "current_price": 435.8,
+      "vwap": 399.14,
+      "current_price": 448.1,
       "below_vwap": false,
       "above_vwap": true
     }
@@ -172,14 +172,26 @@
       "confirmed": "very_bearish",
       "pending": "",
       "spot": 23557.0
+    },
+    {
+      "time": "10:31:03",
+      "label": "very_bearish",
+      "score": -10.5,
+      "confirmed": "very_bearish",
+      "pending": "",
+      "spot": 23538.65
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-06-01T04:55:33.005204",
+  "last_run": "2026-06-01T05:01:03.860116",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
       "msg": "'NoneType' object has no attribute 'upper'"
+    },
+    {
+      "time": "2026-06-01T05:01:03.184457",
+      "msg": "Entry failed."
     }
   ]
 }
