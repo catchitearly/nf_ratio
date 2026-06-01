@@ -62,9 +62,11 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.306,
       "tag": "sell",
-      "current_ltp": 138.4,
-      "pnl": -22035.0,
-      "current_delta": 0.736
+      "current_ltp": 145.4,
+      "pnl": -23855.0,
+      "current_delta": 0.736,
+      "closed": true,
+      "close_time": "2026-06-01T09:30:52.502438"
     },
     {
       "symbol": "NSE:NIFTY2660223300PE",
@@ -77,9 +79,11 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 44.15,
-      "pnl": 7500.999999999999,
-      "current_delta": 0.324
+      "current_ltp": 45.9,
+      "pnl": 7955.999999999999,
+      "current_delta": 0.324,
+      "closed": true,
+      "close_time": "2026-06-01T09:30:52.502438"
     },
     {
       "symbol": "NSE:NIFTY2660223600CE",
@@ -92,9 +96,11 @@
       "entry_time": "06:30:58",
       "entry_delta": 0.295,
       "tag": "sell_1200",
-      "current_ltp": 32.95,
-      "pnl": 20487.999999999996,
-      "current_delta": 0.12
+      "current_ltp": 30.15,
+      "pnl": 21943.999999999996,
+      "current_delta": 0.12,
+      "closed": true,
+      "close_time": "2026-06-01T09:30:52.502438"
     },
     {
       "symbol": "NSE:NIFTY2660223800CE",
@@ -107,9 +113,11 @@
       "entry_time": "06:30:58",
       "entry_delta": 0.0,
       "tag": "sell_1200_h",
-      "current_ltp": 11.15,
-      "pnl": -7124.000000000001,
-      "current_delta": 0.012
+      "current_ltp": 10.9,
+      "pnl": -7254.000000000001,
+      "current_delta": 0.012,
+      "closed": true,
+      "close_time": "2026-06-01T09:30:52.502438"
     },
     {
       "symbol": "NSE:NIFTY2660223500PE",
@@ -149,8 +157,8 @@
   "delta_alerts_sent": [
     "NSE:NIFTY2660223500PE"
   ],
-  "closed": false,
-  "journal_saved": false,
+  "closed": true,
+  "journal_saved": true,
   "straddle_snapshot": {
     "23200": {
       "vwap": 363.66,
@@ -939,7 +947,7 @@
       "pnl": -14118.0
     }
   ],
-  "last_run": "2026-06-01T09:25:45.985366",
+  "last_run": "2026-06-01T09:30:53.050787",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
