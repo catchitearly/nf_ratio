@@ -3,10 +3,10 @@
   "atm": 23600,
   "entry_done": true,
   "entry_label": "very_bullish",
-  "current_label": "very_bullish",
-  "prev_label": "bearish",
-  "pending_label": "bearish",
-  "pending_label_count": 1,
+  "current_label": "bearish",
+  "prev_label": "very_bullish",
+  "pending_label": null,
+  "pending_label_count": 0,
   "current_score": -6.5,
   "raw_label": "bearish",
   "prev_raw_label": "bearish",
@@ -28,9 +28,9 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.283,
       "tag": "sell",
-      "current_ltp": 56.7,
-      "pnl": 3535.9999999999986,
-      "current_delta": 0.232
+      "current_ltp": 54.4,
+      "pnl": 4134.0,
+      "current_delta": 0.214
     },
     {
       "symbol": "NSE:NIFTY2660223900CE",
@@ -43,9 +43,9 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 18.15,
-      "pnl": -1417.0000000000007,
-      "current_delta": 0.036
+      "current_ltp": 17.55,
+      "pnl": -1573.0000000000002,
+      "current_delta": 0.031
     },
     {
       "symbol": "NSE:NIFTY2660223500PE",
@@ -58,9 +58,9 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.306,
       "tag": "sell",
-      "current_ltp": 62.0,
-      "pnl": -6513.000000000001,
-      "current_delta": 0.364
+      "current_ltp": 65.55,
+      "pnl": -9281.999999999998,
+      "current_delta": 0.387
     },
     {
       "symbol": "NSE:NIFTY2660223300PE",
@@ -73,9 +73,9 @@
       "entry_time": "05:23:09",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 17.5,
-      "pnl": 1715.9999999999995,
-      "current_delta": 0.075
+      "current_ltp": 18.8,
+      "pnl": 2730.0,
+      "current_delta": 0.084
     }
   ],
   "delta_alerts_sent": [],
@@ -83,56 +83,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "23200": {
-      "vwap": 438.35,
-      "current_price": 412.2,
+      "vwap": 437.09,
+      "current_price": 404.35,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 353.22,
-      "current_price": 328.95,
+      "vwap": 351.85,
+      "current_price": 322.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 281.51,
-      "current_price": 260.25,
+      "vwap": 280.52,
+      "current_price": 256.8,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 232.76,
-      "current_price": 216.75,
+      "vwap": 231.99,
+      "current_price": 215.85,
       "below_vwap": true,
       "above_vwap": false
     },
     "23600": {
-      "vwap": 213.52,
-      "current_price": 202.95,
+      "vwap": 213.18,
+      "current_price": 203.6,
       "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": 225.36,
-      "current_price": 220.25,
+      "vwap": 225.38,
+      "current_price": 225.05,
       "below_vwap": true,
       "above_vwap": false
     },
     "23800": {
-      "vwap": 265.05,
-      "current_price": 271.2,
+      "vwap": 265.45,
+      "current_price": 276.75,
       "below_vwap": false,
       "above_vwap": true
     },
     "23900": {
-      "vwap": 326.09,
-      "current_price": 343.4,
+      "vwap": 326.78,
+      "current_price": 350.95,
       "below_vwap": false,
       "above_vwap": true
     },
     "24000": {
-      "vwap": 403.92,
-      "current_price": 429.0,
+      "vwap": 404.67,
+      "current_price": 436.75,
       "below_vwap": false,
       "above_vwap": true
     }
@@ -337,6 +337,14 @@
       "confirmed": "",
       "pending": "bearish",
       "spot": 23559.5
+    },
+    {
+      "time": "11:35:39",
+      "label": "bearish",
+      "score": -6.5,
+      "confirmed": "bearish",
+      "pending": "",
+      "spot": 23548.2
     }
   ],
   "equity_curve": [
@@ -375,9 +383,13 @@
     {
       "time": "11:31:08",
       "pnl": -2678.0
+    },
+    {
+      "time": "11:35:39",
+      "pnl": -3991.0
     }
   ],
-  "last_run": "2026-06-01T06:01:08.860290",
+  "last_run": "2026-06-01T06:05:39.781021",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
