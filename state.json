@@ -22,56 +22,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22900": {
-      "vwap": 384.82,
-      "current_price": 407.45,
+      "vwap": 385.77,
+      "current_price": 397.95,
       "below_vwap": false,
       "above_vwap": true
     },
     "23000": {
-      "vwap": 290.38,
-      "current_price": 307.5,
+      "vwap": 291.29,
+      "current_price": 298.9,
       "below_vwap": false,
       "above_vwap": true
     },
     "23100": {
-      "vwap": 202.42,
-      "current_price": 213.5,
+      "vwap": 202.9,
+      "current_price": 206.05,
       "below_vwap": false,
       "above_vwap": true
     },
     "23200": {
-      "vwap": 139.78,
-      "current_price": 138.6,
+      "vwap": 138.63,
+      "current_price": 131.15,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 118.63,
-      "current_price": 107.4,
+      "vwap": 116.23,
+      "current_price": 103.95,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 158.45,
-      "current_price": 138.2,
+      "vwap": 155.69,
+      "current_price": 141.15,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 233.05,
-      "current_price": 211.4,
+      "vwap": 231.52,
+      "current_price": 217.75,
       "below_vwap": true,
       "above_vwap": false
     },
     "23600": {
-      "vwap": 326.45,
-      "current_price": 304.55,
+      "vwap": 324.98,
+      "current_price": 310.7,
       "below_vwap": true,
       "above_vwap": false
     },
     "23700": {
-      "vwap": 422.02,
-      "current_price": 401.7,
+      "vwap": 421.34,
+      "current_price": 408.7,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -100,10 +100,18 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 23304.45
+    },
+    {
+      "time": "09:45:39",
+      "label": "very_bullish",
+      "score": 9.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 23288.85
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-06-02T04:10:45.077969",
+  "last_run": "2026-06-02T04:15:39.800654",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
