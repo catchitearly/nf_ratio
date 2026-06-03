@@ -219,3 +219,26 @@
 2026-06-03 04:55:39,378 [INFO] dashboard_gen: Dashboard written -> docs/index.html (22242 bytes)
 2026-06-03 04:55:39,378 [INFO] strategy: Run complete.
 2026-06-03 04:55:39,378 [INFO] main: ✓ main.py finished
+2026-06-03 05:00:59,063 [INFO] main: ▶ main.py started
+2026-06-03 05:00:59,950 [INFO] strategy: ============================================================
+2026-06-03 05:00:59,950 [INFO] strategy: Run at 2026-06-03 10:30:59 IST
+2026-06-03 05:01:00,431 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-03 05:01:00,749 [INFO] fyers_data: Spot: 23247
+2026-06-03 05:01:02,239 [INFO] fyers_data: Straddle 22900: 16 bars
+2026-06-03 05:01:04,541 [INFO] fyers_data: Straddle 23000: 16 bars
+2026-06-03 05:01:05,031 [INFO] fyers_data: Straddle 23100: 16 bars
+2026-06-03 05:01:07,111 [INFO] fyers_data: Straddle 23200: 16 bars
+2026-06-03 05:01:07,732 [INFO] fyers_data: Straddle 23300: 16 bars
+2026-06-03 05:01:08,286 [INFO] fyers_data: Straddle 23400: 16 bars
+2026-06-03 05:01:08,941 [INFO] fyers_data: Straddle 23500: 16 bars
+2026-06-03 05:01:09,519 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-06-03 05:01:10,032 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-06-03 05:01:10,033 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-10.5 label=very_bearish
+2026-06-03 05:01:10,258 [INFO] position_manager: Selected CE 23500 | delta=0.309 ltp=109.75 dist=300pts
+2026-06-03 05:01:10,483 [INFO] position_manager: Selected PE 23100 | delta=0.346 ltp=124.10 dist=100pts
+2026-06-03 05:01:10,917 [INFO] position_manager: Entry | label=very_bearish CE 23500x12 d=0.309 PE 23100x4 d=0.346
+2026-06-03 05:01:11,422 [INFO] strategy: Entry done: label=very_bearish legs=4
+2026-06-03 05:01:11,695 [INFO] strategy: MTM P&L: ₹-91
+2026-06-03 05:01:11,947 [INFO] dashboard_gen: Dashboard written -> docs/index.html (24659 bytes)
+2026-06-03 05:01:11,948 [INFO] strategy: Run complete.
+2026-06-03 05:01:11,948 [INFO] main: ✓ main.py finished
