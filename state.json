@@ -7,7 +7,7 @@
   "prev_label": null,
   "pending_label": null,
   "pending_label_count": 0,
-  "current_score": -11.5,
+  "current_score": -10.5,
   "raw_label": "very_bearish",
   "prev_raw_label": "very_bearish",
   "adjustment_count": 0,
@@ -22,56 +22,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22900": {
-      "vwap": 541.44,
-      "current_price": 520.95,
+      "vwap": 540.46,
+      "current_price": 528.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "23000": {
-      "vwap": 483.91,
-      "current_price": 471.05,
+      "vwap": 483.1,
+      "current_price": 473.55,
       "below_vwap": true,
       "above_vwap": false
     },
     "23100": {
-      "vwap": 442.12,
-      "current_price": 434.35,
+      "vwap": 441.55,
+      "current_price": 433.05,
       "below_vwap": true,
       "above_vwap": false
     },
     "23200": {
-      "vwap": 414.2,
-      "current_price": 411.75,
+      "vwap": 413.91,
+      "current_price": 408.95,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 402.84,
-      "current_price": 405.5,
-      "below_vwap": false,
-      "above_vwap": true
+      "vwap": 402.88,
+      "current_price": 400.55,
+      "below_vwap": true,
+      "above_vwap": false
     },
     "23400": {
-      "vwap": 402.67,
-      "current_price": 416.9,
+      "vwap": 403.17,
+      "current_price": 408.9,
       "below_vwap": false,
       "above_vwap": true
     },
     "23500": {
-      "vwap": 423.55,
-      "current_price": 444.5,
+      "vwap": 424.22,
+      "current_price": 433.55,
       "below_vwap": false,
       "above_vwap": true
     },
     "23600": {
-      "vwap": 460.12,
-      "current_price": 486.55,
+      "vwap": 460.97,
+      "current_price": 472.5,
       "below_vwap": false,
       "above_vwap": true
     },
     "23700": {
-      "vwap": 510.08,
-      "current_price": 540.65,
+      "vwap": 511.14,
+      "current_price": 526.4,
       "below_vwap": false,
       "above_vwap": true
     }
@@ -156,10 +156,18 @@
       "confirmed": "very_bearish",
       "pending": "",
       "spot": 23249.65
+    },
+    {
+      "time": "10:20:38",
+      "label": "very_bearish",
+      "score": -10.5,
+      "confirmed": "very_bearish",
+      "pending": "",
+      "spot": 23267.2
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-06-03T04:45:44.334061",
+  "last_run": "2026-06-03T04:50:38.573897",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
