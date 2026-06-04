@@ -1051,3 +1051,8 @@
 2026-06-04 08:15:51,767 [INFO] position_manager: Closed all | PnL: -2,139
 2026-06-04 08:15:52,260 [INFO] dashboard_gen: Dashboard written -> docs/index.html (56730 bytes)
 2026-06-04 08:15:52,262 [INFO] main: ✓ main.py finished
+2026-06-04 08:20:42,332 [INFO] main: ▶ main.py started
+2026-06-04 08:20:42,709 [INFO] strategy: ============================================================
+2026-06-04 08:20:42,709 [INFO] strategy: Run at 2026-06-04 13:50:42 IST
+2026-06-04 08:20:42,725 [INFO] dashboard_gen: Dashboard written -> docs/index.html (56730 bytes)
+2026-06-04 08:20:42,726 [INFO] main: ✓ main.py finished
