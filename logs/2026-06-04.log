@@ -222,3 +222,26 @@
 2026-06-04 04:55:38,516 [INFO] dashboard_gen: Dashboard written -> docs/index.html (22575 bytes)
 2026-06-04 04:55:38,516 [INFO] strategy: Run complete.
 2026-06-04 04:55:38,516 [INFO] main: ✓ main.py finished
+2026-06-04 05:01:00,442 [INFO] main: ▶ main.py started
+2026-06-04 05:01:01,224 [INFO] strategy: ============================================================
+2026-06-04 05:01:01,224 [INFO] strategy: Run at 2026-06-04 10:31:01 IST
+2026-06-04 05:01:01,626 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-04 05:01:01,886 [INFO] fyers_data: Spot: 23417.65
+2026-06-04 05:01:02,432 [INFO] fyers_data: Straddle 22900: 16 bars
+2026-06-04 05:01:02,973 [INFO] fyers_data: Straddle 23000: 16 bars
+2026-06-04 05:01:03,527 [INFO] fyers_data: Straddle 23100: 16 bars
+2026-06-04 05:01:04,112 [INFO] fyers_data: Straddle 23200: 16 bars
+2026-06-04 05:01:04,643 [INFO] fyers_data: Straddle 23300: 16 bars
+2026-06-04 05:01:05,172 [INFO] fyers_data: Straddle 23400: 16 bars
+2026-06-04 05:01:05,691 [INFO] fyers_data: Straddle 23500: 16 bars
+2026-06-04 05:01:06,274 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-06-04 05:01:06,814 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-06-04 05:01:06,814 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+10.5 label=very_bullish
+2026-06-04 05:01:07,076 [INFO] position_manager: Selected CE 23700 | delta=0.267 ltp=80.50 dist=300pts
+2026-06-04 05:01:07,352 [INFO] position_manager: Selected PE 23200 | delta=0.277 ltp=80.55 dist=200pts
+2026-06-04 05:01:07,862 [INFO] position_manager: Entry | label=very_bullish CE 23700x4 d=0.267 PE 23200x12 d=0.277
+2026-06-04 05:01:08,570 [INFO] strategy: Entry done: label=very_bullish legs=4
+2026-06-04 05:01:08,829 [INFO] strategy: MTM P&L: ₹260
+2026-06-04 05:01:09,091 [INFO] dashboard_gen: Dashboard written -> docs/index.html (24992 bytes)
+2026-06-04 05:01:09,092 [INFO] strategy: Run complete.
+2026-06-04 05:01:09,092 [INFO] main: ✓ main.py finished
