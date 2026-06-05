@@ -958,3 +958,27 @@
 2026-06-05 07:50:50,486 [INFO] dashboard_gen: Dashboard written -> docs/index.html (53045 bytes)
 2026-06-05 07:50:50,487 [INFO] strategy: Run complete.
 2026-06-05 07:50:50,487 [INFO] main: ✓ main.py finished
+2026-06-05 07:55:30,856 [INFO] main: ▶ main.py started
+2026-06-05 07:55:31,173 [INFO] strategy: ============================================================
+2026-06-05 07:55:31,173 [INFO] strategy: Run at 2026-06-05 13:25:31 IST
+2026-06-05 07:55:31,611 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-05 07:55:31,829 [INFO] fyers_data: Spot: 23316.5
+2026-06-05 07:55:32,305 [INFO] fyers_data: Straddle 23100: 51 bars
+2026-06-05 07:55:32,799 [INFO] fyers_data: Straddle 23200: 51 bars
+2026-06-05 07:55:33,268 [INFO] fyers_data: Straddle 23300: 51 bars
+2026-06-05 07:55:33,749 [INFO] fyers_data: Straddle 23400: 51 bars
+2026-06-05 07:55:34,204 [INFO] fyers_data: Straddle 23500: 51 bars
+2026-06-05 07:55:34,660 [INFO] fyers_data: Straddle 23600: 51 bars
+2026-06-05 07:55:35,111 [INFO] fyers_data: Straddle 23700: 51 bars
+2026-06-05 07:55:35,586 [INFO] fyers_data: Straddle 23800: 51 bars
+2026-06-05 07:55:36,061 [INFO] fyers_data: Straddle 23900: 51 bars
+2026-06-05 07:55:36,061 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-11.5 label=very_bearish
+2026-06-05 07:55:36,283 [INFO] strategy: MTM P&L: ₹839
+2026-06-05 07:55:36,512 [WARNING] position_manager: Delta breach: NSE:NIFTY2660923300PE 0.461
+2026-06-05 07:55:37,161 [INFO] position_manager: Adjust trigger: score -11.5 < -3.0
+2026-06-05 07:55:37,162 [INFO] strategy: Score adj trigger | entry=neutral score=-11.5 → rebalance to very_bearish
+2026-06-05 07:55:37,162 [INFO] position_manager: Rebalance | label=very_bearish | cur CE=16 PE=8 | target CE=8 PE=4 | add CE=0 PE=0 | close CE=0 PE=0
+2026-06-05 07:55:37,162 [INFO] strategy: Adjustment triggered but no change needed.
+2026-06-05 07:55:37,163 [INFO] dashboard_gen: Dashboard written -> docs/index.html (53717 bytes)
+2026-06-05 07:55:37,164 [INFO] strategy: Run complete.
+2026-06-05 07:55:37,164 [INFO] main: ✓ main.py finished
