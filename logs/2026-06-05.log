@@ -226,3 +226,27 @@
 2026-06-05 04:55:38,363 [INFO] dashboard_gen: Dashboard written -> docs/index.html (23266 bytes)
 2026-06-05 04:55:38,364 [INFO] strategy: Run complete.
 2026-06-05 04:55:38,364 [INFO] main: ✓ main.py finished
+2026-06-05 05:00:59,038 [INFO] main: ▶ main.py started
+2026-06-05 05:00:59,384 [INFO] strategy: ============================================================
+2026-06-05 05:00:59,384 [INFO] strategy: Run at 2026-06-05 10:30:59 IST
+2026-06-05 05:00:59,704 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-05 05:00:59,947 [INFO] fyers_data: Spot: 23467.65
+2026-06-05 05:01:00,459 [INFO] fyers_data: Straddle 23100: 16 bars
+2026-06-05 05:01:00,978 [INFO] fyers_data: Straddle 23200: 16 bars
+2026-06-05 05:01:01,524 [INFO] fyers_data: Straddle 23300: 16 bars
+2026-06-05 05:01:02,056 [INFO] fyers_data: Straddle 23400: 16 bars
+2026-06-05 05:01:02,625 [INFO] fyers_data: Straddle 23500: 16 bars
+2026-06-05 05:01:03,229 [INFO] fyers_data: Straddle 23600: 16 bars
+2026-06-05 05:01:03,751 [INFO] fyers_data: Straddle 23700: 16 bars
+2026-06-05 05:01:04,283 [INFO] fyers_data: Straddle 23800: 16 bars
+2026-06-05 05:01:04,783 [INFO] fyers_data: Straddle 23900: 16 bars
+2026-06-05 05:01:04,784 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=0 lower_below=4 | score=+0.5 label=neutral
+2026-06-05 05:01:04,784 [INFO] view_engine: Label pending (1/2): current=very_bullish pending=neutral
+2026-06-05 05:01:05,790 [INFO] position_manager: Selected CE 23700 | delta=0.283 ltp=70.15 dist=200pts
+2026-06-05 05:01:06,050 [INFO] position_manager: Selected PE 23300 | delta=0.305 ltp=70.25 dist=200pts
+2026-06-05 05:01:06,539 [INFO] position_manager: Entry | label=neutral CE 23700x12 d=0.283 PE 23300x12 d=0.305
+2026-06-05 05:01:07,221 [INFO] strategy: Entry done: label=neutral legs=4
+2026-06-05 05:01:07,480 [INFO] strategy: MTM P&L: ₹117
+2026-06-05 05:01:07,726 [INFO] dashboard_gen: Dashboard written -> docs/index.html (25784 bytes)
+2026-06-05 05:01:07,727 [INFO] strategy: Run complete.
+2026-06-05 05:01:07,727 [INFO] main: ✓ main.py finished
