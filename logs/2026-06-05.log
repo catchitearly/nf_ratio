@@ -1387,3 +1387,13 @@
 2026-06-05 09:25:40,760 [INFO] dashboard_gen: Dashboard written -> docs/index.html (66179 bytes)
 2026-06-05 09:25:40,761 [INFO] strategy: Run complete.
 2026-06-05 09:25:40,761 [INFO] main: ✓ main.py finished
+2026-06-05 09:30:53,167 [INFO] main: ▶ main.py started
+2026-06-05 09:30:53,442 [INFO] strategy: ============================================================
+2026-06-05 09:30:53,442 [INFO] strategy: Run at 2026-06-05 15:00:53 IST
+2026-06-05 09:30:53,811 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-05 09:30:54,065 [INFO] fyers_data: Spot: 23328.05
+2026-06-05 09:30:54,306 [INFO] position_manager: Closed all | PnL: 5,987
+2026-06-05 09:30:54,937 [INFO] journal: Journal saved: journal/2026-06-05.md (9032 bytes)
+2026-06-05 09:30:54,937 [INFO] strategy: Journal saved: journal/2026-06-05.md
+2026-06-05 09:30:54,938 [INFO] dashboard_gen: Dashboard written -> docs/index.html (66225 bytes)
+2026-06-05 09:30:54,939 [INFO] main: ✓ main.py finished
