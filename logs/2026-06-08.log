@@ -1087,3 +1087,43 @@
 2026-06-08 08:35:42,134 [INFO] dashboard_gen: Dashboard written -> docs/index.html (55630 bytes)
 2026-06-08 08:35:42,136 [INFO] strategy: Run complete.
 2026-06-08 08:35:42,136 [INFO] main: ✓ main.py finished
+2026-06-08 08:40:37,118 [INFO] main: ▶ main.py started
+2026-06-08 08:40:37,773 [INFO] strategy: ============================================================
+2026-06-08 08:40:37,774 [INFO] strategy: Run at 2026-06-08 14:10:37 IST
+2026-06-08 08:40:38,109 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-08 08:40:38,341 [INFO] fyers_data: Spot: 23166.7
+2026-06-08 08:40:38,849 [INFO] fyers_data: Straddle 22700: 60 bars
+2026-06-08 08:40:39,350 [INFO] fyers_data: Straddle 22800: 60 bars
+2026-06-08 08:40:39,894 [INFO] fyers_data: Straddle 22900: 60 bars
+2026-06-08 08:40:40,123 [WARNING] fyers_data: No candles for NSE:NIFTY2660923000CE: request limit reached
+2026-06-08 08:40:40,387 [WARNING] fyers_data: No candles for NSE:NIFTY2660923000PE: request limit reached
+2026-06-08 08:40:40,387 [WARNING] fyers_data: Missing candles for straddle 23000
+2026-06-08 08:40:40,682 [WARNING] fyers_data: No candles for NSE:NIFTY2660923100CE: request limit reached
+2026-06-08 08:40:40,917 [WARNING] fyers_data: No candles for NSE:NIFTY2660923100PE: request limit reached
+2026-06-08 08:40:40,917 [WARNING] fyers_data: Missing candles for straddle 23100
+2026-06-08 08:40:41,191 [WARNING] fyers_data: No candles for NSE:NIFTY2660923200CE: request limit reached
+2026-06-08 08:40:41,457 [WARNING] fyers_data: No candles for NSE:NIFTY2660923200PE: request limit reached
+2026-06-08 08:40:41,457 [WARNING] fyers_data: Missing candles for straddle 23200
+2026-06-08 08:40:41,701 [WARNING] fyers_data: No candles for NSE:NIFTY2660923300CE: request limit reached
+2026-06-08 08:40:41,931 [WARNING] fyers_data: No candles for NSE:NIFTY2660923300PE: request limit reached
+2026-06-08 08:40:41,931 [WARNING] fyers_data: Missing candles for straddle 23300
+2026-06-08 08:40:42,164 [WARNING] fyers_data: No candles for NSE:NIFTY2660923400CE: request limit reached
+2026-06-08 08:40:42,390 [WARNING] fyers_data: No candles for NSE:NIFTY2660923400PE: request limit reached
+2026-06-08 08:40:42,390 [WARNING] fyers_data: Missing candles for straddle 23400
+2026-06-08 08:40:42,619 [WARNING] fyers_data: No candles for NSE:NIFTY2660923500CE: request limit reached
+2026-06-08 08:40:42,859 [WARNING] fyers_data: No candles for NSE:NIFTY2660923500PE: request limit reached
+2026-06-08 08:40:42,859 [WARNING] fyers_data: Missing candles for straddle 23500
+2026-06-08 08:40:42,859 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=0 upper_above=0 | lower_above=0 lower_below=3 | score=-5.0 label=bearish
+2026-06-08 08:40:42,859 [INFO] view_engine: Label confirmed: very_bullish → bearish
+2026-06-08 08:40:43,724 [WARNING] fyers_data: get_quotes_batch failed: request limit reached
+2026-06-08 08:40:43,724 [INFO] strategy: MTM P&L: ₹3,718
+2026-06-08 08:40:43,966 [WARNING] fyers_data: get_quotes_batch failed: request limit reached
+2026-06-08 08:40:43,966 [INFO] position_manager: Adjust trigger: score -5.0 < 1.0
+2026-06-08 08:40:43,966 [INFO] strategy: Score adj trigger | entry=very_bullish score=-5.0 → rebalance to bearish
+2026-06-08 08:40:43,966 [INFO] position_manager: Rebalance | label=bearish | cur CE=4 PE=14 | target CE=8 PE=4 | add CE=4 PE=0 | close CE=0 PE=10
+2026-06-08 08:40:43,966 [INFO] position_manager: Closed 10 PE sell lots
+2026-06-08 08:40:43,967 [WARNING] position_manager: No CE BS candidate >=100pts from ATM near 23166.7 (DTE=1)
+2026-06-08 08:40:44,486 [INFO] strategy: Adjustment done: +0 legs, 1 closed | adj=2
+2026-06-08 08:40:44,487 [INFO] dashboard_gen: Dashboard written -> docs/index.html (57196 bytes)
+2026-06-08 08:40:44,488 [INFO] strategy: Run complete.
+2026-06-08 08:40:44,488 [INFO] main: ✓ main.py finished
