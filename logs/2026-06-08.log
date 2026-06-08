@@ -102,3 +102,26 @@
 2026-06-08 04:20:49,069 [INFO] dashboard_gen: Dashboard written -> docs/index.html (17754 bytes)
 2026-06-08 04:20:49,070 [INFO] strategy: Run complete.
 2026-06-08 04:20:49,070 [INFO] main: ✓ main.py finished
+2026-06-08 04:25:30,768 [INFO] main: ▶ main.py started
+2026-06-08 04:25:31,151 [INFO] strategy: ============================================================
+2026-06-08 04:25:31,152 [INFO] strategy: Run at 2026-06-08 09:55:31 IST
+2026-06-08 04:25:31,519 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-08 04:25:31,764 [INFO] fyers_data: Spot: 23176.05
+2026-06-08 04:25:32,256 [INFO] fyers_data: Straddle 22700: 9 bars
+2026-06-08 04:25:32,749 [INFO] fyers_data: Straddle 22800: 9 bars
+2026-06-08 04:25:33,253 [INFO] fyers_data: Straddle 22900: 9 bars
+2026-06-08 04:25:33,769 [INFO] fyers_data: Straddle 23000: 9 bars
+2026-06-08 04:25:34,348 [INFO] fyers_data: Straddle 23100: 9 bars
+2026-06-08 04:25:34,841 [INFO] fyers_data: Straddle 23200: 9 bars
+2026-06-08 04:25:35,897 [INFO] fyers_data: Straddle 23300: 9 bars
+2026-06-08 04:25:36,429 [INFO] fyers_data: Straddle 23400: 9 bars
+2026-06-08 04:25:36,977 [INFO] fyers_data: Straddle 23500: 9 bars
+2026-06-08 04:25:36,977 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+10.5 label=very_bullish
+2026-06-08 04:25:37,882 [INFO] position_manager: Selected CE 23300 | delta=0.257 ltp=77.95 dist=100pts
+2026-06-08 04:25:38,169 [INFO] position_manager: Selected PE 23100 | delta=0.328 ltp=79.90 dist=100pts
+2026-06-08 04:25:38,709 [INFO] position_manager: Entry | label=very_bullish CE 23300x4 d=0.257 PE 23100x12 d=0.328
+2026-06-08 04:25:39,295 [INFO] strategy: Entry done: label=very_bullish legs=4
+2026-06-08 04:25:39,563 [INFO] strategy: MTM P&L: ₹-117
+2026-06-08 04:25:39,806 [INFO] dashboard_gen: Dashboard written -> docs/index.html (20245 bytes)
+2026-06-08 04:25:39,806 [INFO] strategy: Run complete.
+2026-06-08 04:25:39,807 [INFO] main: ✓ main.py finished
