@@ -3,11 +3,11 @@
   "atm": 23100,
   "entry_done": false,
   "entry_label": null,
-  "current_label": null,
+  "current_label": "very_bullish",
   "prev_label": null,
-  "pending_label": "very_bullish",
-  "pending_label_count": 1,
-  "current_score": 10.5,
+  "pending_label": null,
+  "pending_label_count": 0,
+  "current_score": 8.5,
   "raw_label": "very_bullish",
   "prev_raw_label": "very_bullish",
   "adjustment_count": 0,
@@ -22,56 +22,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22700": {
-      "vwap": 470.5,
-      "current_price": 510.25,
+      "vwap": 474.29,
+      "current_price": 505.65,
       "below_vwap": false,
       "above_vwap": true
     },
     "22800": {
-      "vwap": 392.58,
-      "current_price": 425.25,
+      "vwap": 396.77,
+      "current_price": 425.8,
       "below_vwap": false,
       "above_vwap": true
     },
     "22900": {
-      "vwap": 324.27,
-      "current_price": 350.7,
+      "vwap": 328.08,
+      "current_price": 352.25,
       "below_vwap": false,
       "above_vwap": true
     },
     "23000": {
-      "vwap": 281.64,
-      "current_price": 294.45,
+      "vwap": 284.0,
+      "current_price": 296.75,
       "below_vwap": false,
       "above_vwap": true
     },
     "23100": {
-      "vwap": 254.32,
-      "current_price": 260.3,
+      "vwap": 255.86,
+      "current_price": 263.45,
       "below_vwap": false,
       "above_vwap": true
     },
     "23200": {
-      "vwap": 251.09,
-      "current_price": 249.75,
-      "below_vwap": true,
-      "above_vwap": false
+      "vwap": 251.59,
+      "current_price": 253.35,
+      "below_vwap": false,
+      "above_vwap": true
     },
     "23300": {
-      "vwap": 275.96,
-      "current_price": 264.8,
+      "vwap": 274.22,
+      "current_price": 268.35,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 325.14,
-      "current_price": 306.4,
+      "vwap": 321.89,
+      "current_price": 308.45,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 394.17,
-      "current_price": 368.55,
+      "vwap": 389.42,
+      "current_price": 369.7,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -84,10 +84,18 @@
       "confirmed": "",
       "pending": "very_bullish",
       "spot": 23173.45
+    },
+    {
+      "time": "09:35:39",
+      "label": "very_bullish",
+      "score": 8.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 23167.7
     }
   ],
   "equity_curve": [],
-  "last_run": "2026-06-08T04:01:14.367696",
+  "last_run": "2026-06-08T04:05:39.393615",
   "errors": [
     {
       "time": "2026-05-27T04:05:34.859639",
