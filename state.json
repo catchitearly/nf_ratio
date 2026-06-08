@@ -13,7 +13,7 @@
   "adjustment_count": 1,
   "add_1200_done": true,
   "neutral_adjusted": false,
-  "peak_pnl": 4316.00000000001,
+  "peak_pnl": 5330.0,
   "tsl_level": 1600,
   "tsl_alerted": true,
   "positions": [
@@ -28,9 +28,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.257,
       "tag": "sell",
-      "current_ltp": 76.55,
-      "pnl": 364.0000000000015,
-      "current_delta": 0.323
+      "current_ltp": 78.7,
+      "pnl": -195.0,
+      "current_delta": 0.313
     },
     {
       "symbol": "NSE:NIFTY2660923500CE",
@@ -43,9 +43,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 24.8,
-      "pnl": -831.9999999999998,
-      "current_delta": 0.061
+      "current_ltp": 25.4,
+      "pnl": -676.0000000000003,
+      "current_delta": 0.058
     },
     {
       "symbol": "NSE:NIFTY2660923100PE",
@@ -58,9 +58,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.328,
       "tag": "sell",
-      "current_ltp": 70.25,
-      "pnl": 7527.000000000005,
-      "current_delta": 0.262
+      "current_ltp": 66.7,
+      "pnl": 10296.000000000002,
+      "current_delta": 0.27
     },
     {
       "symbol": "NSE:NIFTY2660922900PE",
@@ -73,9 +73,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 24.05,
-      "pnl": -3431.999999999999,
-      "current_delta": 0.04
+      "current_ltp": 22.9,
+      "pnl": -4329.000000000001,
+      "current_delta": 0.043
     },
     {
       "symbol": "NSE:NIFTY2660923100PE",
@@ -88,9 +88,9 @@
       "entry_time": "06:30:59",
       "entry_delta": 0.278,
       "tag": "sell_1200",
-      "current_ltp": 70.25,
-      "pnl": -91.00000000000037,
-      "current_delta": 0.262
+      "current_ltp": 66.7,
+      "pnl": 370.49999999999926,
+      "current_delta": 0.27
     },
     {
       "symbol": "NSE:NIFTY2660922900PE",
@@ -103,9 +103,9 @@
       "entry_time": "06:30:59",
       "entry_delta": 0.0,
       "tag": "sell_1200_h",
-      "current_ltp": 24.05,
-      "pnl": 13.000000000000185,
-      "current_delta": 0.04
+      "current_ltp": 22.9,
+      "pnl": -136.50000000000009,
+      "current_delta": 0.043
     }
   ],
   "delta_alerts_sent": [],
@@ -113,56 +113,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22700": {
-      "vwap": 504.75,
-      "current_price": 538.85,
+      "vwap": 505.09,
+      "current_price": 531.75,
       "below_vwap": false,
       "above_vwap": true
     },
     "22800": {
-      "vwap": 421.03,
-      "current_price": 443.45,
+      "vwap": 421.41,
+      "current_price": 443.1,
       "below_vwap": false,
       "above_vwap": true
     },
     "22900": {
-      "vwap": 348.43,
-      "current_price": 365.5,
+      "vwap": 348.66,
+      "current_price": 364.1,
       "below_vwap": false,
       "above_vwap": true
     },
     "23000": {
-      "vwap": 293.21,
-      "current_price": 300.4,
+      "vwap": 293.3,
+      "current_price": 300.1,
       "below_vwap": false,
       "above_vwap": true
     },
     "23100": {
-      "vwap": 256.81,
-      "current_price": 254.95,
+      "vwap": 256.74,
+      "current_price": 252.95,
       "below_vwap": true,
       "above_vwap": false
     },
     "23200": {
-      "vwap": 242.72,
-      "current_price": 233.6,
+      "vwap": 242.46,
+      "current_price": 231.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 256.8,
-      "current_price": 240.95,
+      "vwap": 256.43,
+      "current_price": 237.85,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 298.29,
-      "current_price": 275.9,
+      "vwap": 297.83,
+      "current_price": 271.2,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 362.2,
-      "current_price": 336.0,
+      "vwap": 361.59,
+      "current_price": 331.45,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -423,6 +423,14 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 23211.25
+    },
+    {
+      "time": "12:10:47",
+      "label": "very_bullish",
+      "score": 11.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 23206.4
     }
   ],
   "equity_curve": [
@@ -533,9 +541,13 @@
     {
       "time": "12:05:36",
       "pnl": 3549.0
+    },
+    {
+      "time": "12:10:47",
+      "pnl": 5330.0
     }
   ],
-  "last_run": "2026-06-08T06:35:37.131951",
+  "last_run": "2026-06-08T06:40:48.186509",
   "errors": [
     {
       "time": "2026-06-01T05:05:37.823741",
