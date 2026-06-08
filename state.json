@@ -5,11 +5,11 @@
   "entry_label": "very_bullish",
   "current_label": "bearish",
   "prev_label": "very_bullish",
-  "pending_label": null,
-  "pending_label_count": 0,
-  "current_score": -4.0,
-  "raw_label": "bearish",
-  "prev_raw_label": "bearish",
+  "pending_label": "neutral",
+  "pending_label_count": 1,
+  "current_score": -1.5,
+  "raw_label": "neutral",
+  "prev_raw_label": "neutral",
   "adjustment_count": 2,
   "add_1200_done": true,
   "neutral_adjusted": false,
@@ -147,45 +147,45 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22700": {
-      "vwap": 513.3,
-      "current_price": 486.75,
+      "vwap": 512.8,
+      "current_price": 473.5,
       "below_vwap": true,
       "above_vwap": false
     },
     "22800": {
-      "vwap": 429.03,
-      "current_price": 396.85,
+      "vwap": 428.46,
+      "current_price": 386.25,
       "below_vwap": true,
       "above_vwap": false
     },
     "22900": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 351.87,
+      "current_price": 309.15,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23000": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 292.03,
+      "current_price": 250.65,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23100": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 251.79,
+      "current_price": 216.35,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23200": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 234.29,
+      "current_price": 212.5,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 244.58,
+      "current_price": 240.8,
+      "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
@@ -673,6 +673,14 @@
       "confirmed": "bearish",
       "pending": "",
       "spot": 23162.85
+    },
+    {
+      "time": "14:25:41",
+      "label": "neutral",
+      "score": -1.5,
+      "confirmed": "",
+      "pending": "neutral",
+      "spot": 23152.35
     }
   ],
   "equity_curve": [
@@ -891,9 +899,13 @@
     {
       "time": "14:20:45",
       "pnl": 5707.0
+    },
+    {
+      "time": "14:25:42",
+      "pnl": 5707.0
     }
   ],
-  "last_run": "2026-06-08T08:50:45.275773",
+  "last_run": "2026-06-08T08:55:42.303785",
   "errors": [
     {
       "time": "2026-06-01T05:05:37.823741",

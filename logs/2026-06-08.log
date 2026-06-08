@@ -1206,3 +1206,29 @@
 2026-06-08 08:50:45,275 [INFO] dashboard_gen: Dashboard written -> docs/index.html (58721 bytes)
 2026-06-08 08:50:45,276 [INFO] strategy: Run complete.
 2026-06-08 08:50:45,276 [INFO] main: ✓ main.py finished
+2026-06-08 08:55:34,653 [INFO] main: ▶ main.py started
+2026-06-08 08:55:35,508 [INFO] strategy: ============================================================
+2026-06-08 08:55:35,508 [INFO] strategy: Run at 2026-06-08 14:25:35 IST
+2026-06-08 08:55:35,855 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-08 08:55:36,120 [INFO] fyers_data: Spot: 23152.35
+2026-06-08 08:55:36,666 [INFO] fyers_data: Straddle 22700: 63 bars
+2026-06-08 08:55:37,345 [INFO] fyers_data: Straddle 22800: 63 bars
+2026-06-08 08:55:37,912 [INFO] fyers_data: Straddle 22900: 63 bars
+2026-06-08 08:55:38,447 [INFO] fyers_data: Straddle 23000: 63 bars
+2026-06-08 08:55:38,972 [INFO] fyers_data: Straddle 23100: 63 bars
+2026-06-08 08:55:39,509 [INFO] fyers_data: Straddle 23200: 63 bars
+2026-06-08 08:55:40,039 [INFO] fyers_data: Straddle 23300: 63 bars
+2026-06-08 08:55:40,283 [WARNING] fyers_data: No candles for NSE:NIFTY2660923400CE: request limit reached
+2026-06-08 08:55:40,548 [WARNING] fyers_data: No candles for NSE:NIFTY2660923400PE: request limit reached
+2026-06-08 08:55:40,548 [WARNING] fyers_data: Missing candles for straddle 23400
+2026-06-08 08:55:40,794 [WARNING] fyers_data: No candles for NSE:NIFTY2660923500CE: request limit reached
+2026-06-08 08:55:41,054 [WARNING] fyers_data: No candles for NSE:NIFTY2660923500PE: request limit reached
+2026-06-08 08:55:41,054 [WARNING] fyers_data: Missing candles for straddle 23500
+2026-06-08 08:55:41,054 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=2 upper_above=0 | lower_above=0 lower_below=4 | score=-1.5 label=neutral
+2026-06-08 08:55:41,054 [INFO] view_engine: Label pending (1/2): current=bearish pending=neutral
+2026-06-08 08:55:42,053 [WARNING] fyers_data: get_quotes_batch failed: request limit reached
+2026-06-08 08:55:42,053 [INFO] strategy: MTM P&L: ₹5,707
+2026-06-08 08:55:42,302 [WARNING] fyers_data: get_quotes_batch failed: request limit reached
+2026-06-08 08:55:42,303 [INFO] dashboard_gen: Dashboard written -> docs/index.html (59514 bytes)
+2026-06-08 08:55:42,304 [INFO] strategy: Run complete.
+2026-06-08 08:55:42,304 [INFO] main: ✓ main.py finished
