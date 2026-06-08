@@ -28,9 +28,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.257,
       "tag": "sell",
-      "current_ltp": 100.45,
-      "pnl": -5850.0,
-      "current_delta": 0.395
+      "current_ltp": 88.9,
+      "pnl": -2847.000000000001,
+      "current_delta": 0.353
     },
     {
       "symbol": "NSE:NIFTY2660923500CE",
@@ -43,9 +43,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 32.75,
-      "pnl": 1235.0,
-      "current_delta": 0.088
+      "current_ltp": 28.45,
+      "pnl": 116.99999999999982,
+      "current_delta": 0.071
     },
     {
       "symbol": "NSE:NIFTY2660923100PE",
@@ -58,9 +58,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.328,
       "tag": "sell",
-      "current_ltp": 51.15,
-      "pnl": 22425.000000000007,
-      "current_delta": 0.203
+      "current_ltp": 55.85,
+      "pnl": 18759.000000000004,
+      "current_delta": 0.236
     },
     {
       "symbol": "NSE:NIFTY2660922900PE",
@@ -73,9 +73,9 @@
       "entry_time": "04:25:38",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 17.35,
-      "pnl": -8657.999999999998,
-      "current_delta": 0.026
+      "current_ltp": 19.1,
+      "pnl": -7292.999999999998,
+      "current_delta": 0.034
     },
     {
       "symbol": "NSE:NIFTY2660923100PE",
@@ -88,9 +88,9 @@
       "entry_time": "06:30:59",
       "entry_delta": 0.278,
       "tag": "sell_1200",
-      "current_ltp": 51.15,
-      "pnl": 2392.0,
-      "current_delta": 0.203
+      "current_ltp": 55.85,
+      "pnl": 1780.9999999999995,
+      "current_delta": 0.236
     },
     {
       "symbol": "NSE:NIFTY2660922900PE",
@@ -103,9 +103,9 @@
       "entry_time": "06:30:59",
       "entry_delta": 0.0,
       "tag": "sell_1200_h",
-      "current_ltp": 17.35,
-      "pnl": -857.9999999999998,
-      "current_delta": 0.026
+      "current_ltp": 19.1,
+      "pnl": -630.4999999999998,
+      "current_delta": 0.034
     }
   ],
   "delta_alerts_sent": [],
@@ -113,56 +113,56 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22700": {
-      "vwap": 513.66,
-      "current_price": 579.05,
+      "vwap": 514.15,
+      "current_price": 563.7,
       "below_vwap": false,
       "above_vwap": true
     },
     "22800": {
-      "vwap": 430.26,
-      "current_price": 492.6,
+      "vwap": 430.85,
+      "current_price": 475.55,
       "below_vwap": false,
       "above_vwap": true
     },
     "22900": {
-      "vwap": 355.47,
-      "current_price": 407.35,
+      "vwap": 356.0,
+      "current_price": 388.4,
       "below_vwap": false,
       "above_vwap": true
     },
     "23000": {
-      "vwap": 297.57,
-      "current_price": 333.8,
+      "vwap": 297.87,
+      "current_price": 318.1,
       "below_vwap": false,
       "above_vwap": true
     },
     "23100": {
-      "vwap": 258.07,
-      "current_price": 274.45,
+      "vwap": 258.14,
+      "current_price": 263.0,
       "below_vwap": false,
       "above_vwap": true
     },
     "23200": {
-      "vwap": 240.75,
-      "current_price": 238.3,
+      "vwap": 240.58,
+      "current_price": 231.65,
       "below_vwap": true,
       "above_vwap": false
     },
     "23300": {
-      "vwap": 249.71,
-      "current_price": 228.35,
+      "vwap": 249.07,
+      "current_price": 227.8,
       "below_vwap": true,
       "above_vwap": false
     },
     "23400": {
-      "vwap": 287.5,
-      "current_price": 246.85,
+      "vwap": 286.61,
+      "current_price": 253.85,
       "below_vwap": true,
       "above_vwap": false
     },
     "23500": {
-      "vwap": 348.02,
-      "current_price": 293.6,
+      "vwap": 346.97,
+      "current_price": 306.6,
       "below_vwap": true,
       "above_vwap": false
     }
@@ -511,6 +511,14 @@
       "confirmed": "very_bullish",
       "pending": "",
       "spot": 23246.3
+    },
+    {
+      "time": "13:05:39",
+      "label": "very_bullish",
+      "score": 10.5,
+      "confirmed": "very_bullish",
+      "pending": "",
+      "spot": 23226.25
     }
   ],
   "equity_curve": [
@@ -665,9 +673,13 @@
     {
       "time": "13:00:57",
       "pnl": 10686.0
+    },
+    {
+      "time": "13:05:40",
+      "pnl": 9886.5
     }
   ],
-  "last_run": "2026-06-08T07:30:58.460569",
+  "last_run": "2026-06-08T07:35:40.387549",
   "errors": [
     {
       "time": "2026-06-01T05:05:37.823741",
