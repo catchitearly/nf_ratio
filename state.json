@@ -5,11 +5,11 @@
   "entry_label": "very_bullish",
   "current_label": "bearish",
   "prev_label": "very_bullish",
-  "pending_label": "neutral",
-  "pending_label_count": 1,
-  "current_score": -0.5,
-  "raw_label": "neutral",
-  "prev_raw_label": "neutral",
+  "pending_label": null,
+  "pending_label_count": 0,
+  "current_score": -4.0,
+  "raw_label": "bearish",
+  "prev_raw_label": "bearish",
   "adjustment_count": 2,
   "add_1200_done": true,
   "neutral_adjusted": false,
@@ -147,15 +147,15 @@
   "journal_saved": false,
   "straddle_snapshot": {
     "22700": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 513.3,
+      "current_price": 486.75,
+      "below_vwap": true,
       "above_vwap": false
     },
     "22800": {
-      "vwap": null,
-      "current_price": null,
-      "below_vwap": false,
+      "vwap": 429.03,
+      "current_price": 396.85,
+      "below_vwap": true,
       "above_vwap": false
     },
     "22900": {
@@ -665,6 +665,14 @@
       "confirmed": "",
       "pending": "neutral",
       "spot": 23156.05
+    },
+    {
+      "time": "14:20:44",
+      "label": "bearish",
+      "score": -4.0,
+      "confirmed": "bearish",
+      "pending": "",
+      "spot": 23162.85
     }
   ],
   "equity_curve": [
@@ -879,9 +887,13 @@
     {
       "time": "14:15:47",
       "pnl": 5707.0
+    },
+    {
+      "time": "14:20:45",
+      "pnl": 5707.0
     }
   ],
-  "last_run": "2026-06-08T08:45:47.626557",
+  "last_run": "2026-06-08T08:50:45.275773",
   "errors": [
     {
       "time": "2026-06-01T05:05:37.823741",
