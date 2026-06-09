@@ -446,3 +446,24 @@
 2026-06-09 05:50:45,687 [INFO] dashboard_gen: Dashboard written -> docs/index.html (31957 bytes)
 2026-06-09 05:50:45,688 [INFO] strategy: Run complete.
 2026-06-09 05:50:45,688 [INFO] main: ✓ main.py finished
+2026-06-09 05:55:34,742 [INFO] main: ▶ main.py started
+2026-06-09 05:55:35,057 [INFO] strategy: ============================================================
+2026-06-09 05:55:35,057 [INFO] strategy: Run at 2026-06-09 11:25:35 IST
+2026-06-09 05:55:35,854 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-09 05:55:36,102 [INFO] fyers_data: Spot: 23111.85
+2026-06-09 05:55:36,612 [INFO] fyers_data: Straddle 22800: 27 bars
+2026-06-09 05:55:37,115 [INFO] fyers_data: Straddle 22900: 27 bars
+2026-06-09 05:55:37,639 [INFO] fyers_data: Straddle 23000: 27 bars
+2026-06-09 05:55:38,152 [INFO] fyers_data: Straddle 23100: 27 bars
+2026-06-09 05:55:38,687 [INFO] fyers_data: Straddle 23200: 27 bars
+2026-06-09 05:55:39,194 [INFO] fyers_data: Straddle 23300: 27 bars
+2026-06-09 05:55:39,705 [INFO] fyers_data: Straddle 23400: 27 bars
+2026-06-09 05:55:40,206 [INFO] fyers_data: Straddle 23500: 27 bars
+2026-06-09 05:55:40,721 [INFO] fyers_data: Straddle 23600: 27 bars
+2026-06-09 05:55:40,722 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-11.5 label=very_bearish
+2026-06-09 05:55:40,971 [INFO] strategy: MTM P&L: ₹1,508
+2026-06-09 05:55:40,971 [INFO] strategy: TSL HIT: pnl=1508 tsl=1600 peak=3315
+2026-06-09 05:55:41,972 [WARNING] position_manager: Delta breach: NSE:NIFTY2660923100PE 0.463
+2026-06-09 05:55:42,645 [INFO] dashboard_gen: Dashboard written -> docs/index.html (32673 bytes)
+2026-06-09 05:55:42,646 [INFO] strategy: Run complete.
+2026-06-09 05:55:42,646 [INFO] main: ✓ main.py finished
