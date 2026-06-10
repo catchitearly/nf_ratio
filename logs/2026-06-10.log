@@ -1273,3 +1273,27 @@
 2026-06-10 09:10:51,384 [INFO] dashboard_gen: Dashboard written -> docs/index.html (63741 bytes)
 2026-06-10 09:10:51,386 [INFO] strategy: Run complete.
 2026-06-10 09:10:51,386 [INFO] main: ✓ main.py finished
+2026-06-10 09:15:43,039 [INFO] main: ▶ main.py started
+2026-06-10 09:15:43,727 [INFO] strategy: ============================================================
+2026-06-10 09:15:43,727 [INFO] strategy: Run at 2026-06-10 14:45:43 IST
+2026-06-10 09:15:44,093 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-10 09:15:44,336 [INFO] fyers_data: Spot: 23250.65
+2026-06-10 09:15:44,824 [INFO] fyers_data: Straddle 22900: 67 bars
+2026-06-10 09:15:45,930 [INFO] fyers_data: Straddle 23000: 67 bars
+2026-06-10 09:15:46,469 [INFO] fyers_data: Straddle 23100: 67 bars
+2026-06-10 09:15:46,980 [INFO] fyers_data: Straddle 23200: 67 bars
+2026-06-10 09:15:47,480 [INFO] fyers_data: Straddle 23300: 67 bars
+2026-06-10 09:15:47,967 [INFO] fyers_data: Straddle 23400: 67 bars
+2026-06-10 09:15:48,536 [INFO] fyers_data: Straddle 23500: 67 bars
+2026-06-10 09:15:49,081 [INFO] fyers_data: Straddle 23600: 67 bars
+2026-06-10 09:15:49,577 [INFO] fyers_data: Straddle 23700: 67 bars
+2026-06-10 09:15:49,577 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-10.5 label=very_bearish
+2026-06-10 09:15:49,577 [INFO] view_engine: Label confirmed: bearish → very_bearish
+2026-06-10 09:15:50,365 [INFO] strategy: MTM P&L: ₹325
+2026-06-10 09:15:50,656 [INFO] position_manager: Adjust trigger: score -10.5 < 1.0
+2026-06-10 09:15:50,656 [INFO] strategy: Score adj trigger | entry=very_bullish score=-10.5 → rebalance to very_bearish
+2026-06-10 09:15:50,656 [INFO] position_manager: Rebalance | label=very_bearish | cur CE=8 PE=4 | target CE=8 PE=4 | add CE=0 PE=0 | close CE=0 PE=0
+2026-06-10 09:15:50,656 [INFO] strategy: Adjustment triggered but no change needed.
+2026-06-10 09:15:50,657 [INFO] dashboard_gen: Dashboard written -> docs/index.html (64417 bytes)
+2026-06-10 09:15:50,659 [INFO] strategy: Run complete.
+2026-06-10 09:15:50,659 [INFO] main: ✓ main.py finished
