@@ -58,3 +58,26 @@
 2026-06-12 04:10:42,869 [INFO] dashboard_gen: Dashboard written -> docs/index.html (16429 bytes)
 2026-06-12 04:10:42,869 [INFO] strategy: Run complete.
 2026-06-12 04:10:42,869 [INFO] main: ✓ main.py finished
+2026-06-12 04:15:39,548 [INFO] main: ▶ main.py started
+2026-06-12 04:15:40,421 [INFO] strategy: ============================================================
+2026-06-12 04:15:40,422 [INFO] strategy: Run at 2026-06-12 09:45:40 IST
+2026-06-12 04:15:40,797 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-12 04:15:41,029 [INFO] fyers_data: Spot: 23375.85
+2026-06-12 04:15:41,603 [INFO] fyers_data: Straddle 23000: 7 bars
+2026-06-12 04:15:42,102 [INFO] fyers_data: Straddle 23100: 7 bars
+2026-06-12 04:15:42,547 [INFO] fyers_data: Straddle 23200: 7 bars
+2026-06-12 04:15:42,997 [INFO] fyers_data: Straddle 23300: 7 bars
+2026-06-12 04:15:43,524 [INFO] fyers_data: Straddle 23400: 7 bars
+2026-06-12 04:15:43,971 [INFO] fyers_data: Straddle 23500: 7 bars
+2026-06-12 04:15:44,420 [INFO] fyers_data: Straddle 23600: 7 bars
+2026-06-12 04:15:44,876 [INFO] fyers_data: Straddle 23700: 7 bars
+2026-06-12 04:15:45,366 [INFO] fyers_data: Straddle 23800: 7 bars
+2026-06-12 04:15:45,366 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-10.5 label=very_bearish
+2026-06-12 04:15:45,599 [INFO] position_manager: Selected CE 23600 | delta=0.290 ltp=52.55 dist=200pts
+2026-06-12 04:15:45,834 [INFO] position_manager: Selected PE 23200 | delta=0.297 ltp=68.00 dist=200pts
+2026-06-12 04:15:46,306 [INFO] position_manager: Entry | label=very_bearish CE 23600x12 d=0.290 PE 23200x4 d=0.297
+2026-06-12 04:15:46,938 [INFO] strategy: Entry done: label=very_bearish legs=4
+2026-06-12 04:15:47,167 [INFO] strategy: MTM P&L: ₹104
+2026-06-12 04:15:47,389 [INFO] dashboard_gen: Dashboard written -> docs/index.html (18844 bytes)
+2026-06-12 04:15:47,390 [INFO] strategy: Run complete.
+2026-06-12 04:15:47,390 [INFO] main: ✓ main.py finished
