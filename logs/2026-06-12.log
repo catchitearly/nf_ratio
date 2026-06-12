@@ -956,3 +956,28 @@
 2026-06-12 08:01:15,924 [INFO] dashboard_gen: Dashboard written -> docs/index.html (51667 bytes)
 2026-06-12 08:01:15,925 [INFO] strategy: Run complete.
 2026-06-12 08:01:15,926 [INFO] main: ✓ main.py finished
+2026-06-12 08:05:35,605 [INFO] main: ▶ main.py started
+2026-06-12 08:05:35,961 [INFO] strategy: ============================================================
+2026-06-12 08:05:35,961 [INFO] strategy: Run at 2026-06-12 13:35:35 IST
+2026-06-12 08:05:36,291 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-12 08:05:36,578 [INFO] fyers_data: Spot: 23426.05
+2026-06-12 08:05:37,140 [INFO] fyers_data: Straddle 23000: 53 bars
+2026-06-12 08:05:37,775 [INFO] fyers_data: Straddle 23100: 53 bars
+2026-06-12 08:05:38,320 [INFO] fyers_data: Straddle 23200: 53 bars
+2026-06-12 08:05:38,899 [INFO] fyers_data: Straddle 23300: 53 bars
+2026-06-12 08:05:39,497 [INFO] fyers_data: Straddle 23400: 53 bars
+2026-06-12 08:05:40,198 [INFO] fyers_data: Straddle 23500: 53 bars
+2026-06-12 08:05:40,798 [INFO] fyers_data: Straddle 23600: 53 bars
+2026-06-12 08:05:41,326 [INFO] fyers_data: Straddle 23700: 53 bars
+2026-06-12 08:05:41,885 [INFO] fyers_data: Straddle 23800: 53 bars
+2026-06-12 08:05:41,886 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-06-12 08:05:41,886 [INFO] view_engine: Label confirmed: bearish → very_bullish
+2026-06-12 08:05:42,770 [INFO] strategy: MTM P&L: ₹3,666
+2026-06-12 08:05:43,005 [INFO] position_manager: Adjust trigger: score +11.5 > 0.0
+2026-06-12 08:05:43,005 [INFO] strategy: Score adj trigger | entry=very_bearish score=+11.5 → rebalance to very_bullish
+2026-06-12 08:05:43,005 [INFO] position_manager: Rebalance | label=very_bullish | cur CE=12 PE=8 | target CE=4 PE=8 | add CE=0 PE=0 | close CE=8 PE=0
+2026-06-12 08:05:43,005 [INFO] position_manager: Closed 8 CE sell lots
+2026-06-12 08:05:43,531 [INFO] strategy: Adjustment done: +0 legs, 1 closed | adj=2
+2026-06-12 08:05:43,532 [INFO] dashboard_gen: Dashboard written -> docs/index.html (53261 bytes)
+2026-06-12 08:05:43,533 [INFO] strategy: Run complete.
+2026-06-12 08:05:43,533 [INFO] main: ✓ main.py finished
