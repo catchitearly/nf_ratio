@@ -28,9 +28,11 @@
       "entry_time": "04:15:57",
       "entry_delta": 0.251,
       "tag": "sell",
-      "current_ltp": 24.85,
-      "pnl": 5460.0,
-      "current_delta": 0.149
+      "current_ltp": 18.2,
+      "pnl": 7189.000000000001,
+      "current_delta": 0.149,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     },
     {
       "symbol": "NSE:NIFTY2661624300CE",
@@ -43,9 +45,11 @@
       "entry_time": "04:15:57",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 7.35,
-      "pnl": -1521.0,
-      "current_delta": 0.018
+      "current_ltp": 5.7,
+      "pnl": -1949.9999999999998,
+      "current_delta": 0.018,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     },
     {
       "symbol": "NSE:NIFTY2661623900PE",
@@ -58,9 +62,11 @@
       "entry_time": "04:15:57",
       "entry_delta": 0.348,
       "tag": "sell",
-      "current_ltp": 85.45,
-      "pnl": -2522.000000000001,
-      "current_delta": 0.492
+      "current_ltp": 101.9,
+      "pnl": -6799.000000000002,
+      "current_delta": 0.492,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     },
     {
       "symbol": "NSE:NIFTY2661623700PE",
@@ -73,9 +79,11 @@
       "entry_time": "04:15:57",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 21.8,
-      "pnl": -753.9999999999997,
-      "current_delta": 0.138
+      "current_ltp": 27.8,
+      "pnl": 806.0000000000003,
+      "current_delta": 0.138,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     },
     {
       "symbol": "NSE:NIFTY2661623900PE",
@@ -122,9 +130,11 @@
       "entry_time": "06:51:00",
       "entry_delta": 0.321,
       "tag": "sell_reb",
-      "current_ltp": 48.65,
-      "pnl": 3835.0,
-      "current_delta": 0.304
+      "current_ltp": 37.6,
+      "pnl": 6707.999999999999,
+      "current_delta": 0.304,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     },
     {
       "symbol": "NSE:NIFTY2661624200CE",
@@ -137,16 +147,18 @@
       "entry_time": "06:51:00",
       "entry_delta": 0.0,
       "tag": "sell_reb_h",
-      "current_ltp": 13.1,
-      "pnl": -1872.0000000000002,
-      "current_delta": 0.058
+      "current_ltp": 9.7,
+      "pnl": -2756.0000000000005,
+      "current_delta": 0.058,
+      "closed": true,
+      "close_time": "2026-06-15T09:31:05.253649"
     }
   ],
   "delta_alerts_sent": [
     "NSE:NIFTY2661623900PE"
   ],
-  "closed": false,
-  "journal_saved": false,
+  "closed": true,
+  "journal_saved": true,
   "straddle_snapshot": {
     "23500": {
       "vwap": 452.25,
@@ -987,7 +999,7 @@
       "pnl": -1508.0
     }
   ],
-  "last_run": "2026-06-15T09:25:51.747808",
+  "last_run": "2026-06-15T09:31:05.817717",
   "errors": [
     {
       "time": "2026-06-01T05:05:37.823741",
