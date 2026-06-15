@@ -949,3 +949,26 @@
 2026-06-15 07:46:05,326 [INFO] dashboard_gen: Dashboard written -> docs/index.html (50327 bytes)
 2026-06-15 07:46:05,327 [INFO] strategy: Run complete.
 2026-06-15 07:46:05,327 [INFO] main: ✓ main.py finished
+2026-06-15 07:50:59,542 [INFO] main: ▶ main.py started
+2026-06-15 07:51:00,508 [INFO] strategy: ============================================================
+2026-06-15 07:51:00,508 [INFO] strategy: Run at 2026-06-15 13:21:00 IST
+2026-06-15 07:51:03,604 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-15 07:51:04,417 [INFO] fyers_data: Spot: 23901.05
+2026-06-15 07:51:05,375 [INFO] fyers_data: Straddle 23500: 50 bars
+2026-06-15 07:51:06,357 [INFO] fyers_data: Straddle 23600: 50 bars
+2026-06-15 07:51:08,802 [INFO] fyers_data: Straddle 23700: 50 bars
+2026-06-15 07:51:10,938 [INFO] fyers_data: Straddle 23800: 50 bars
+2026-06-15 07:51:15,094 [INFO] fyers_data: Straddle 23900: 50 bars
+2026-06-15 07:51:17,683 [INFO] fyers_data: Straddle 24000: 50 bars
+2026-06-15 07:51:18,429 [INFO] fyers_data: Straddle 24100: 50 bars
+2026-06-15 07:51:19,726 [INFO] fyers_data: Straddle 24200: 50 bars
+2026-06-15 07:51:22,481 [INFO] fyers_data: Straddle 24300: 50 bars
+2026-06-15 07:51:22,481 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-10.5 label=very_bearish
+2026-06-15 07:51:23,440 [INFO] strategy: MTM P&L: ₹-5,278
+2026-06-15 07:51:25,337 [INFO] position_manager: Adjust trigger: score -10.5 < 1.0
+2026-06-15 07:51:25,337 [INFO] strategy: Score adj trigger | entry=very_bullish score=-10.5 → rebalance to very_bearish
+2026-06-15 07:51:25,337 [INFO] position_manager: Rebalance | label=very_bearish | cur CE=8 PE=4 | target CE=8 PE=4 | add CE=0 PE=0 | close CE=0 PE=0
+2026-06-15 07:51:25,337 [INFO] strategy: Adjustment triggered but no change needed.
+2026-06-15 07:51:25,338 [INFO] dashboard_gen: Dashboard written -> docs/index.html (51003 bytes)
+2026-06-15 07:51:25,339 [INFO] strategy: Run complete.
+2026-06-15 07:51:25,339 [INFO] main: ✓ main.py finished
