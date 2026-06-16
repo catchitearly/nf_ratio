@@ -1376,3 +1376,14 @@
 2026-06-16 09:25:55,617 [INFO] dashboard_gen: Dashboard written -> docs/index.html (64057 bytes)
 2026-06-16 09:25:55,619 [INFO] strategy: Run complete.
 2026-06-16 09:25:55,619 [INFO] main: ✓ main.py finished
+2026-06-16 09:31:17,724 [INFO] main: ▶ main.py started
+2026-06-16 09:31:18,627 [INFO] strategy: ============================================================
+2026-06-16 09:31:18,627 [INFO] strategy: Run at 2026-06-16 15:01:18 IST
+2026-06-16 09:31:18,971 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-16 09:31:19,227 [INFO] fyers_data: Spot: 23986.7
+2026-06-16 09:31:19,489 [INFO] position_manager: Closed all | PnL: 10,647
+2026-06-16 09:31:29,837 [ERROR] telegram_bot: Telegram send error: HTTPSConnectionPool(host='api.telegram.org', port=443): Read timed out. (read timeout=10)
+2026-06-16 09:31:29,838 [INFO] journal: Journal saved: journal/2026-06-16.md (8978 bytes)
+2026-06-16 09:31:29,838 [INFO] strategy: Journal saved: journal/2026-06-16.md
+2026-06-16 09:31:29,839 [INFO] dashboard_gen: Dashboard written -> docs/index.html (64101 bytes)
+2026-06-16 09:31:29,840 [INFO] main: ✓ main.py finished

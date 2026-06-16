@@ -28,9 +28,11 @@
       "entry_time": "04:21:00",
       "entry_delta": 0.34,
       "tag": "sell",
-      "current_ltp": 10.8,
-      "pnl": 1871.9999999999998,
-      "current_delta": 0.498
+      "current_ltp": 4.65,
+      "pnl": 3471.0,
+      "current_delta": 0.498,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     },
     {
       "symbol": "NSE:NIFTY2661624200CE",
@@ -43,9 +45,11 @@
       "entry_time": "04:21:00",
       "entry_delta": 0.0,
       "tag": "hedge",
-      "current_ltp": 0.25,
-      "pnl": -429.0,
-      "current_delta": 0.144
+      "current_ltp": 0.15,
+      "pnl": -455.0,
+      "current_delta": 0.144,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     },
     {
       "symbol": "NSE:NIFTY2661623800PE",
@@ -58,9 +62,11 @@
       "entry_time": "04:21:00",
       "entry_delta": 0.257,
       "tag": "sell",
-      "current_ltp": 0.2,
-      "pnl": 2990.0,
-      "current_delta": 0.145
+      "current_ltp": 0.25,
+      "pnl": 2977.0,
+      "current_delta": 0.145,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     },
     {
       "symbol": "NSE:NIFTY2661623600PE",
@@ -75,7 +81,9 @@
       "tag": "hedge",
       "current_ltp": 0.15,
       "pnl": -364.00000000000006,
-      "current_delta": 0.016
+      "current_delta": 0.016,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     },
     {
       "symbol": "NSE:NIFTY2661624000CE",
@@ -124,7 +132,9 @@
       "tag": "sell_reb",
       "current_ltp": 0.25,
       "pnl": 1495.0,
-      "current_delta": 0.299
+      "current_delta": 0.299,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     },
     {
       "symbol": "NSE:NIFTY2661623700PE",
@@ -137,16 +147,18 @@
       "entry_time": "08:11:06",
       "entry_delta": 0.0,
       "tag": "sell_reb_h",
-      "current_ltp": 0.2,
-      "pnl": -182.0,
-      "current_delta": 0.055
+      "current_ltp": 0.15,
+      "pnl": -195.0,
+      "current_delta": 0.055,
+      "closed": true,
+      "close_time": "2026-06-16T09:31:19.489051"
     }
   ],
   "delta_alerts_sent": [
     "NSE:NIFTY2661624000CE"
   ],
-  "closed": false,
-  "journal_saved": false,
+  "closed": true,
+  "journal_saved": true,
   "straddle_snapshot": {
     "23500": {
       "vwap": 448.07,
@@ -983,7 +995,7 @@
       "pnl": 9100.0
     }
   ],
-  "last_run": "2026-06-16T09:25:55.617898",
+  "last_run": "2026-06-16T09:31:29.839489",
   "errors": [
     {
       "time": "2026-06-01T05:10:39.843768",
