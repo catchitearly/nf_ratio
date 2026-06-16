@@ -1007,3 +1007,27 @@
 2026-06-16 08:05:50,160 [INFO] dashboard_gen: Dashboard written -> docs/index.html (52350 bytes)
 2026-06-16 08:05:50,161 [INFO] strategy: Run complete.
 2026-06-16 08:05:50,161 [INFO] main: ✓ main.py finished
+2026-06-16 08:10:59,531 [INFO] main: ▶ main.py started
+2026-06-16 08:11:00,574 [INFO] strategy: ============================================================
+2026-06-16 08:11:00,574 [INFO] strategy: Run at 2026-06-16 13:41:00 IST
+2026-06-16 08:11:00,941 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-16 08:11:01,158 [INFO] fyers_data: Spot: 23968.5
+2026-06-16 08:11:01,637 [INFO] fyers_data: Straddle 23500: 54 bars
+2026-06-16 08:11:02,099 [INFO] fyers_data: Straddle 23600: 54 bars
+2026-06-16 08:11:02,550 [INFO] fyers_data: Straddle 23700: 54 bars
+2026-06-16 08:11:03,071 [INFO] fyers_data: Straddle 23800: 54 bars
+2026-06-16 08:11:03,537 [INFO] fyers_data: Straddle 23900: 54 bars
+2026-06-16 08:11:03,994 [INFO] fyers_data: Straddle 24000: 54 bars
+2026-06-16 08:11:04,492 [INFO] fyers_data: Straddle 24100: 54 bars
+2026-06-16 08:11:04,958 [INFO] fyers_data: Straddle 24200: 54 bars
+2026-06-16 08:11:05,422 [INFO] fyers_data: Straddle 24300: 54 bars
+2026-06-16 08:11:05,422 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-06-16 08:11:05,638 [INFO] strategy: MTM P&L: ₹6,916
+2026-06-16 08:11:05,872 [INFO] position_manager: Adjust trigger: score +11.5 > 0.0
+2026-06-16 08:11:05,872 [INFO] strategy: Score adj trigger | entry=bearish score=+11.5 → rebalance to very_bullish
+2026-06-16 08:11:05,872 [INFO] position_manager: Rebalance | label=very_bullish | cur CE=4 PE=4 | target CE=4 PE=8 | add CE=0 PE=4 | close CE=0 PE=0
+2026-06-16 08:11:06,089 [INFO] position_manager: Selected PE 23900 | delta=0.348 ltp=6.00 dist=100pts
+2026-06-16 08:11:06,812 [INFO] strategy: Adjustment done: +2 legs, 0 closed | adj=2
+2026-06-16 08:11:06,814 [INFO] dashboard_gen: Dashboard written -> docs/index.html (53933 bytes)
+2026-06-16 08:11:06,815 [INFO] strategy: Run complete.
+2026-06-16 08:11:06,815 [INFO] main: ✓ main.py finished
