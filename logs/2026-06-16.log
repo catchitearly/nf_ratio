@@ -959,3 +959,27 @@
 2026-06-16 07:55:52,164 [INFO] dashboard_gen: Dashboard written -> docs/index.html (51003 bytes)
 2026-06-16 07:55:52,165 [INFO] strategy: Run complete.
 2026-06-16 07:55:52,165 [INFO] main: ✓ main.py finished
+2026-06-16 08:01:21,413 [INFO] main: ▶ main.py started
+2026-06-16 08:01:22,270 [INFO] strategy: ============================================================
+2026-06-16 08:01:22,271 [INFO] strategy: Run at 2026-06-16 13:31:22 IST
+2026-06-16 08:01:22,640 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-16 08:01:22,869 [INFO] fyers_data: Spot: 23963.6
+2026-06-16 08:01:23,336 [INFO] fyers_data: Straddle 23500: 52 bars
+2026-06-16 08:01:23,811 [INFO] fyers_data: Straddle 23600: 52 bars
+2026-06-16 08:01:24,274 [INFO] fyers_data: Straddle 23700: 52 bars
+2026-06-16 08:01:24,747 [INFO] fyers_data: Straddle 23800: 52 bars
+2026-06-16 08:01:25,210 [INFO] fyers_data: Straddle 23900: 52 bars
+2026-06-16 08:01:25,703 [INFO] fyers_data: Straddle 24000: 52 bars
+2026-06-16 08:01:26,188 [INFO] fyers_data: Straddle 24100: 52 bars
+2026-06-16 08:01:26,657 [INFO] fyers_data: Straddle 24200: 52 bars
+2026-06-16 08:01:27,147 [INFO] fyers_data: Straddle 24300: 52 bars
+2026-06-16 08:01:27,147 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-06-16 08:01:27,369 [INFO] strategy: MTM P&L: ₹7,280
+2026-06-16 08:01:27,600 [INFO] position_manager: Adjust trigger: score +11.5 > 0.0
+2026-06-16 08:01:27,600 [INFO] strategy: Score adj trigger | entry=bearish score=+11.5 → rebalance to very_bullish
+2026-06-16 08:01:27,600 [INFO] position_manager: Rebalance | label=very_bullish | cur CE=4 PE=4 | target CE=4 PE=8 | add CE=0 PE=4 | close CE=0 PE=0
+2026-06-16 08:01:27,600 [WARNING] position_manager: No PE BS candidate >=100pts from ATM near 23963.6 (DTE=1)
+2026-06-16 08:01:27,600 [INFO] strategy: Adjustment triggered but no change needed.
+2026-06-16 08:01:27,601 [INFO] dashboard_gen: Dashboard written -> docs/index.html (51677 bytes)
+2026-06-16 08:01:27,603 [INFO] strategy: Run complete.
+2026-06-16 08:01:27,603 [INFO] main: ✓ main.py finished
