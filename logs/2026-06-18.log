@@ -506,3 +506,22 @@
 2026-06-18 06:05:48,301 [INFO] dashboard_gen: Dashboard written -> docs/index.html (34367 bytes)
 2026-06-18 06:05:48,302 [INFO] strategy: Run complete.
 2026-06-18 06:05:48,302 [INFO] main: ✓ main.py finished
+2026-06-18 06:10:48,711 [INFO] main: ▶ main.py started
+2026-06-18 06:10:49,043 [INFO] strategy: ============================================================
+2026-06-18 06:10:49,043 [INFO] strategy: Run at 2026-06-18 11:40:49 IST
+2026-06-18 06:10:49,329 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-18 06:10:49,552 [INFO] fyers_data: Spot: 24050.9
+2026-06-18 06:10:50,018 [INFO] fyers_data: Straddle 23700: 30 bars
+2026-06-18 06:10:50,665 [INFO] fyers_data: Straddle 23800: 30 bars
+2026-06-18 06:10:51,138 [INFO] fyers_data: Straddle 23900: 30 bars
+2026-06-18 06:10:51,595 [INFO] fyers_data: Straddle 24000: 30 bars
+2026-06-18 06:10:52,036 [INFO] fyers_data: Straddle 24100: 30 bars
+2026-06-18 06:10:52,498 [INFO] fyers_data: Straddle 24200: 30 bars
+2026-06-18 06:10:52,955 [INFO] fyers_data: Straddle 24300: 30 bars
+2026-06-18 06:10:53,391 [INFO] fyers_data: Straddle 24400: 30 bars
+2026-06-18 06:10:53,840 [INFO] fyers_data: Straddle 24500: 30 bars
+2026-06-18 06:10:53,841 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=0 upper_above=4 | lower_above=0 lower_below=4 | score=-11.5 label=very_bearish
+2026-06-18 06:10:54,057 [INFO] strategy: MTM P&L: ₹-8,450
+2026-06-18 06:10:54,277 [INFO] dashboard_gen: Dashboard written -> docs/index.html (35042 bytes)
+2026-06-18 06:10:54,278 [INFO] strategy: Run complete.
+2026-06-18 06:10:54,278 [INFO] main: ✓ main.py finished
