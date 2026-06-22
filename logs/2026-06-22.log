@@ -121,3 +121,11 @@
 2026-06-22 04:25:50,526 [INFO] dashboard_gen: Dashboard written -> docs/index.html (20418 bytes)
 2026-06-22 04:25:50,527 [INFO] strategy: Run complete.
 2026-06-22 04:25:50,527 [INFO] main: ✓ main.py finished
+2026-06-22 04:31:13,408 [INFO] main: ▶ main.py started
+2026-06-22 04:31:14,545 [INFO] strategy: ============================================================
+2026-06-22 04:31:14,545 [INFO] strategy: Run at 2026-06-22 10:01:14 IST
+2026-06-22 04:31:14,985 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-22 04:31:15,237 [ERROR] fyers_data: get_spot_price error: {'message': 'request limit reached', 'code': 429, 's': 'error'}
+2026-06-22 04:31:15,237 [ERROR] strategy: Spot fetch failed – aborting run.
+2026-06-22 04:31:15,238 [INFO] dashboard_gen: Dashboard written -> docs/index.html (20438 bytes)
+2026-06-22 04:31:15,238 [INFO] main: ✓ main.py finished
