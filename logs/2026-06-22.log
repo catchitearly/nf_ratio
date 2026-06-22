@@ -129,3 +129,23 @@
 2026-06-22 04:31:15,237 [ERROR] strategy: Spot fetch failed – aborting run.
 2026-06-22 04:31:15,238 [INFO] dashboard_gen: Dashboard written -> docs/index.html (20438 bytes)
 2026-06-22 04:31:15,238 [INFO] main: ✓ main.py finished
+2026-06-22 04:35:41,143 [INFO] main: ▶ main.py started
+2026-06-22 04:35:42,269 [INFO] strategy: ============================================================
+2026-06-22 04:35:42,269 [INFO] strategy: Run at 2026-06-22 10:05:42 IST
+2026-06-22 04:35:42,626 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-22 04:35:42,836 [INFO] fyers_data: Spot: 24131.35
+2026-06-22 04:35:43,454 [INFO] fyers_data: Straddle 23700: 11 bars
+2026-06-22 04:35:43,932 [INFO] fyers_data: Straddle 23800: 11 bars
+2026-06-22 04:35:44,382 [INFO] fyers_data: Straddle 23900: 11 bars
+2026-06-22 04:35:44,829 [INFO] fyers_data: Straddle 24000: 11 bars
+2026-06-22 04:35:45,253 [INFO] fyers_data: Straddle 24100: 11 bars
+2026-06-22 04:35:45,746 [INFO] fyers_data: Straddle 24200: 11 bars
+2026-06-22 04:35:46,188 [INFO] fyers_data: Straddle 24300: 11 bars
+2026-06-22 04:35:46,618 [INFO] fyers_data: Straddle 24400: 11 bars
+2026-06-22 04:35:47,063 [INFO] fyers_data: Straddle 24500: 11 bars
+2026-06-22 04:35:47,063 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=2 lower_below=2 | score=+7.5 label=very_bullish
+2026-06-22 04:35:47,063 [INFO] view_engine: Label confirmed: bearish → very_bullish
+2026-06-22 04:35:47,777 [INFO] strategy: MTM P&L: ₹-104
+2026-06-22 04:35:47,982 [INFO] dashboard_gen: Dashboard written -> docs/index.html (21112 bytes)
+2026-06-22 04:35:47,983 [INFO] strategy: Run complete.
+2026-06-22 04:35:47,983 [INFO] main: ✓ main.py finished
