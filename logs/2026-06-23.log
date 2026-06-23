@@ -57,3 +57,26 @@
 2026-06-23 04:10:55,395 [INFO] dashboard_gen: Dashboard written -> docs/index.html (16341 bytes)
 2026-06-23 04:10:55,396 [INFO] strategy: Run complete.
 2026-06-23 04:10:55,396 [INFO] main: ✓ main.py finished
+2026-06-23 04:15:55,013 [INFO] main: ▶ main.py started
+2026-06-23 04:15:55,375 [INFO] strategy: ============================================================
+2026-06-23 04:15:55,375 [INFO] strategy: Run at 2026-06-23 09:45:55 IST
+2026-06-23 04:15:55,721 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-23 04:15:55,970 [INFO] fyers_data: Spot: 24111.75
+2026-06-23 04:15:56,489 [INFO] fyers_data: Straddle 23700: 7 bars
+2026-06-23 04:15:56,990 [INFO] fyers_data: Straddle 23800: 7 bars
+2026-06-23 04:15:57,512 [INFO] fyers_data: Straddle 23900: 7 bars
+2026-06-23 04:15:58,012 [INFO] fyers_data: Straddle 24000: 7 bars
+2026-06-23 04:15:58,529 [INFO] fyers_data: Straddle 24100: 7 bars
+2026-06-23 04:15:59,046 [INFO] fyers_data: Straddle 24200: 7 bars
+2026-06-23 04:15:59,550 [INFO] fyers_data: Straddle 24300: 7 bars
+2026-06-23 04:16:00,053 [INFO] fyers_data: Straddle 24400: 7 bars
+2026-06-23 04:16:00,592 [INFO] fyers_data: Straddle 24500: 7 bars
+2026-06-23 04:16:00,592 [INFO] view_engine: View check | ATM below_vwap=True | upper_below=4 upper_above=0 | lower_above=4 lower_below=0 | score=+11.5 label=very_bullish
+2026-06-23 04:16:00,837 [INFO] position_manager: Selected CE 24200 | delta=0.330 ltp=12.40 dist=100pts
+2026-06-23 04:16:01,087 [INFO] position_manager: Selected PE 24000 | delta=0.268 ltp=8.30 dist=100pts
+2026-06-23 04:16:01,603 [INFO] position_manager: Entry | label=very_bullish CE 24200x4 d=0.330 PE 24000x12 d=0.268
+2026-06-23 04:16:02,323 [INFO] strategy: Entry done: label=very_bullish legs=4
+2026-06-23 04:16:02,568 [INFO] strategy: MTM P&L: ₹-52
+2026-06-23 04:16:02,825 [INFO] dashboard_gen: Dashboard written -> docs/index.html (18748 bytes)
+2026-06-23 04:16:02,825 [INFO] strategy: Run complete.
+2026-06-23 04:16:02,825 [INFO] main: ✓ main.py finished
