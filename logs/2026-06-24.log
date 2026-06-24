@@ -349,3 +349,30 @@
 2026-06-24 08:05:42,563 [ERROR] strategy: Spot fetch failed – aborting run.
 2026-06-24 08:05:42,563 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13409 bytes)
 2026-06-24 08:05:42,564 [INFO] main: ✓ main.py finished
+2026-06-24 08:09:22,372 [INFO] main: ▶ main.py started
+2026-06-24 08:09:23,395 [INFO] strategy: ============================================================
+2026-06-24 08:09:23,395 [INFO] strategy: Run at 2026-06-24 13:39:23 IST
+2026-06-24 08:09:23,727 [INFO] fyers_data: Fyers authenticated: SOURAVA KUMAR SETHY
+2026-06-24 08:09:23,954 [INFO] fyers_data: Spot: 24074.85
+2026-06-24 08:09:24,185 [INFO] fyers_data: 9:15 candle close: 23848.45
+2026-06-24 08:09:24,185 [INFO] strategy: ATM fixed at 23800
+2026-06-24 08:09:24,644 [INFO] fyers_data: Straddle 23400: 53 bars
+2026-06-24 08:09:25,121 [INFO] fyers_data: Straddle 23500: 53 bars
+2026-06-24 08:09:25,561 [INFO] fyers_data: Straddle 23600: 53 bars
+2026-06-24 08:09:26,074 [INFO] fyers_data: Straddle 23700: 53 bars
+2026-06-24 08:09:26,534 [INFO] fyers_data: Straddle 23800: 53 bars
+2026-06-24 08:09:27,073 [INFO] fyers_data: Straddle 23900: 53 bars
+2026-06-24 08:09:27,535 [INFO] fyers_data: Straddle 24000: 53 bars
+2026-06-24 08:09:28,029 [INFO] fyers_data: Straddle 24100: 53 bars
+2026-06-24 08:09:28,541 [INFO] fyers_data: Straddle 24200: 53 bars
+2026-06-24 08:09:28,541 [INFO] view_engine: View check | ATM below_vwap=False | upper_below=2 upper_above=2 | lower_above=4 lower_below=0 | score=+6.5 label=bullish
+2026-06-24 08:09:28,541 [INFO] view_engine: Label pending (1/2): current=None pending=bullish
+2026-06-24 08:09:28,765 [INFO] position_manager: Selected CE 24300 | delta=0.338 ltp=62.70 dist=200pts
+2026-06-24 08:09:28,965 [INFO] position_manager: Selected PE 23900 | delta=0.328 ltp=75.00 dist=200pts
+2026-06-24 08:09:29,409 [INFO] position_manager: Entry | label=bullish CE 24300x4 d=0.338 PE 23900x8 d=0.328
+2026-06-24 08:09:29,918 [INFO] strategy: Entry done: label=bullish legs=4
+2026-06-24 08:09:29,919 [INFO] strategy: Late start – 12:00 add skipped.
+2026-06-24 08:09:30,122 [INFO] strategy: MTM P&L: ₹-52
+2026-06-24 08:09:30,348 [INFO] dashboard_gen: Dashboard written -> docs/index.html (16990 bytes)
+2026-06-24 08:09:30,348 [INFO] strategy: Run complete.
+2026-06-24 08:09:30,348 [INFO] main: ✓ main.py finished
