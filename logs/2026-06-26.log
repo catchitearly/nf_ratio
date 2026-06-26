@@ -1,0 +1,8 @@
+2026-06-26 04:01:13,586 [INFO] main: ▶ main.py started
+2026-06-26 04:01:14,604 [INFO] strategy: ============================================================
+2026-06-26 04:01:14,604 [INFO] strategy: Run at 2026-06-26 09:31:14 IST
+2026-06-26 04:01:14,618 [INFO] strategy: New trading day: 2026-06-26
+2026-06-26 04:01:14,933 [ERROR] fyers_data: Fyers auth failed: {'s': 'error', 'code': -8, 'message': 'Your token has expired. Please generate a token'}
+2026-06-26 04:01:14,934 [ERROR] strategy: Spot fetch failed – aborting run.
+2026-06-26 04:01:14,935 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13408 bytes)
+2026-06-26 04:01:14,935 [INFO] main: ✓ main.py finished
