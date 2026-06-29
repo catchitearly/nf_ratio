@@ -23,12 +23,8 @@
   "straddle_snapshot": {},
   "view_log": [],
   "equity_curve": [],
-  "last_run": "2026-06-29T05:05:41.232232",
+  "last_run": "2026-06-29T05:10:51.273312",
   "errors": [
-    {
-      "time": "2026-06-29T04:20:52.050982",
-      "msg": "Spot fetch failed \u2013 aborting run."
-    },
     {
       "time": "2026-06-29T04:25:40.046154",
       "msg": "Spot fetch failed \u2013 aborting run."
@@ -63,6 +59,10 @@
     },
     {
       "time": "2026-06-29T05:05:41.231778",
+      "msg": "Spot fetch failed \u2013 aborting run."
+    },
+    {
+      "time": "2026-06-29T05:10:51.272824",
       "msg": "Spot fetch failed \u2013 aborting run."
     }
   ]
