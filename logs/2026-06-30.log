@@ -454,3 +454,10 @@
 2026-06-30 09:25:40,139 [ERROR] strategy: Spot fetch failed – aborting run.
 2026-06-30 09:25:40,140 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13409 bytes)
 2026-06-30 09:25:40,140 [INFO] main: ✓ main.py finished
+2026-06-30 09:31:00,991 [INFO] main: ▶ main.py started
+2026-06-30 09:31:01,292 [INFO] strategy: ============================================================
+2026-06-30 09:31:01,293 [INFO] strategy: Run at 2026-06-30 15:01:01 IST
+2026-06-30 09:31:01,612 [ERROR] fyers_data: Fyers auth failed: {'s': 'error', 'code': -8, 'message': 'Your token has expired. Please generate a token'}
+2026-06-30 09:31:01,613 [ERROR] strategy: Spot fetch failed – aborting run.
+2026-06-30 09:31:01,613 [INFO] dashboard_gen: Dashboard written -> docs/index.html (13409 bytes)
+2026-06-30 09:31:01,614 [INFO] main: ✓ main.py finished
